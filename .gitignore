@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Raw and generated datasets
+data/raw/
+data/processed/
+
+# Model checkpoints
+outputs/models/
+
+# Editor / OS
+.vscode/
+.DS_Store
