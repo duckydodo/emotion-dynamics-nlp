@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "emotion-dynamics-nlp"
+version = "0.1.0"
+description = "Context-aware emotion dynamics and forecasting in multi-turn conversations"
+requires-python = ">=3.12"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+include = ["src*"]
