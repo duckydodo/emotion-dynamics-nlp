@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from collections import Counter
 
+import numpy as np
 import pandas as pd
 
 
@@ -24,3 +25,21 @@ class ValidationReport:
     duplicate_rows: int
 
     emotion_distribution: Counter
+
+
+@dataclass(slots=True)
+class ClassMetrics:
+    precision: float
+    recall: float
+    f1: float
+
+
+@dataclass(slots=True)
+class EvaluationResult:
+    accuracy: float
+    macro_f1: float
+    weighted_f1: float
+
+    per_class: dict[str, ClassMetrics]
+
+    confusion_matrix: np.ndarray
