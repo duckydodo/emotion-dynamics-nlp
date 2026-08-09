@@ -83,8 +83,11 @@ def print_results(results: EvaluationResult) -> None:
     
 import matplotlib.pyplot as plt
 
-
-def plot_confusion_matrix(results, save_path=None):
+def plot_confusion_matrix(
+    results,
+    save_path=None,
+    show=True,
+):
 
     fig, ax = plt.subplots(figsize=(8, 8))
 
@@ -119,4 +122,7 @@ def plot_confusion_matrix(results, save_path=None):
     if save_path is not None:
         plt.savefig(save_path, dpi=300)
 
-    plt.show()
+    if show:
+        plt.show()
+    else:
+        plt.close()

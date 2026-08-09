@@ -9,6 +9,7 @@ class TFIDFFeatures:
         ngram_range=(1, 1),
         min_df=1,
         max_df=1.0,
+        sublinear_tf=False,
     ):
 
         self.vectorizer = TfidfVectorizer(
@@ -16,6 +17,7 @@ class TFIDFFeatures:
             ngram_range=ngram_range,
             min_df=min_df,
             max_df=max_df,
+            sublinear_tf=sublinear_tf,
         )
 
     def fit_transform(self, texts):
