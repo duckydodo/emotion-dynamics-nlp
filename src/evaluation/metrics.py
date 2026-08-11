@@ -7,7 +7,7 @@ from sklearn.metrics import (
 
 from src.data.types import EvaluationResult, ClassMetrics
 
-def evaluate(y_true, y_pred):
+def evaluate(y_true, y_pred, labels=None):
     accuracy = accuracy_score(y_true, y_pred)
 
     macro_f1 = f1_score(
@@ -22,7 +22,8 @@ def evaluate(y_true, y_pred):
         average="weighted",
     )
 
-    labels = sorted(y_true.unique())
+    if labels is None:
+        labels = sorted(set(y_true))
     
     precision, recall, f1, _ = precision_recall_fscore_support(
         y_true,
