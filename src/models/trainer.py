@@ -16,7 +16,6 @@ from src.models.transformer import (
 
 
 def set_seed(seed=42):
-
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -34,12 +33,15 @@ class EmotionDataset(Dataset):
         tokenizer,
         max_length=128,
     ):
-
         self.texts = list(texts)
-        self.labels = None if labels is None else [
-            LABEL_TO_ID[label]
-            for label in labels
-        ]
+
+        if labels is None:
+            self.labels = None
+        else:
+            self.labels = [
+                LABEL_TO_ID[label]
+                for label in labels
+            ]
 
         self.tokenizer = tokenizer
         self.max_length = max_length
@@ -82,7 +84,6 @@ class TransformerTrainer:
         max_length=128,
         seed=42,
     ):
-
         self.classifier = classifier
         self.model = classifier.model
         self.tokenizer = classifier.tokenizer
@@ -107,7 +108,6 @@ class TransformerTrainer:
         labels=None,
         shuffle=False,
     ):
-
         dataset = EmotionDataset(
             texts=texts,
             labels=labels,
@@ -235,6 +235,97 @@ class TransformerTrainer:
 
         return results, probabilities
 
+    def _save_training_checkpoint(
+        self,
+        checkpoint_dir,
+        epoch,
+        best_macro_f1,
+    ):
+
+        checkpoint_dir = Path(checkpoint_dir)
+
+        checkpoint_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        torch.save(
+            {
+                "epoch": epoch,
+                "model_state_dict": self.model.state_dict(),
+                "optimizer_state_dict": self.optimizer.state_dict(),
+                "best_macro_f1": best_macro_f1,
+                "history": self.history,
+            },
+            checkpoint_dir / "latest_training_state.pt",
+        )
+
+    def load_training_checkpoint(
+        self,
+        checkpoint_dir,
+    ):
+
+        checkpoint_dir = Path(checkpoint_dir)
+
+        checkpoint = torch.load(
+            checkpoint_dir / "latest_training_state.pt",
+            map_location=self.device,
+        )
+
+        self.model.load_state_dict(
+            checkpoint["model_state_dict"]
+        )
+
+        self.optimizer.load_state_dict(
+            checkpoint["optimizer_state_dict"]
+        )
+
+        self.model.to(self.device)
+
+        self.history = checkpoint["history"]
+
+        return {
+            "epoch": checkpoint["epoch"],
+            "best_macro_f1": checkpoint["best_macro_f1"],
+        }
+
+    def _save_best_model(
+        self,
+        checkpoint_dir,
+        best_macro_f1,
+    ):
+
+        best_dir = (
+            Path(checkpoint_dir)
+            / "best"
+        )
+
+        self.classifier.save(
+            best_dir
+        )
+
+        with open(
+            best_dir / "training_config.json",
+            "w",
+        ) as file:
+
+            json.dump(
+                {
+                    "model_name": self.classifier.model_name,
+                    "learning_rate": self.learning_rate,
+                    "batch_size": self.batch_size,
+                    "epochs": self.epochs,
+                    "max_length": self.max_length,
+                    "seed": self.seed,
+                    "best_val_macro_f1": best_macro_f1,
+                    "labels": LABELS,
+                },
+                file,
+                indent=2,
+            )
+
+        return best_dir
+
     def fit(
         self,
         train_texts,
@@ -242,6 +333,7 @@ class TransformerTrainer:
         val_texts,
         val_labels,
         checkpoint_dir=None,
+        resume=False,
     ):
 
         set_seed(self.seed)
@@ -252,10 +344,32 @@ class TransformerTrainer:
             shuffle=True,
         )
 
+        start_epoch = 1
         best_macro_f1 = -1.0
 
+        if resume and checkpoint_dir is not None:
+
+            checkpoint_path = (
+                Path(checkpoint_dir)
+                / "latest_training_state.pt"
+            )
+
+            if checkpoint_path.exists():
+
+                state = self.load_training_checkpoint(
+                    checkpoint_dir
+                )
+
+                start_epoch = state["epoch"] + 1
+                best_macro_f1 = state["best_macro_f1"]
+
+                print(
+                    f"Resuming from epoch "
+                    f"{state['epoch']}"
+                )
+
         for epoch in range(
-            1,
+            start_epoch,
             self.epochs + 1,
         ):
 
@@ -293,60 +407,27 @@ class TransformerTrainer:
 
                 if checkpoint_dir is not None:
 
-                    checkpoint_dir = Path(
-                        checkpoint_dir
+                    best_dir = self._save_best_model(
+                        checkpoint_dir,
+                        best_macro_f1,
                     )
-
-                    checkpoint_dir.mkdir(
-                        parents=True,
-                        exist_ok=True,
-                    )
-
-                    self.classifier.save(
-                        checkpoint_dir
-                    )
-
-                    with open(
-                        checkpoint_dir / "training_config.json",
-                        "w",
-                    ) as file:
-
-                        json.dump(
-                            {
-                                "model_name": (
-                                    self.classifier.model_name
-                                ),
-                                "learning_rate": (
-                                    self.learning_rate
-                                ),
-                                "batch_size": (
-                                    self.batch_size
-                                ),
-                                "epochs": self.epochs,
-                                "max_length": (
-                                    self.max_length
-                                ),
-                                "seed": self.seed,
-                                "best_val_macro_f1": (
-                                    best_macro_f1
-                                ),
-                                "labels": LABELS,
-                            },
-                            file,
-                            indent=2,
-                        )
 
                     print(
                         f"Saved best model to "
-                        f"{checkpoint_dir}"
+                        f"{best_dir}"
                     )
+
+            if checkpoint_dir is not None:
+
+                self._save_training_checkpoint(
+                    checkpoint_dir=checkpoint_dir,
+                    epoch=epoch,
+                    best_macro_f1=best_macro_f1,
+                )
 
         return self.history
 
-    def predict(
-        self,
-        texts,
-    ):
+    def predict(self, texts):
 
         loader = self._create_loader(
             texts=texts,
