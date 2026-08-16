@@ -1,0 +1,7 @@
+{
+  "experiment": "transformer_baseline",
+  "test_examples": 2610,
+  "test_accuracy": 0.6030651340996168,
+  "test_macro_f1": 0.44002923088220963,
+  "test_weighted_f1": 0.6053539772745447
+}

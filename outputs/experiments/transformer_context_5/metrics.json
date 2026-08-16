@@ -1,0 +1,7 @@
+{
+  "experiment": "transformer_context_5",
+  "test_examples": 1354,
+  "test_accuracy": 0.5709010339734121,
+  "test_macro_f1": 0.3797979273197351,
+  "test_weighted_f1": 0.5542188485461134
+}

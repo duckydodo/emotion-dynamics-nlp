@@ -1,0 +1,7 @@
+{
+  "experiment": "transformer_context_1_speaker",
+  "test_examples": 2328,
+  "test_accuracy": 0.6194158075601375,
+  "test_macro_f1": 0.4078085191250308,
+  "test_weighted_f1": 0.5981436051897187
+}
