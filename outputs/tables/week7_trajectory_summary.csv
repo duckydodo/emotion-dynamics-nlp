@@ -1,0 +1,4 @@
+split,num_dialogues,valid_transitions,emotion_shifts,overall_shift_rate,mean_shifts_per_dialogue,median_shifts_per_dialogue
+train,1038,8882,5319,0.5988516099977482,5.494834710743802,5.0
+dev,114,993,607,0.6112789526686808,5.62037037037037,5.0
+test,280,2328,1352,0.5807560137457045,5.044776119402985,4.0

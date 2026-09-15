@@ -1,0 +1,8 @@
+emotion_from,anger,disgust,fear,joy,neutral,sadness,surprise
+anger,57,3,2,9,38,13,11
+disgust,2,2,1,2,7,4,2
+fear,3,4,9,3,11,3,5
+joy,9,2,3,38,58,7,26
+neutral,37,7,14,59,221,33,52
+sadness,11,0,0,10,33,30,13
+surprise,17,4,8,20,47,14,29

@@ -1,0 +1,4 @@
+split,total_transitions,persistent_transitions,persistence_rate
+train,8882,3563,0.4011483900022517
+dev,993,386,0.38872104733131924
+test,2328,976,0.41924398625429554

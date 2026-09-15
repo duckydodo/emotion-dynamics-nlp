@@ -1,0 +1,3 @@
+speaker_transition,transitions,emotion_shifts,shift_rate,persistence_rate
+same_speaker,563,238,0.4227353463587922,0.5772646536412078
+cross_speaker,1765,1114,0.6311614730878187,0.36883852691218133

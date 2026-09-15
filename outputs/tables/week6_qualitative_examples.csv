@@ -1,0 +1,58 @@
+dialogue_id,utterance_id,conversation,true,baseline,context1,category
+1,3,"1 | Joey: Push!
+2 | Joey: Push 'em out, push 'em out, harder, harder.
+3 | Joey: Push 'em out, push 'em out, way out!",joy,fear,joy,rescued
+1,6,"4 | Joey: Let's get that ball and really move, hey, hey, ho, ho.
+5 | Joey: Let's—  I was just—yeah, right.
+6 | Joey: Push!",joy,anger,joy,rescued
+4,6,"4 | Phoebe: Oh no wait, oh no, the elastic on my underwear busted.
+5 | Joey: Oh my God! I overslept! I was supposed to be on the set a half an hour ago! I gotta get out of here!
+6 | Monica: Oh wait, Joey, you can’t go like that! You stink!",disgust,surprise,disgust,rescued
+4,7,"5 | Joey: Oh my God! I overslept! I was supposed to be on the set a half an hour ago! I gotta get out of here!
+6 | Monica: Oh wait, Joey, you can’t go like that! You stink!
+7 | Joey: Look, I know I feel asleep before I could shower and now I don’t have time!",anger,sadness,anger,rescued
+4,8,"6 | Monica: Oh wait, Joey, you can’t go like that! You stink!
+7 | Joey: Look, I know I feel asleep before I could shower and now I don’t have time!
+8 | Joey: They’re just ten blocks away, if I run, I can make it.",neutral,fear,neutral,rescued
+5,4,"2 | Marjorie: Hi.
+3 | Chandler: You mind if I
+4 | Marjorie: No, please.",neutral,sadness,neutral,rescued
+7,2,"0 | Monica: Yeah, but without the costumes.
+1 | Phoebe: Oh.
+2 | Joey: And it’s not fake, it’s totally brutal.",neutral,anger,neutral,rescued
+7,8,"6 | Monica: What’s fish hooking?
+7 | Ross: Huh, what’s fish hooking...   Thanks man, that would have been really hard to describe. What is that taste?
+8 | Joey: What? My hands are totally clean, I just gave the duck a bath.",neutral,surprise,neutral,rescued
+8,1,"0 | Jade: Oh, Bob, he was nothing compared to you. I had to bite my lip to keep from screaming your name.
+1 | Chandler: Well, that makes me feel so good.",joy,neutral,joy,rescued
+9,8,"6 | Fireman #1: Excuse me?
+7 | Monica: Joey! He’s working!  You would look
+8 | Joey: Oh, how bad is it?",sadness,neutral,sadness,rescued
+0,1,"0 | Mark: Why do all you’re coffee mugs have numbers on the bottom?
+1 | Rachel: Oh. That’s so Monica can keep track. That way if one on them is missing, she can be like, ‘Where’s number 27?!’",anger,anger,neutral,broken
+1,2,"0 | Joey: Come on, Lydia, you can do it.
+1 | Joey: Push!
+2 | Joey: Push 'em out, push 'em out, harder, harder.",joy,joy,neutral,broken
+2,4,"2 | Ross: Uhh, yes I did but there isn't. Okay, here we go.
+3 | Ross: Okay, go left. Left! Left!
+4 | Rachel: Okay, y'know what? There is no more left, left!",anger,anger,joy,broken
+3,2,"0 | Steve: Oh, okay, I get it.
+1 | Ross: No wait, look. Look! I'm sorry, it's just I've never even
+2 | Steve: Howard's the",neutral,neutral,joy,broken
+4,2,"0 | Phoebe: Ohh!
+1 | Monica: What?
+2 | Phoebe: It kicked! I think the baby kicked!",surprise,surprise,anger,broken
+7,7,"5 | Ross: Yeah, anything goes, except ah, eye gouging and fish hooking.
+6 | Monica: What’s fish hooking?
+7 | Ross: Huh, what’s fish hooking...   Thanks man, that would have been really hard to describe. What is that taste?",neutral,neutral,disgust,broken
+9,9,"7 | Monica: Joey! He’s working!  You would look
+8 | Joey: Oh, how bad is it?
+9 | Phoebe: Oh, it’s bad. It’s really bad. The only thing in there that isn’t burned is an ass. Which I do",sadness,sadness,neutral,broken
+9,13,"11 | Rachel: Everything’s ruined. My bed. My clothes. Look at my favorite blue sweater.
+12 | Monica: Isn’t that mine?
+13 | Rachel: Fine! I’m sorry for your loss!",anger,anger,joy,broken
+9,17,"15 | Rachel: Wow! Oh-okay, look pal, I am
+16 | Monica: Yes, they can stay with us.
+17 | Chandler: Have you figured out what started the fire Mr. Fireman?",neutral,neutral,surprise,broken
+11,1,"0 | Rachel: Well Phoebe, we gotta do something!
+1 | Rachel: I mean there’s no way Joey’s gonna make it in time.",fear,fear,neutral,broken
