@@ -1,0 +1,6 @@
+services:
+  emotion-dynamics-nlp:
+    build: .
+    image: emotion-dynamics-nlp:week11
+    ports:
+      - "8001:8000"

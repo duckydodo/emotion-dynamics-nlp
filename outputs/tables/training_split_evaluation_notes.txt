@@ -1,0 +1,41 @@
+MELD Training Split Evaluation Notes
+=======================================
+Date: 2026-10-31 17:27:58
+Dataset: MELD Training Split (data/raw/meld/train_sent_emo.csv)
+Checkpoints Evaluated:
+  1. checkpoints/transformer_baseline/best
+  2. checkpoints/transformer_context_1/best
+  3. checkpoints/transformer_context_1_speaker/best
+
+Utterance Counts and Exclusions:
+--------------------------------
+- Total original training utterances: 9989 across 1038 dialogues.
+- Evaluated for Baseline (All Utterances): 9989
+- Evaluated for Context-1: 8882
+- Evaluated for Context-1 + Speaker: 8882
+- Evaluated for Matched Baseline: 8882
+- Excluded from contextual evaluation: 1107 utterances.
+  Rationale for exclusions:
+  Context-1 models require exactly 1 contiguous preceding utterance within the same dialogue.
+  1,038 utterances are turn 0 of their dialogue and thus lack preceding context.
+  69 utterances follow internal utterance-ID gaps within MELD dialogues and were excluded to preserve dialogue contiguity.
+
+Summary of Results:
+-------------------
+                                        model  evaluated_examples  accuracy  macro_f1  weighted_f1
+        transformer_baseline (all utterances)                9989  0.858845  0.772436     0.860160
+transformer_baseline (matched context subset)                8882  0.856451  0.770327     0.857799
+                        transformer_context_1                8882  0.879869  0.774117     0.874713
+                transformer_context_1_speaker                8882  0.880883  0.788406     0.877207
+
+Per-Class F1 Summary:
+---------------------
+                                        Model    Anger  Disgust     Fear      Joy  Neutral  Sadness  Surprise
+        transformer_baseline (all utterances) 0.761455 0.729124 0.537736 0.849916 0.931365 0.741557  0.855902
+transformer_baseline (matched context subset) 0.759938 0.723596 0.536585 0.846005 0.930023 0.740132  0.856011
+                        transformer_context_1 0.815659 0.603960 0.531165 0.876694 0.936081 0.765186  0.890071
+                transformer_context_1_speaker 0.808704 0.631854 0.620690 0.874596 0.940927 0.769089  0.872981
+
+Observations:
+- High training accuracy and F1 demonstrate effective parameter optimization during fine-tuning.
+- The Context-1 + Speaker model achieves strong fit across all emotional categories.

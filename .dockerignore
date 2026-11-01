@@ -1,0 +1,26 @@
+.git
+.gitignore
+.ipynb_checkpoints
+__pycache__/
+*.py[cod]
+*.save
+*.save.*
+
+data/
+notebooks/
+outputs/
+docs/
+*.ipynb
+*.egg-info/
+
+# Checkpoints are included explicitly by Dockerfile; ignore unrelated files.
+checkpoints/*
+!checkpoints/transformer_baseline/
+!checkpoints/transformer_baseline/best/
+!checkpoints/transformer_baseline/best/**
+!checkpoints/transformer_context_1/
+!checkpoints/transformer_context_1/best/
+!checkpoints/transformer_context_1/best/**
+!checkpoints/transformer_context_1_speaker/
+!checkpoints/transformer_context_1_speaker/best/
+!checkpoints/transformer_context_1_speaker/best/**

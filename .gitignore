@@ -26,9 +26,11 @@ env/
 .vscode/
 .idea/
 
-# OS files
+# OS and editor files
 .DS_Store
 Thumbs.db
+*.save
+*.save.*
 
 # Python tooling
 .pytest_cache/

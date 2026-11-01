@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emotion Dynamics Analyzer</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+
+        /* ============================================================
+           THEME
+           ============================================================ */
+
+        :root {
+            --bg: #0b1220;
+            --surface: #111827;
+            --surface-2: #1a2538;
+            --surface-3: #202d43;
+
+            --border: #2f4058;
+
+            --text: #e5e7eb;
+            --muted: #94a3b8;
+
+            --primary: #3b82f6;
+            --primary-hover: #60a5fa;
+
+            --danger-bg: #3a1d24;
+            --danger-border: #7f1d1d;
+            --danger-text: #fca5a5;
+
+            --shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+            --chart-grid: #2c3b52;
+        }
+
+
+        /* Light mode is now optional rather than default */
+
+        body.light {
+            --bg: #f4f6f8;
+            --surface: #ffffff;
+            --surface-2: #f8fafc;
+            --surface-3: #eef2f7;
+
+            --border: #dbe2ea;
+
+            --text: #172033;
+            --muted: #64748b;
+
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+
+            --danger-bg: #fef2f2;
+            --danger-border: #fecaca;
+            --danger-text: #b91c1c;
+
+            --shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+
+            --chart-grid: #dbe2ea;
+        }
+
+
+        /* ============================================================
+           GLOBAL
+           ============================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+
+        .container {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+
+            padding: 34px 0 60px;
+        }
+
+
+        /* ============================================================
+           HEADER
+           ============================================================ */
+
+        .header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: flex-start;
+
+            gap: 20px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .header h1 {
+            margin: 0 0 8px;
+
+            font-size: 32px;
+            letter-spacing: -0.5px;
+        }
+
+
+        .subtitle {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 15px;
+        }
+
+
+        .theme-button {
+            border: 1px solid var(--border);
+
+            background: var(--surface);
+            color: var(--text);
+
+            border-radius: 8px;
+
+            padding: 9px 14px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+            white-space: nowrap;
+
+            transition:
+                background 0.15s ease,
+                border-color 0.15s ease;
+        }
+
+
+        .theme-button:hover {
+            background: var(--surface-2);
+        }
+
+
+        /* ============================================================
+           PANELS
+           ============================================================ */
+
+        .panel {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 24px;
+
+            margin-bottom: 20px;
+
+            box-shadow: var(--shadow);
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+
+        .panel h2 {
+            margin: 0 0 20px;
+
+            font-size: 20px;
+        }
+
+
+        .panel h3 {
+            margin: 0 0 8px;
+
+            font-size: 16px;
+        }
+
+
+        /* ============================================================
+           INPUT
+           ============================================================ */
+
+        .input-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1.5fr;
+
+            gap: 20px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .field label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+
+        select,
+        textarea {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            background: var(--surface-2);
+            color: var(--text);
+
+            padding: 12px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                border-color 0.15s ease,
+                background 0.2s ease;
+        }
+
+
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary);
+
+            box-shadow:
+                0 0 0 3px rgba(59, 130, 246, 0.12);
+        }
+
+
+        textarea {
+            min-height: 280px;
+
+            resize: vertical;
+
+            font-family:
+                ui-monospace,
+                SFMono-Regular,
+                Consolas,
+                monospace;
+
+            line-height: 1.55;
+        }
+
+
+        .model-description {
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+
+        .controls {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 14px;
+
+            flex-wrap: wrap;
+        }
+
+
+        button {
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 11px 17px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.15s ease,
+                opacity 0.15s ease,
+                transform 0.1s ease;
+        }
+
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+
+        button:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+        }
+
+
+        .primary-button {
+            background: var(--primary);
+            color: white;
+        }
+
+
+        .primary-button:hover:not(:disabled) {
+            background: var(--primary-hover);
+        }
+
+
+        .secondary-button {
+            background: var(--surface-2);
+
+            color: var(--text);
+
+            border: 1px solid var(--border);
+        }
+
+
+        .secondary-button:hover {
+            background: var(--surface-3);
+        }
+
+
+        /* ============================================================
+           ERROR
+           ============================================================ */
+
+        #error {
+            display: none;
+
+            background: var(--danger-bg);
+
+            color: var(--danger-text);
+
+            border: 1px solid var(--danger-border);
+
+            border-radius: 8px;
+
+            padding: 13px 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* ============================================================
+           RESULTS
+           ============================================================ */
+
+        #results {
+            display: none;
+        }
+
+
+        .result-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .mode-badge {
+            display: inline-block;
+
+            padding: 6px 10px;
+
+            border-radius: 999px;
+
+            background: var(--surface-2);
+
+            border: 1px solid var(--border);
+
+            color: var(--muted);
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+        /* ============================================================
+           STATS
+           ============================================================ */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .stat {
+            background: var(--surface-2);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+            text-align: center;
+        }
+
+
+        .stat-label {
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        .stat-value {
+            font-size: 26px;
+
+            font-weight: 700;
+
+            margin-top: 7px;
+        }
+
+
+        /* ============================================================
+           PROBABILITY TRAJECTORY
+           ============================================================ */
+
+        .chart-container {
+            position: relative;
+
+            height: 430px;
+        }
+
+
+        .chart-description {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            margin-top: -8px;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* ============================================================
+           PREDICTED EMOTION SEQUENCE
+           ============================================================ */
+
+        .emotion-sequence {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(105px, 1fr));
+
+            gap: 8px;
+
+            margin-top: 20px;
+        }
+
+
+        .sequence-item {
+            background: var(--surface-2);
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            padding: 10px;
+
+            text-align: center;
+        }
+
+
+        .sequence-turn {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .sequence-speaker {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .sequence-emotion {
+            font-size: 13px;
+
+            font-weight: 700;
+
+            text-transform: capitalize;
+        }
+
+
+        /* ============================================================
+           DISTRIBUTION
+           ============================================================ */
+
+        .distribution-row {
+            display: grid;
+
+            grid-template-columns:
+                90px 1fr 55px;
+
+            gap: 12px;
+
+            align-items: center;
+
+            margin: 13px 0;
+        }
+
+
+        .distribution-label {
+            text-transform: capitalize;
+
+            font-size: 14px;
+        }
+
+
+        .bar {
+            height: 10px;
+
+            background: var(--border);
+
+            border-radius: 999px;
+
+            overflow: hidden;
+        }
+
+
+        .bar-fill {
+            height: 100%;
+
+            background: var(--primary);
+
+            border-radius: 999px;
+
+            transition: width 0.3s ease;
+        }
+
+
+        .distribution-count {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            text-align: right;
+        }
+
+
+        /* ============================================================
+           CONVERSATION TURNS
+           ============================================================ */
+
+        .turn-header,
+        .turn {
+            display: grid;
+
+            grid-template-columns:
+                110px 110px 1fr 90px;
+
+            gap: 15px;
+
+            align-items: center;
+        }
+
+
+        .turn-header {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            padding-bottom: 10px;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .turn {
+            padding: 14px 0;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .turn:last-child {
+            border-bottom: none;
+        }
+
+
+        .turn-speaker {
+            font-weight: 600;
+        }
+
+
+        .emotion {
+            text-transform: capitalize;
+
+            font-weight: 600;
+        }
+
+
+        .turn-text {
+            line-height: 1.45;
+        }
+
+
+        .confidence {
+            color: var(--muted);
+
+            text-align: right;
+
+            font-size: 13px;
+        }
+
+
+        /* ============================================================
+           SPEAKER DYNAMICS
+           ============================================================ */
+
+        .speaker-stat {
+            min-height: 100px;
+        }
+
+
+        /* ============================================================
+           TURNING POINTS
+           ============================================================ */
+
+        .turning-point {
+            padding: 15px;
+
+            margin-bottom: 10px;
+
+            background: var(--surface-2);
+
+            border: 1px solid var(--border);
+
+            border-radius: 9px;
+        }
+
+
+        .turning-point:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .turning-transition {
+            font-weight: 700;
+
+            margin-bottom: 5px;
+
+            text-transform: capitalize;
+        }
+
+
+        .turning-speakers {
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        .empty-state {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+
+        .footer {
+            text-align: center;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-top: 30px;
+        }
+
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+
+        @media (max-width: 800px) {
+
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .turn-header {
+                display: none;
+            }
+
+
+            .turn {
+                grid-template-columns: 1fr;
+
+                gap: 5px;
+            }
+
+
+            .confidence {
+                text-align: left;
+            }
+
+
+            .header {
+                align-items: flex-start;
+            }
+
+
+            .chart-container {
+                height: 380px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .container {
+                width: 94%;
+
+                padding-top: 22px;
+            }
+
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+
+            .stats {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .panel {
+                padding: 18px;
+            }
+
+
+            .chart-container {
+                height: 340px;
+            }
+
+
+            .emotion-sequence {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- ============================================================
+         HEADER
+         ============================================================ -->
+
+    <header class="header">
+
+        <div>
+
+            <h1>
+                Emotion Dynamics Analyzer
+            </h1>
+
+            <p class="subtitle">
+                Analyze emotions and emotion dynamics in multi-turn conversations.
+            </p>
+
+        </div>
+
+
+        <button
+            id="themeButton"
+            class="theme-button"
+            type="button"
+        >
+            Light mode
+        </button>
+
+    </header>
+
+
+    <!-- ============================================================
+         ERROR
+         ============================================================ -->
+
+    <div id="error"></div>
+
+
+    <!-- ============================================================
+         INPUT
+         ============================================================ -->
+
+    <section class="panel">
+
+        <div class="input-grid">
+
+
+            <div class="field">
+
+                <label for="mode">
+                    Model
+                </label>
+
+
+                <select id="mode">
+
+                    <option value="utterance">
+                        Utterance-only
+                    </option>
+
+                    <option value="context_1">
+                        Context-1
+                    </option>
+
+                    <option value="context_1_speaker">
+                        Context-1 + Speaker
+                    </option>
+
+                </select>
+
+
+                <div
+                    id="modelDescription"
+                    class="model-description"
+                >
+                    Predicts emotion from each utterance independently.
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Input format
+                </label>
+
+
+                <div class="model-description">
+
+                    One turn per line using
+                    <strong>Speaker: utterance</strong>.
+
+                    Blank lines are ignored and
+                    multiline utterances are supported.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="conversation">
+                Conversation
+            </label>
+
+
+            <textarea
+                id="conversation"
+                placeholder="Alice: I can't believe you did that.
+Bob: What? I didn't do anything.
+Alice: Stop lying to me.
+Bob: I'm not lying. Look at the message."
+            ></textarea>
+
+        </div>
+
+
+        <div class="controls">
+
+            <button
+                id="analyzeButton"
+                class="primary-button"
+                type="button"
+            >
+                Analyze Conversation
+            </button>
+
+
+            <button
+                id="exampleButton"
+                class="secondary-button"
+                type="button"
+            >
+                Load Example
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         RESULTS
+         ============================================================ -->
+
+    <main id="results">
+
+
+        <!-- ========================================================
+             SUMMARY
+             ======================================================== -->
+
+        <section class="panel">
+
+            <div class="result-header">
+
+                <h2>
+                    Conversation Dynamics
+                </h2>
+
+
+                <span
+                    id="modeBadge"
+                    class="mode-badge"
+                ></span>
+
+            </div>
+
+
+            <div class="stats">
+
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Transitions
+                    </div>
+
+                    <div
+                        id="totalTransitions"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Emotion Shifts
+                    </div>
+
+                    <div
+                        id="shifts"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Persistence
+                    </div>
+
+                    <div
+                        id="persistence"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Shift Rate
+                    </div>
+
+                    <div
+                        id="shiftRate"
+                        class="stat-value"
+                    >
+                        0%
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             EMOTION PROBABILITY TRAJECTORY
+             ======================================================== -->
+
+        <section class="panel">
+
+            <h2>
+                Emotion Probability Trajectory
+            </h2>
+
+
+            <div class="chart-description">
+
+                Each band represents the model's probability for one
+                emotion at each conversation turn. The total height
+                represents the complete probability distribution.
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="emotionChart"></canvas>
+
+            </div>
+
+
+            <div
+                id="emotionSequence"
+                class="emotion-sequence"
+            ></div>
+
+        </section>
+
+
+        <!-- ========================================================
+             DISTRIBUTION
+             ======================================================== -->
+
+        <section class="panel">
+
+            <h2>
+                Emotion Distribution
+            </h2>
+
+
+            <div id="distribution"></div>
+
+        </section>
+
+
+        <!-- ========================================================
+             CONVERSATION TURNS
+             ======================================================== -->
+
+        <section class="panel">
+
+            <h2>
+                Conversation Turns
+            </h2>
+
+
+            <div class="turn-header">
+
+                <div>
+                    Speaker
+                </div>
+
+                <div>
+                    Emotion
+                </div>
+
+                <div>
+                    Utterance
+                </div>
+
+                <div>
+                    Confidence
+                </div>
+
+            </div>
+
+
+            <div id="turns"></div>
+
+        </section>
+
+
+        <!-- ========================================================
+             SPEAKER DYNAMICS
+             ======================================================== -->
+
+        <section class="panel">
+
+            <h2>
+                Speaker Dynamics
+            </h2>
+
+
+            <div class="stats">
+
+
+                <div class="stat speaker-stat">
+
+                    <div class="stat-label">
+                        Same-speaker transitions
+                    </div>
+
+                    <div
+                        id="sameSpeakerTransitions"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="stat speaker-stat">
+
+                    <div class="stat-label">
+                        Same-speaker shifts
+                    </div>
+
+                    <div
+                        id="sameSpeakerShifts"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="stat speaker-stat">
+
+                    <div class="stat-label">
+                        Cross-speaker transitions
+                    </div>
+
+                    <div
+                        id="crossSpeakerTransitions"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="stat speaker-stat">
+
+                    <div class="stat-label">
+                        Cross-speaker shifts
+                    </div>
+
+                    <div
+                        id="crossSpeakerShifts"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             TURNING POINTS
+             ======================================================== -->
+
+        <section class="panel">
+
+            <h2>
+                Turning Points
+            </h2>
+
+
+            <div id="turningPoints"></div>
+
+        </section>
+
+    </main>
+
+
+    <div class="footer">
+        Emotion Dynamics NLP · MELD-based research application
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+    /* ================================================================
+       THEME
+       ================================================================ */
+
+    const themeButton =
+        document.getElementById("themeButton");
+
+
+    function updateThemeButton() {
+
+        const isLight =
+            document.body.classList.contains("light");
+
+
+        themeButton.textContent =
+            isLight
+                ? "Dark mode"
+                : "Light mode";
+
+    }
+
+
+    /*
+       Dark mode is the default.
+
+       If the user previously selected a theme,
+       respect that preference.
+    */
+
+    const savedTheme =
+        localStorage.getItem(
+            "emotion-dynamics-theme"
+        );
+
+
+    if (savedTheme === "light") {
+
+        document.body.classList.add("light");
+
+    }
+
+
+    updateThemeButton();
+
+
+    themeButton.addEventListener(
+        "click",
+        () => {
+
+            document.body.classList.toggle(
+                "light"
+            );
+
+
+            const isLight =
+                document.body.classList.contains(
+                    "light"
+                );
+
+
+            localStorage.setItem(
+                "emotion-dynamics-theme",
+                isLight
+                    ? "light"
+                    : "dark"
+            );
+
+
+            updateThemeButton();
+
+
+            if (emotionChart) {
+                updateChartTheme();
+            }
+
+        }
+    );
+
+
+    /* ================================================================
+       ELEMENTS
+       ================================================================ */
+
+    const conversationInput =
+        document.getElementById(
+            "conversation"
+        );
+
+
+    const modeInput =
+        document.getElementById(
+            "mode"
+        );
+
+
+    const modelDescription =
+        document.getElementById(
+            "modelDescription"
+        );
+
+
+    const analyzeButton =
+        document.getElementById(
+            "analyzeButton"
+        );
+
+
+    const exampleButton =
+        document.getElementById(
+            "exampleButton"
+        );
+
+
+    const errorBox =
+        document.getElementById(
+            "error"
+        );
+
+
+    const results =
+        document.getElementById(
+            "results"
+        );
+
+
+    /* ================================================================
+       MODEL DESCRIPTIONS
+       ================================================================ */
+
+    const modelDescriptions = {
+
+        utterance:
+            "Predicts emotion from each utterance independently.",
+
+        context_1:
+            "Uses the previous utterance together with the current utterance.",
+
+        context_1_speaker:
+            "Uses the previous utterance, current utterance, and speaker information."
+
+    };
+
+
+    modeInput.addEventListener(
+        "change",
+        () => {
+
+            modelDescription.textContent =
+                modelDescriptions[
+                    modeInput.value
+                ];
+
+        }
+    );
+
+
+    /* ================================================================
+       EXAMPLE
+       ================================================================ */
+
+    exampleButton.addEventListener(
+        "click",
+        () => {
+
+            conversationInput.value =
+`Alice: I was really excited about the trip.
+Bob: Me too. I thought everything was finally going well.
+Alice: Then why did you cancel the tickets?
+Bob: I didn't cancel them. The airline did.
+Alice: Wait, seriously? I didn't know that.
+Bob: Yeah, I was trying to tell you all morning.
+Alice: I'm sorry. I shouldn't have blamed you.
+Bob: It's okay. I'm just glad we figured it out.`;
+
+            errorBox.style.display =
+                "none";
+
+        }
+    );
+
+
+    /* ================================================================
+       ANALYZE
+       ================================================================ */
+
+    analyzeButton.addEventListener(
+        "click",
+        async () => {
+
+            errorBox.style.display =
+                "none";
+
+
+            const conversation =
+                conversationInput.value.trim();
+
+
+            const mode =
+                modeInput.value;
+
+
+            if (!conversation) {
+
+                showError(
+                    "Please enter a conversation."
+                );
+
+                return;
+            }
+
+
+            analyzeButton.disabled =
+                true;
+
+
+            analyzeButton.textContent =
+                "Analyzing...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/analyze",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify({
+                                    conversation:
+                                        conversation,
+
+                                    mode:
+                                        mode
+                                })
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.detail ||
+                        "Analysis failed."
+                    );
+
+                }
+
+
+                renderResults(data);
+
+
+            } catch (error) {
+
+                showError(
+                    error.message
+                );
+
+            } finally {
+
+                analyzeButton.disabled =
+                    false;
+
+
+                analyzeButton.textContent =
+                    "Analyze Conversation";
+
+            }
+
+        }
+    );
+
+
+    /* ================================================================
+       ERROR
+       ================================================================ */
+
+    function showError(message) {
+
+        errorBox.textContent =
+            message;
+
+
+        errorBox.style.display =
+            "block";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* ================================================================
+       RENDER RESULTS
+       ================================================================ */
+
+    function renderResults(data) {
+
+        results.style.display =
+            "block";
+
+
+        const analysis =
+            data.analysis;
+
+
+        const turns =
+            data.turns;
+
+
+        document.getElementById(
+            "modeBadge"
+        ).textContent =
+            formatMode(data.mode);
+
+
+        document.getElementById(
+            "totalTransitions"
+        ).textContent =
+            analysis.total_transitions;
+
+
+        document.getElementById(
+            "shifts"
+        ).textContent =
+            analysis.shifts;
+
+
+        document.getElementById(
+            "persistence"
+        ).textContent =
+            analysis.persistence;
+
+
+        document.getElementById(
+            "shiftRate"
+        ).textContent =
+            `${(
+                analysis.shift_rate * 100
+            ).toFixed(1)}%`;
+
+
+        document.getElementById(
+            "sameSpeakerTransitions"
+        ).textContent =
+            analysis.same_speaker_transitions;
+
+
+        document.getElementById(
+            "sameSpeakerShifts"
+        ).textContent =
+            analysis.same_speaker_shifts;
+
+
+        document.getElementById(
+            "crossSpeakerTransitions"
+        ).textContent =
+            analysis.cross_speaker_transitions;
+
+
+        document.getElementById(
+            "crossSpeakerShifts"
+        ).textContent =
+            analysis.cross_speaker_shifts;
+
+
+        renderTimeline(turns);
+
+
+        renderDistribution(
+            analysis.emotion_distribution
+        );
+
+
+        renderTurns(turns);
+
+
+        renderTurningPoints(
+            analysis.turning_points
+        );
+
+
+        results.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+
+    /* ================================================================
+       EMOTION PROBABILITY TRAJECTORY
+       ================================================================ */
+
+    let emotionChart = null;
+
+
+    const emotions = [
+        "anger",
+        "disgust",
+        "fear",
+        "joy",
+        "neutral",
+        "sadness",
+        "surprise"
+    ];
+
+
+    /*
+       These colors are semantic rather than tied
+       to the current theme.
+    */
+
+    const emotionColors = {
+
+        anger: "#ef4444",
+
+        disgust: "#a855f7",
+
+        fear: "#22c55e",
+
+        joy: "#facc15",
+
+        neutral: "#94a3b8",
+
+        sadness: "#60a5fa",
+
+        surprise: "#14b8a6"
+
+    };
+
+
+    function getChartColors() {
+
+        const styles =
+            getComputedStyle(
+                document.body
+            );
+
+
+        return {
+
+            text:
+                styles
+                    .getPropertyValue(
+                        "--text"
+                    )
+                    .trim(),
+
+            muted:
+                styles
+                    .getPropertyValue(
+                        "--muted"
+                    )
+                    .trim(),
+
+            border:
+                styles
+                    .getPropertyValue(
+                        "--chart-grid"
+                    )
+                    .trim()
+
+        };
+
+    }
+
+
+    function renderTimeline(turns) {
+
+        const canvas =
+            document.getElementById(
+                "emotionChart"
+            );
+
+
+        const colors =
+            getChartColors();
+
+
+        const labels =
+            turns.map(
+                turn =>
+                    `Turn ${turn.turn_id + 1}`
+            );
+
+
+        /*
+           Every dataset contains the probability
+           assigned to one emotion at every turn.
+
+           Because all seven probabilities sum to 1,
+           the stacked chart represents the complete
+           model probability distribution.
+        */
+
+        const datasets =
+            emotions.map(
+                emotion => ({
+
+                    label:
+                        emotion,
+
+                    data:
+                        turns.map(
+                            turn => {
+
+                                if (
+                                    !turn.probabilities
+                                ) {
+                                    return 0;
+                                }
+
+                                return Number(
+                                    turn
+                                        .probabilities[
+                                            emotion
+                                        ] || 0
+                                );
+
+                            }
+                        ),
+
+                    backgroundColor:
+                        emotionColors[
+                            emotion
+                        ] + "B3",
+
+                    borderColor:
+                        emotionColors[
+                            emotion
+                        ],
+
+                    borderWidth: 1,
+
+                    fill: true,
+
+                    pointRadius: 0,
+
+                    pointHoverRadius: 5,
+
+                    tension: 0.35,
+
+                    stack:
+                        "probability"
+
+                })
+            );
+
+
+        if (emotionChart) {
+
+            emotionChart.destroy();
+
+        }
+
+
+        emotionChart =
+            new Chart(
+                canvas,
+                {
+
+                    type: "line",
+
+
+                    data: {
+
+                        labels:
+                            labels,
+
+                        datasets:
+                            datasets
+
+                    },
+
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio:
+                            false,
+
+
+                        interaction: {
+
+                            mode:
+                                "index",
+
+                            intersect:
+                                false
+
+                        },
+
+
+                        scales: {
+
+                            x: {
+
+                                stacked:
+                                    true,
+
+                                ticks: {
+
+                                    color:
+                                        colors.muted,
+
+                                    maxRotation:
+                                        0,
+
+                                    minRotation:
+                                        0
+
+                                },
+
+                                grid: {
+
+                                    color:
+                                        colors.border
+
+                                },
+
+                                title: {
+
+                                    display:
+                                        true,
+
+                                    text:
+                                        "Conversation Turn",
+
+                                    color:
+                                        colors.text
+
+                                }
+
+                            },
+
+
+                            y: {
+
+                                stacked:
+                                    true,
+
+                                min:
+                                    0,
+
+                                max:
+                                    1,
+
+                                ticks: {
+
+                                    color:
+                                        colors.muted,
+
+                                    callback:
+                                        function(value) {
+
+                                            return (
+                                                Math.round(
+                                                    value * 100
+                                                ) +
+                                                "%"
+                                            );
+
+                                        }
+
+                                },
+
+                                grid: {
+
+                                    color:
+                                        colors.border
+
+                                },
+
+                                title: {
+
+                                    display:
+                                        true,
+
+                                    text:
+                                        "Emotion Probability",
+
+                                    color:
+                                        colors.text
+
+                                }
+
+                            }
+
+                        },
+
+
+                        plugins: {
+
+                            legend: {
+
+                                display:
+                                    true,
+
+                                position:
+                                    "top",
+
+                                labels: {
+
+                                    color:
+                                        colors.text,
+
+                                    usePointStyle:
+                                        true,
+
+                                    padding:
+                                        15
+
+                                }
+
+                            },
+
+
+                            tooltip: {
+
+                                callbacks: {
+
+                                    title:
+                                        function(context) {
+
+                                            const index =
+                                                context[0]
+                                                    .dataIndex;
+
+
+                                            const turn =
+                                                turns[index];
+
+
+                                            return [
+                                                `Turn ${
+                                                    turn.turn_id + 1
+                                                } · ${
+                                                    turn.speaker
+                                                }`
+                                            ];
+
+                                        },
+
+
+                                    label:
+                                        function(context) {
+
+                                            const probability =
+                                                Number(
+                                                    context.raw
+                                                );
+
+
+                                            return (
+                                                `${
+                                                    context.dataset.label
+                                                }: ${
+                                                    (
+                                                        probability *
+                                                        100
+                                                    ).toFixed(1)
+                                                }%`
+                                            );
+
+                                        },
+
+
+                                    afterBody:
+                                        function(context) {
+
+                                            const index =
+                                                context[0]
+                                                    .dataIndex;
+
+
+                                            const turn =
+                                                turns[index];
+
+
+                                            return [
+                                                "",
+                                                `Predicted: ${
+                                                    turn.emotion
+                                                }`,
+                                                `Confidence: ${
+                                                    (
+                                                        turn.confidence *
+                                                        100
+                                                    ).toFixed(1)
+                                                }%`
+                                            ];
+
+                                        }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            );
+
+
+        renderEmotionSequence(turns);
+
+    }
+
+
+    /* ================================================================
+       PREDICTED EMOTION SEQUENCE
+       ================================================================ */
+
+    function renderEmotionSequence(turns) {
+
+        const container =
+            document.getElementById(
+                "emotionSequence"
+            );
+
+
+        container.innerHTML =
+            "";
+
+
+        turns.forEach(
+            turn => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "sequence-item";
+
+
+                item.innerHTML = `
+
+                    <div class="sequence-turn">
+                        Turn ${turn.turn_id + 1}
+                    </div>
+
+                    <div class="sequence-speaker">
+                        ${escapeHtml(
+                            turn.speaker
+                        )}
+                    </div>
+
+                    <div class="sequence-emotion">
+                        ${escapeHtml(
+                            turn.emotion
+                        )}
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    item
+                );
+
+            }
+        );
+
+    }
+
+
+    /* ================================================================
+       CHART THEME
+       ================================================================ */
+
+    function updateChartTheme() {
+
+        if (!emotionChart) {
+            return;
+        }
+
+
+        const colors =
+            getChartColors();
+
+
+        emotionChart.options.scales.y.ticks.color =
+            colors.muted;
+
+
+        emotionChart.options.scales.x.ticks.color =
+            colors.muted;
+
+
+        emotionChart.options.scales.y.grid.color =
+            colors.border;
+
+
+        emotionChart.options.scales.x.grid.color =
+            colors.border;
+
+
+        emotionChart.options.scales.y.title.color =
+            colors.text;
+
+
+        emotionChart.options.scales.x.title.color =
+            colors.text;
+
+
+        emotionChart.options.plugins.legend.labels.color =
+            colors.text;
+
+
+        emotionChart.update();
+
+    }
+
+
+    /* ================================================================
+       DISTRIBUTION
+       ================================================================ */
+
+    function renderDistribution(
+        distribution
+    ) {
+
+        const container =
+            document.getElementById(
+                "distribution"
+            );
+
+
+        container.innerHTML =
+            "";
+
+
+        const total =
+            Object.values(
+                distribution
+            ).reduce(
+                (sum, value) =>
+                    sum + value,
+                0
+            );
+
+
+        Object.entries(
+            distribution
+        )
+
+        .sort(
+            (a, b) =>
+                b[1] - a[1]
+        )
+
+        .forEach(
+            ([emotion, count]) => {
+
+                const percentage =
+                    total === 0
+                        ? 0
+                        : (
+                            count /
+                            total
+                        ) * 100;
+
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                row.className =
+                    "distribution-row";
+
+
+                row.innerHTML = `
+
+                    <div class="distribution-label">
+                        ${escapeHtml(
+                            emotion
+                        )}
+                    </div>
+
+                    <div class="bar">
+
+                        <div
+                            class="bar-fill"
+                            style="
+                                width:
+                                ${percentage}%
+                            "
+                        ></div>
+
+                    </div>
+
+                    <div class="distribution-count">
+                        ${count}
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    row
+                );
+
+            }
+        );
+
+    }
+
+
+    /* ================================================================
+       CONVERSATION TURNS
+       ================================================================ */
+
+    function renderTurns(turns) {
+
+        const container =
+            document.getElementById(
+                "turns"
+            );
+
+
+        container.innerHTML =
+            "";
+
+
+        turns.forEach(
+            turn => {
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                row.className =
+                    "turn";
+
+
+                row.innerHTML = `
+
+                    <div class="turn-speaker">
+                        ${escapeHtml(
+                            turn.speaker
+                        )}
+                    </div>
+
+                    <div class="emotion">
+                        ${escapeHtml(
+                            turn.emotion
+                        )}
+                    </div>
+
+                    <div class="turn-text">
+                        ${escapeHtml(
+                            turn.text
+                        )}
+                    </div>
+
+                    <div class="confidence">
+                        ${(
+                            turn.confidence *
+                            100
+                        ).toFixed(1)}%
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    row
+                );
+
+            }
+        );
+
+    }
+
+
+    /* ================================================================
+       TURNING POINTS
+       ================================================================ */
+
+    function renderTurningPoints(
+        turningPoints
+    ) {
+
+        const container =
+            document.getElementById(
+                "turningPoints"
+            );
+
+
+        container.innerHTML =
+            "";
+
+
+        if (
+            turningPoints.length === 0
+        ) {
+
+            container.innerHTML =
+                `
+                <div class="empty-state">
+                    No sustained turning points detected.
+                </div>
+                `;
+
+            return;
+
+        }
+
+
+        turningPoints.forEach(
+            point => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "turning-point";
+
+
+                item.innerHTML = `
+
+                    <div class="turning-transition">
+
+                        ${escapeHtml(
+                            point.from_emotion
+                        )}
+
+                        →
+
+                        ${escapeHtml(
+                            point.to_emotion
+                        )}
+
+                    </div>
+
+
+                    <div class="turning-speakers">
+
+                        ${escapeHtml(
+                            point.speaker_from
+                        )}
+
+                        →
+
+                        ${escapeHtml(
+                            point.speaker_to
+                        )}
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    item
+                );
+
+            }
+        );
+
+    }
+
+
+    /* ================================================================
+       UTILITIES
+       ================================================================ */
+
+    function formatMode(mode) {
+
+        const names = {
+
+            utterance:
+                "Utterance-only",
+
+            context_1:
+                "Context-1",
+
+            context_1_speaker:
+                "Context-1 + Speaker"
+
+        };
+
+
+        return (
+            names[mode] ||
+            mode
+        );
+
+    }
+
+
+    function escapeHtml(value) {
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+
+        div.textContent =
+            value;
+
+
+        return div.innerHTML;
+
+    }
+
+
+</script>
+
+</body>
+
+</html>

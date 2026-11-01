@@ -1,8 +1,6 @@
+import numpy as np
 import torch
-from transformers import (
-    AutoModelForSequenceClassification,
-    AutoTokenizer,
-)
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 
 LABELS = [
@@ -15,160 +13,115 @@ LABELS = [
     "surprise",
 ]
 
-LABEL_TO_ID = {
-    label: index
-    for index, label in enumerate(LABELS)
-}
-
-ID_TO_LABEL = {
-    index: label
-    for label, index in LABEL_TO_ID.items()
-}
-
 
 class TransformerEmotionClassifier:
-
     def __init__(
         self,
         model_name="distilbert-base-uncased",
+        num_labels=7,
         device=None,
+        model_path=None,
     ):
-
         self.model_name = model_name
-
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            model_name
-        )
-
-        self.model = AutoModelForSequenceClassification.from_pretrained(
-            model_name,
-            num_labels=len(LABELS),
-            id2label=ID_TO_LABEL,
-            label2id=LABEL_TO_ID,
-        )
+        self.num_labels = num_labels
 
         if device is None:
-            device = (
-                "cuda"
-                if torch.cuda.is_available()
-                else "cpu"
-            )
+            device = "cuda" if torch.cuda.is_available() else "cpu"
 
         self.device = torch.device(device)
 
+        if model_path is not None:
+            self.tokenizer = AutoTokenizer.from_pretrained(model_path)
+            self.model = AutoModelForSequenceClassification.from_pretrained(
+                model_path
+            )
+        else:
+            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+            self.model = AutoModelForSequenceClassification.from_pretrained(
+                model_name,
+                num_labels=num_labels,
+                id2label={i: label for i, label in enumerate(LABELS)},
+                label2id={label: i for i, label in enumerate(LABELS)},
+            )
+
         self.model.to(self.device)
-
-    def predict(self, texts, batch_size=16, max_length=128):
-
         self.model.eval()
 
-        texts = list(texts)
-
+    def predict(self, texts, batch_size=16, max_length=128):
         predictions = []
 
-        for start in range(0, len(texts), batch_size):
+        for i in range(0, len(texts), batch_size):
+            batch = texts[i:i + batch_size]
 
-            batch_texts = texts[
-                start:start + batch_size
-            ]
-
-            encoded = self.tokenizer(
-                batch_texts,
+            inputs = self.tokenizer(
+                batch,
                 padding=True,
                 truncation=True,
                 max_length=max_length,
                 return_tensors="pt",
             )
 
-            encoded = {
+            inputs = {
                 key: value.to(self.device)
-                for key, value in encoded.items()
+                for key, value in inputs.items()
             }
 
-            with torch.no_grad():
-
-                outputs = self.model(**encoded)
+            with torch.inference_mode():
+                outputs = self.model(**inputs)
 
             batch_predictions = torch.argmax(
                 outputs.logits,
-                dim=1,
-            )
+                dim=-1,
+            ).cpu().numpy()
 
             predictions.extend(
-                batch_predictions.cpu().tolist()
+                LABELS[int(index)]
+                for index in batch_predictions
             )
 
-        return [
-            ID_TO_LABEL[prediction]
-            for prediction in predictions
-        ]
+        return predictions
 
-    def predict_proba(
-        self,
-        texts,
-        batch_size=16,
-        max_length=128,
-    ):
-
-        self.model.eval()
-
-        texts = list(texts)
-
+    def predict_proba(self, texts, batch_size=16, max_length=128):
         probabilities = []
 
-        for start in range(0, len(texts), batch_size):
+        for i in range(0, len(texts), batch_size):
+            batch = texts[i:i + batch_size]
 
-            batch_texts = texts[
-                start:start + batch_size
-            ]
-
-            encoded = self.tokenizer(
-                batch_texts,
+            inputs = self.tokenizer(
+                batch,
                 padding=True,
                 truncation=True,
                 max_length=max_length,
                 return_tensors="pt",
             )
 
-            encoded = {
+            inputs = {
                 key: value.to(self.device)
-                for key, value in encoded.items()
+                for key, value in inputs.items()
             }
 
-            with torch.no_grad():
-
-                outputs = self.model(**encoded)
+            with torch.inference_mode():
+                outputs = self.model(**inputs)
 
             batch_probabilities = torch.softmax(
                 outputs.logits,
-                dim=1,
-            )
+                dim=-1,
+            ).cpu().numpy()
 
-            probabilities.extend(
-                batch_probabilities.cpu().numpy()
-            )
+            probabilities.append(batch_probabilities)
 
-        return probabilities
+        return np.concatenate(probabilities, axis=0)
 
     def save(self, output_dir):
-
-        output_dir = str(output_dir)
-
         self.model.save_pretrained(output_dir)
         self.tokenizer.save_pretrained(output_dir)
 
     def load(self, output_dir):
+        self.tokenizer = AutoTokenizer.from_pretrained(output_dir)
 
-        self.model = (
-            AutoModelForSequenceClassification.from_pretrained(
-                output_dir
-            )
-        )
-
-        self.tokenizer = (
-            AutoTokenizer.from_pretrained(
-                output_dir
-            )
+        self.model = AutoModelForSequenceClassification.from_pretrained(
+            output_dir
         )
 
         self.model.to(self.device)
+        self.model.eval()
