@@ -1,0 +1,52 @@
+{
+  "experiment_name": "ablation_full_dialoguernn",
+  "ablation_id": 4,
+  "description": "Ablation 4: Full DialogueRNN. The complete reference architecture integrating Global Context GRU, Context Attention, Speaker Party State GRUs, Emotion Attention, and Emotion GRU.",
+  "architecture": {
+    "model_type": "DialogueRNN",
+    "use_party_state": true,
+    "use_emotion_state": true,
+    "use_context_attention": true,
+    "use_emotion_attention": true,
+    "feature_dim": 768,
+    "projected_dim": 256,
+    "global_hidden_dim": 128,
+    "party_hidden_dim": 128,
+    "emotion_hidden_dim": 64,
+    "fc_hidden_dim": 64,
+    "num_classes": 7,
+    "dropout": 0.2
+  },
+  "parameter_count": 670855,
+  "data": {
+    "train_features": "data/processed/dialoguernn/meld_train_features.npz",
+    "dev_features": "data/processed/dialoguernn/meld_dev_features.npz",
+    "test_features": "data/processed/dialoguernn/meld_test_features.npz",
+    "raw_meld_dir": "data/raw/meld"
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 40,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "patience": 10,
+    "class_weight_method": "unweighted",
+    "checkpoint_dir": "checkpoints/ablations/4_full_dialoguernn",
+    "output_dir": "outputs/experiments/ablations/4_full_dialoguernn"
+  },
+  "evaluation": {
+    "selection_metric": "dev_macro_f1",
+    "primary_cohort": "Cohort A: Strict Contiguous Matched Subset (N=2,328)",
+    "label_order": [
+      "anger",
+      "disgust",
+      "fear",
+      "joy",
+      "neutral",
+      "sadness",
+      "surprise"
+    ]
+  }
+}

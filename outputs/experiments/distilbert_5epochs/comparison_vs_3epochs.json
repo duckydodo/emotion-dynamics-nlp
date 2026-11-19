@@ -1,0 +1,39 @@
+{
+  "full_test": {
+    "original_3_epochs": {
+      "epochs": 3,
+      "test_accuracy": 0.6030651340996168,
+      "test_macro_f1": 0.44002923088220963,
+      "test_weighted_f1": 0.6053539772745447
+    },
+    "new_5_epochs_best_at_4": {
+      "epochs": 5,
+      "selected_epoch": 4,
+      "test_accuracy": 0.621072796934866,
+      "test_macro_f1": 0.4173311409804219,
+      "test_weighted_f1": 0.6009781573173367
+    },
+    "deltas": {
+      "accuracy_delta": 0.018007662835249127,
+      "macro_f1_delta": -0.022698089901787732,
+      "weighted_f1_delta": -0.004375819957207927
+    }
+  },
+  "cohort_a_matched": {
+    "original_3_epochs": {
+      "accuracy": 0.5945,
+      "macro_f1": 0.4314,
+      "weighted_f1": 0.5794
+    },
+    "new_5_epochs_best_at_4": {
+      "accuracy": 0.6189862542955327,
+      "macro_f1": 0.41700976243791027,
+      "weighted_f1": 0.5986236845952939
+    },
+    "deltas": {
+      "accuracy_delta": 0.02448625429553264,
+      "macro_f1_delta": -0.014390237562089736,
+      "weighted_f1_delta": 0.01922368459529389
+    }
+  }
+}

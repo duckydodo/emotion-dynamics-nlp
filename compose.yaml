@@ -1,6 +1,8 @@
 services:
   emotion-dynamics-nlp:
     build: .
-    image: emotion-dynamics-nlp:week11
+    image: emotion-dynamics-nlp:latest
     ports:
       - "8001:8000"
+    volumes:
+      - ./checkpoints:/app/checkpoints:ro

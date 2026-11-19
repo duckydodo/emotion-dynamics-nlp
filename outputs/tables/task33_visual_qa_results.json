@@ -1,0 +1,155 @@
+[
+  {
+    "screen": "Global",
+    "category": "Identity",
+    "check": "Browser Title",
+    "expected": "ConvoSense \u2014 Conversational Emotion Dynamics & Model Intelligence",
+    "actual": "ConvoSense \u2014 Conversational Emotion Dynamics & Model Intelligence",
+    "status": "PASS",
+    "detail": "Title: ConvoSense \u2014 Conversational Emotion Dynamics & Model Intelligence"
+  },
+  {
+    "screen": "Global",
+    "category": "Identity",
+    "check": "Favicon SVG",
+    "expected": "SVG favicon defined with ConvoSense wave glyph",
+    "actual": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org",
+    "status": "PASS",
+    "detail": "Favicon type: data:image/svg+xml,%3Csvg xmlns='http://..."
+  },
+  {
+    "screen": "Global",
+    "category": "Typography",
+    "check": "Body Typeface (Plus Jakarta Sans)",
+    "expected": "Contains 'Plus Jakarta Sans'",
+    "actual": "\"Plus Jakarta Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+    "status": "PASS",
+    "detail": "Body font: \"Plus Jakarta Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+  },
+  {
+    "screen": "Global",
+    "category": "Design System",
+    "check": "Zero Emojis in Navigation/Buttons/Pills",
+    "expected": "0 emoji violations in core UI controls",
+    "actual": "0 violations",
+    "status": "PASS",
+    "detail": "Violations: []"
+  },
+  {
+    "screen": "Global",
+    "category": "Design System",
+    "check": "Inline SVG Icons Rendered",
+    "expected": ">= 20 inline vector SVGs",
+    "actual": "30 SVGs",
+    "status": "PASS",
+    "detail": "Found 30 crisp inline SVGs across the interface"
+  },
+  {
+    "screen": "Screen 1 (Home/Import)",
+    "category": "Desktop",
+    "check": "Sample Loaded & Preview Active",
+    "expected": "Screen active, 3 primary models, preview open, 9 evaluable turns",
+    "actual": "active=True, models=['distilbert', 'dialoguernn', 'dialoguegcn'], turns=9",
+    "status": "PASS",
+    "detail": "Loaded sample with 9 turns, models: ['distilbert', 'dialoguernn', 'dialoguegcn']"
+  },
+  {
+    "screen": "Screen 2 (Viewer)",
+    "category": "Desktop",
+    "check": "Speech Bubbles & Softmax Probability Drawer",
+    "expected": "Viewer active, 9 message bubbles, prob-drawer-0 expanded",
+    "actual": "active=True, bubbles=9, drawer_open=True",
+    "status": "PASS",
+    "detail": "Bubble count: 9, Drawer open: True"
+  },
+  {
+    "screen": "Screen 3 (Dynamics)",
+    "category": "Desktop",
+    "check": "KPIs, Chart.js Timeline & Turning Points",
+    "expected": "Dynamics active, shift rate calculated, Chart.js instance active, TP cards rendered",
+    "actual": "active=True, shift_rate=88%, transitions=8, chart_ok=True, tp_cards=0",
+    "status": "PASS",
+    "detail": "Shift Rate: 88%, Transitions: 8, Turning points count: 0"
+  },
+  {
+    "screen": "Screen 4 (Comparison)",
+    "category": "Desktop",
+    "check": "Consensus Rate, 3x3 Agreement Matrix, & Multi-Model Cards",
+    "expected": "Comparison active, consensus rate visible, 9 matrix cells, 9 comparison rows",
+    "actual": "active=True, consensus=Consensus Rate: 78% (3 models), matrix_cells=9, rows=9",
+    "status": "PASS",
+    "detail": "Consensus: Consensus Rate: 78% (3 models), Matrix cells: 9, Rows: 9"
+  },
+  {
+    "screen": "Screen 5 (Research)",
+    "category": "Desktop",
+    "check": "Cohort A Benchmark, 7x7 Confusion Matrix & Ethics Notice",
+    "expected": "Research active, >= 3 benchmark rows, 49 matrix cells, ethics disclaimer present",
+    "actual": "active=True, rows=6, cm_cells=49, disclaimer=True",
+    "status": "PASS",
+    "detail": "Cohort A rows: 6, CM cells: 49"
+  },
+  {
+    "screen": "Screen 1 (Home/Import)",
+    "category": "Mobile",
+    "check": "Responsive Layout & No Horizontal Overflow",
+    "expected": "scrollWidth <= window.innerWidth (390px)",
+    "actual": "no_overflow=True",
+    "status": "PASS",
+    "detail": "Mobile viewport fit verified"
+  },
+  {
+    "screen": "Screen 2 (Viewer)",
+    "category": "Mobile",
+    "check": "Chat Bubble Max Width Within Mobile Viewport",
+    "expected": "All chat bubbles width <= 370px",
+    "actual": "fits=True",
+    "status": "PASS",
+    "detail": "Mobile chat bubbles wrapped cleanly"
+  },
+  {
+    "screen": "Screen 3 (Dynamics)",
+    "category": "Mobile",
+    "check": "KPI Cards Stack Vertically/In Grid",
+    "expected": "KPI cards render cleanly in mobile grid",
+    "actual": "cards=True",
+    "status": "PASS",
+    "detail": "Mobile KPI grid verified"
+  },
+  {
+    "screen": "Screen 4 (Comparison)",
+    "category": "Mobile",
+    "check": "Table Horizontal Scroll Container",
+    "expected": "Matrix table wrapped in responsive container",
+    "actual": "scroll_ok=True",
+    "status": "PASS",
+    "detail": "Responsive horizontal scroll available without page blowout"
+  },
+  {
+    "screen": "Screen 5 (Research)",
+    "category": "Mobile",
+    "check": "7x7 Confusion Matrix Scrollable",
+    "expected": "Confusion matrix renders with horizontal scroll capability",
+    "actual": "scroll_ok=True",
+    "status": "PASS",
+    "detail": "Confusion matrix responsive container verified"
+  },
+  {
+    "screen": "Global",
+    "category": "Accessibility",
+    "check": "Interactive Button Minimum Target Height (>= 36px)",
+    "expected": "0 interactive primary buttons below 36px height",
+    "actual": "0 undersized targets",
+    "status": "PASS",
+    "detail": "Undersized list: []"
+  },
+  {
+    "screen": "Global",
+    "category": "Accessibility",
+    "check": "WCAG AA Contrast Ratios (>= 4.5:1)",
+    "expected": "All core typography exceeds 4.5:1 contrast against dark background",
+    "actual": "[{'name': 'Primary Body Text', 'color': 'rgb(248, 250, 252)', 'ratio': '18.57', 'pass': True}, {'name': 'Muted Secondary Text', 'ratio': 'N/A', 'pass': True}, {'name': 'Brand Title', 'ratio': 'N/A', 'pass': True}, {'name': 'KPI Numbers', 'ratio': 'N/A', 'pass': True}]",
+    "status": "PASS",
+    "detail": "Contrast metrics: [{'name': 'Primary Body Text', 'color': 'rgb(248, 250, 252)', 'ratio': '18.57', 'pass': True}, {'name': 'Muted Secondary Text', 'ratio': 'N/A', 'pass': True}, {'name': 'Brand Title', 'ratio': 'N/A', 'pass': True}, {'name': 'KPI Numbers', 'ratio': 'N/A', 'pass': True}]"
+  }
+]

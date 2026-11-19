@@ -1,0 +1,52 @@
+{
+  "experiment_name": "ablation_global_emotion_state",
+  "ablation_id": 3,
+  "description": "Ablation 3: Global Context + Emotion State. Integrates the Global Context GRU and an internal Emotion GRU to model affective dynamics directly from conversational context, but removes speaker-specific party state tracking.",
+  "architecture": {
+    "model_type": "DialogueRNN_Ablation",
+    "use_party_state": false,
+    "use_emotion_state": true,
+    "use_context_attention": true,
+    "use_emotion_attention": false,
+    "feature_dim": 768,
+    "projected_dim": 256,
+    "global_hidden_dim": 128,
+    "party_hidden_dim": 0,
+    "emotion_hidden_dim": 64,
+    "fc_hidden_dim": 64,
+    "num_classes": 7,
+    "dropout": 0.2
+  },
+  "parameter_count": 452999,
+  "data": {
+    "train_features": "data/processed/dialoguernn/meld_train_features.npz",
+    "dev_features": "data/processed/dialoguernn/meld_dev_features.npz",
+    "test_features": "data/processed/dialoguernn/meld_test_features.npz",
+    "raw_meld_dir": "data/raw/meld"
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 40,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "patience": 10,
+    "class_weight_method": "unweighted",
+    "checkpoint_dir": "checkpoints/ablations/3_global_emotion_state",
+    "output_dir": "outputs/experiments/ablations/3_global_emotion_state"
+  },
+  "evaluation": {
+    "selection_metric": "dev_macro_f1",
+    "primary_cohort": "Cohort A: Strict Contiguous Matched Subset (N=2,328)",
+    "label_order": [
+      "anger",
+      "disgust",
+      "fear",
+      "joy",
+      "neutral",
+      "sadness",
+      "surprise"
+    ]
+  }
+}

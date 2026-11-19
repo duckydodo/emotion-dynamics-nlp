@@ -1,0 +1,65 @@
+{
+  "DistilBERT Utterance Baseline": {
+    "path": "outputs/experiments/transformer_baseline/predictions.csv",
+    "row_count": 2610,
+    "expected_rows": 2610,
+    "unique_keys": 2610,
+    "duplicate_keys": 0,
+    "ground_truth_mismatches": 0,
+    "cohort_a_key_exact_sequence_match": true
+  },
+  "DistilBERT Context-1": {
+    "path": "outputs/experiments/transformer_context_1/predictions.csv",
+    "row_count": 2328,
+    "expected_rows": 2328,
+    "unique_keys": 2328,
+    "duplicate_keys": 0,
+    "ground_truth_mismatches": 0,
+    "cohort_a_key_exact_sequence_match": true
+  },
+  "DistilBERT Context-1 + Speaker": {
+    "path": "outputs/experiments/transformer_context_1_speaker/predictions.csv",
+    "row_count": 2328,
+    "expected_rows": 2328,
+    "unique_keys": 2328,
+    "duplicate_keys": 0,
+    "ground_truth_mismatches": 0,
+    "cohort_a_key_exact_sequence_match": true
+  },
+  "Model A: Emotion-History DistilBERT (Autoregressive)": {
+    "path": "outputs/experiments/transformer_emotion_history/predictions_autoregressive.csv",
+    "row_count": 2610,
+    "expected_rows": 2610,
+    "unique_keys": 2610,
+    "duplicate_keys": 0,
+    "ground_truth_mismatches": 0,
+    "cohort_a_key_exact_sequence_match": true
+  },
+  "Model B: Combined-History DistilBERT (Autoregressive)": {
+    "path": "outputs/experiments/transformer_combined_history/predictions_autoregressive.csv",
+    "row_count": 2610,
+    "expected_rows": 2610,
+    "unique_keys": 2610,
+    "duplicate_keys": 0,
+    "ground_truth_mismatches": 0,
+    "cohort_a_key_exact_sequence_match": true
+  },
+  "DialogueRNN (Unweighted)": {
+    "path": "outputs/experiments/dialoguernn_unweighted/test_predictions.csv",
+    "row_count": 2610,
+    "expected_rows": 2610,
+    "unique_keys": 2610,
+    "duplicate_keys": 0,
+    "ground_truth_mismatches": 0,
+    "cohort_a_key_exact_sequence_match": true
+  },
+  "DialogueRNN (Class-Weighted)": {
+    "path": "outputs/experiments/dialoguernn_weighted/test_predictions.csv",
+    "row_count": 2610,
+    "expected_rows": 2610,
+    "unique_keys": 2610,
+    "duplicate_keys": 0,
+    "ground_truth_mismatches": 0,
+    "cohort_a_key_exact_sequence_match": true
+  }
+}

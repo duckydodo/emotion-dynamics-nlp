@@ -1,0 +1,8 @@
+Model,Cohort,Emotion,Precision,Recall,F1,Support
+DialogueGCN,Cohort A: Strict Contiguous Matched Subset,anger,0.453416149068323,0.4755700325732899,0.4642289348171701,307
+DialogueGCN,Cohort A: Strict Contiguous Matched Subset,disgust,0.2765957446808511,0.20634920634920634,0.23636363636363636,63
+DialogueGCN,Cohort A: Strict Contiguous Matched Subset,fear,0.25,0.20454545454545456,0.225,44
+DialogueGCN,Cohort A: Strict Contiguous Matched Subset,joy,0.5662251655629139,0.4776536312849162,0.5181818181818182,358
+DialogueGCN,Cohort A: Strict Contiguous Matched Subset,neutral,0.731404958677686,0.793010752688172,0.7609630266552021,1116
+DialogueGCN,Cohort A: Strict Contiguous Matched Subset,sadness,0.38848920863309355,0.2887700534759358,0.3312883435582822,187
+DialogueGCN,Cohort A: Strict Contiguous Matched Subset,surprise,0.5147058823529411,0.5533596837944664,0.5333333333333333,253

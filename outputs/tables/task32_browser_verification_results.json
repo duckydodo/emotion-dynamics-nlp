@@ -1,0 +1,82 @@
+[
+  {
+    "screen": "Global",
+    "feature": "Page Title Verification",
+    "expected": "Emotion Dynamics Analyzer | Multi-Model Conversation Intelligence",
+    "actual": "Emotion Dynamics Analyzer | Multi-Model Conversation Intelligence",
+    "status": "PASS",
+    "detail": "Served Title: Emotion Dynamics Analyzer | Multi-Model Conversation Intelligence"
+  },
+  {
+    "screen": "Global",
+    "feature": "System Status Pill",
+    "expected": "'3 Models Online' and status dot not offline",
+    "actual": "'3 Models Online' (offline_class=False)",
+    "status": "PASS",
+    "detail": "Confirmed live connection between frontend and backend on port 8001"
+  },
+  {
+    "screen": "Home / Import",
+    "feature": "Model Selector Options",
+    "expected": "['distilbert', 'dialoguernn', 'dialoguegcn']",
+    "actual": "['distilbert', 'dialoguernn', 'dialoguegcn']",
+    "status": "PASS",
+    "detail": "Options: ['distilbert', 'dialoguernn', 'dialoguegcn'], default selected: dialoguegcn"
+  },
+  {
+    "screen": "Home / Import",
+    "feature": "Navigation Tabs & Format Tags",
+    "expected": "5 navigation screen tabs and 4 format tags rendered",
+    "actual": "nav_tabs=5, format_tags=['Speaker: text', 'WhatsApp .txt', 'Instagram JSON', 'Structured CSV']",
+    "status": "PASS",
+    "detail": "Nav screens: 5, Formats: ['Speaker: text', 'WhatsApp .txt', 'Instagram JSON', 'Structured CSV']"
+  },
+  {
+    "screen": "Home / Import",
+    "feature": "Live Import Preview with Warnings",
+    "expected": "Preview displayed, plain text format, 3 evaluable turns, warning code rendered (not undefined)",
+    "actual": "display=True, format='plain text', turns=3",
+    "status": "PASS",
+    "detail": "Rendered warning HTML: <li><strong>MISSING_TIMESTAMPS:</strong> Conversation does not contain timestamp metadata; ordering is based on input se..."
+  },
+  {
+    "screen": "Conversation Viewer",
+    "feature": "Inference Execution & Bubble Stream",
+    "expected": "Active screen is 'screen-viewer', 3 message bubbles rendered with emotion badges",
+    "actual": "active_screen='screen-viewer', bubbles=3, first_badge='\u25cf Predicted: neutral'",
+    "status": "PASS",
+    "detail": "First turn predicted: \u25cf Predicted: neutral"
+  },
+  {
+    "screen": "Conversation Viewer",
+    "feature": "Softmax Probability Drawer",
+    "expected": "Drawer toggles open and renders 7 emotion probability tracks",
+    "actual": "open=True, tracks=7",
+    "status": "PASS",
+    "detail": "7-class probability tracks present in drawer"
+  },
+  {
+    "screen": "Emotion Dynamics",
+    "feature": "KPIs, Sequence Bar, & Chart.js Timeline",
+    "expected": "Screen active, transitions > 0, 3 sequence pills, Chart.js active",
+    "actual": "active='screen-dynamics', transitions=2, pills=3, chart_active=True",
+    "status": "PASS",
+    "detail": "Transitions: 2, Chart.js instance active"
+  },
+  {
+    "screen": "Model Comparison",
+    "feature": "Multi-Model Consensus & Agreement Matrix",
+    "expected": "Screen active, consensus badge visible, 9 matrix cells (3x3), 3 comparison rows, 9 prediction cards",
+    "actual": "active='screen-compare', consensus='Consensus Rate: 100% (3 models)', matrix_cells=9, rows=3, cards=9",
+    "status": "PASS",
+    "detail": "Matrix size: 9 cells, rows: 3, prediction cards: 9"
+  },
+  {
+    "screen": "Research Inspection",
+    "feature": "Cohort A Table, Per-Class Metrics, & Confusion Matrix",
+    "expected": "Screen active, >= 3 benchmark rows, 7 per-class rows, 49 matrix cells (7x7), ethical notice",
+    "actual": "active='screen-research', cohort_rows=6, per_class=7, cm_cells=49, notice=True",
+    "status": "PASS",
+    "detail": "Cohort A rows: 6, Matrix cells: 49, Ethical notice verified"
+  }
+]

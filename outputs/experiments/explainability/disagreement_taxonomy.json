@@ -1,0 +1,364 @@
+{
+  "total_turns": 2328,
+  "unanimous_agreement_count": 1772,
+  "unanimous_agreement_rate": 0.7612,
+  "pairwise_kappa": {
+    "distilbert_vs_dialoguernn": 0.8412,
+    "distilbert_vs_dialoguegcn": 0.7116,
+    "dialoguernn_vs_dialoguegcn": 0.7468
+  },
+  "pairwise_concordance": {
+    "distilbert_vs_dialoguernn": 0.8845,
+    "distilbert_vs_dialoguegcn": 0.7964,
+    "dialoguernn_vs_dialoguegcn": 0.8213
+  },
+  "taxonomy_counts": {
+    "all_correct": 1210,
+    "context_recovery_both": 60,
+    "graph_relational_win": 107,
+    "recurrent_state_win": 30,
+    "context_dilution": 174,
+    "all_disagree": 10,
+    "universal_error": 737
+  },
+  "taxonomy_rates": {
+    "all_correct": 0.5198,
+    "context_recovery_both": 0.0258,
+    "graph_relational_win": 0.046,
+    "recurrent_state_win": 0.0129,
+    "context_dilution": 0.0747,
+    "all_disagree": 0.0043,
+    "universal_error": 0.3166
+  },
+  "representative_cases": {
+    "all_correct": [
+      {
+        "index": 0,
+        "speaker": "Rachel",
+        "text": "Oh. That\u2019s so Monica can keep track. That way if one on them is missing, she can be like, \u2018Where\u2019s number 27?!\u2019",
+        "gold": "anger",
+        "distilbert": "anger",
+        "dialoguernn": "anger",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 1,
+        "speaker": "Rachel",
+        "text": "Y'know what?",
+        "gold": "neutral",
+        "distilbert": "neutral",
+        "dialoguernn": "neutral",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 5,
+        "speaker": "Joey",
+        "text": "Let's get that ball and really move, hey, hey, ho, ho.",
+        "gold": "joy",
+        "distilbert": "joy",
+        "dialoguernn": "joy",
+        "dialoguegcn": "joy"
+      },
+      {
+        "index": 9,
+        "speaker": "Rachel",
+        "text": "Ross, didn't you say that there was an elevator in here?",
+        "gold": "neutral",
+        "distilbert": "neutral",
+        "dialoguernn": "neutral",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 12,
+        "speaker": "Rachel",
+        "text": "Okay, y'know what? There is no more left, left!",
+        "gold": "anger",
+        "distilbert": "anger",
+        "dialoguernn": "anger",
+        "dialoguegcn": "anger"
+      }
+    ],
+    "context_recovery_both": [
+      {
+        "index": 31,
+        "speaker": "Joey",
+        "text": "Look, I know I feel asleep before I could shower and now I don\u2019t have time!",
+        "gold": "anger",
+        "distilbert": "sadness",
+        "dialoguernn": "anger",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 85,
+        "speaker": "Ross",
+        "text": "Okay-okay!",
+        "gold": "anger",
+        "distilbert": "joy",
+        "dialoguernn": "anger",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 110,
+        "speaker": "Joey",
+        "text": "You just take a big, big swing.",
+        "gold": "neutral",
+        "distilbert": "joy",
+        "dialoguernn": "neutral",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 171,
+        "speaker": "Joey",
+        "text": "Well, I ain't gonna say no to that.",
+        "gold": "neutral",
+        "distilbert": "sadness",
+        "dialoguernn": "neutral",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 252,
+        "speaker": "Rachel",
+        "text": "Ross's what?",
+        "gold": "surprise",
+        "distilbert": "neutral",
+        "dialoguernn": "surprise",
+        "dialoguegcn": "surprise"
+      }
+    ],
+    "graph_relational_win": [
+      {
+        "index": 2,
+        "speaker": "Joey",
+        "text": "Push!",
+        "gold": "joy",
+        "distilbert": "anger",
+        "dialoguernn": "anger",
+        "dialoguegcn": "joy"
+      },
+      {
+        "index": 7,
+        "speaker": "Joey",
+        "text": "Push!",
+        "gold": "joy",
+        "distilbert": "anger",
+        "dialoguernn": "anger",
+        "dialoguegcn": "joy"
+      },
+      {
+        "index": 8,
+        "speaker": "Joey",
+        "text": "Push!",
+        "gold": "joy",
+        "distilbert": "anger",
+        "dialoguernn": "anger",
+        "dialoguegcn": "joy"
+      },
+      {
+        "index": 30,
+        "speaker": "Monica",
+        "text": "Oh wait, Joey, you can\u2019t go like that! You stink!",
+        "gold": "disgust",
+        "distilbert": "surprise",
+        "dialoguernn": "anger",
+        "dialoguegcn": "disgust"
+      },
+      {
+        "index": 88,
+        "speaker": "Ross",
+        "text": "That is so silly.",
+        "gold": "joy",
+        "distilbert": "disgust",
+        "dialoguernn": "anger",
+        "dialoguegcn": "joy"
+      }
+    ],
+    "recurrent_state_win": [
+      {
+        "index": 75,
+        "speaker": "Joey",
+        "text": "I don\u2019t know if you\u2019d understand.",
+        "gold": "neutral",
+        "distilbert": "surprise",
+        "dialoguernn": "neutral",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 138,
+        "speaker": "Monica",
+        "text": "I know!",
+        "gold": "anger",
+        "distilbert": "joy",
+        "dialoguernn": "anger",
+        "dialoguegcn": "surprise"
+      },
+      {
+        "index": 414,
+        "speaker": "Ross",
+        "text": "Yeah, you didn\u2019t expect her to live there with a baby did you?",
+        "gold": "surprise",
+        "distilbert": "neutral",
+        "dialoguernn": "surprise",
+        "dialoguegcn": "sadness"
+      },
+      {
+        "index": 554,
+        "speaker": "Joey",
+        "text": "I didn't think I could ever love again.",
+        "gold": "sadness",
+        "distilbert": "surprise",
+        "dialoguernn": "sadness",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 628,
+        "speaker": "Ross",
+        "text": "That cup is mine!",
+        "gold": "anger",
+        "distilbert": "joy",
+        "dialoguernn": "anger",
+        "dialoguegcn": "neutral"
+      }
+    ],
+    "context_dilution": [
+      {
+        "index": 3,
+        "speaker": "Joey",
+        "text": "Push 'em out, push 'em out, harder, harder.",
+        "gold": "joy",
+        "distilbert": "joy",
+        "dialoguernn": "anger",
+        "dialoguegcn": "joy"
+      },
+      {
+        "index": 77,
+        "speaker": "Rachel",
+        "text": "I mean there\u2019s no way Joey\u2019s gonna make it in time.",
+        "gold": "fear",
+        "distilbert": "fear",
+        "dialoguernn": "sadness",
+        "dialoguegcn": "joy"
+      },
+      {
+        "index": 86,
+        "speaker": "Ross",
+        "text": "Two very good points, look I\u2019ve known you both a long time, and I\u2019ve never seen either of you one/millionth as happy as you\u2019ve been since you\u2019ve got together.",
+        "gold": "sadness",
+        "distilbert": "sadness",
+        "dialoguernn": "sadness",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 90,
+        "speaker": "Chandler",
+        "text": "Well, we are fond of the silliness, but we also have a soft spot for the love.",
+        "gold": "neutral",
+        "distilbert": "neutral",
+        "dialoguernn": "sadness",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 91,
+        "speaker": "Monica",
+        "text": "Love is the best medicine.",
+        "gold": "joy",
+        "distilbert": "joy",
+        "dialoguernn": "joy",
+        "dialoguegcn": "neutral"
+      }
+    ],
+    "all_disagree": [
+      {
+        "index": 63,
+        "speaker": "Monica",
+        "text": "Joey! He\u2019s working!  You would look",
+        "gold": "anger",
+        "distilbert": "joy",
+        "dialoguernn": "surprise",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 276,
+        "speaker": "Rachel",
+        "text": "Oh, it\u2019s so easy for you I mean, you\u2019re not married, you get to have sex with who ever you want!",
+        "gold": "disgust",
+        "distilbert": "sadness",
+        "dialoguernn": "joy",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 283,
+        "speaker": "Monica",
+        "text": "I mean, y\u2019know, I\u2019m just waiting for the perfect guy.",
+        "gold": "neutral",
+        "distilbert": "sadness",
+        "dialoguernn": "joy",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 463,
+        "speaker": "Monica",
+        "text": "Oh I can\u2019t. Dr. Roger is coming over again.",
+        "gold": "neutral",
+        "distilbert": "fear",
+        "dialoguernn": "sadness",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 553,
+        "speaker": "Joey",
+        "text": "Look, the truth is, I haven't felt this    way about anyone since Rachel, ok?",
+        "gold": "sadness",
+        "distilbert": "surprise",
+        "dialoguernn": "neutral",
+        "dialoguegcn": "anger"
+      }
+    ],
+    "universal_error": [
+      {
+        "index": 4,
+        "speaker": "Joey",
+        "text": "Push 'em out, push 'em out, way out!",
+        "gold": "joy",
+        "distilbert": "fear",
+        "dialoguernn": "anger",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 6,
+        "speaker": "Joey",
+        "text": "Let's\u2014  I was just\u2014yeah, right.",
+        "gold": "joy",
+        "distilbert": "neutral",
+        "dialoguernn": "neutral",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 10,
+        "speaker": "Ross",
+        "text": "Uhh, yes I did but there isn't. Okay, here we go.",
+        "gold": "sadness",
+        "distilbert": "neutral",
+        "dialoguernn": "neutral",
+        "dialoguegcn": "neutral"
+      },
+      {
+        "index": 11,
+        "speaker": "Ross",
+        "text": "Okay, go left. Left! Left!",
+        "gold": "surprise",
+        "distilbert": "anger",
+        "dialoguernn": "anger",
+        "dialoguegcn": "anger"
+      },
+      {
+        "index": 13,
+        "speaker": "Ross",
+        "text": "Oh okay, lift it straight up over your head!",
+        "gold": "anger",
+        "distilbert": "joy",
+        "dialoguernn": "joy",
+        "dialoguegcn": "joy"
+      }
+    ]
+  }
+}

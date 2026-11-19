@@ -1,0 +1,93 @@
+{
+    "experiment": "transformer_utterance_inverse_frequency_a0.5",
+    "condition": "utterance",
+    "weighting_method": "inverse_frequency",
+    "weighting_params": {
+        "alpha": 0.5
+    },
+    "class_weights": {
+        "anger": 0.8164557814598083,
+        "disgust": 1.6516339778900146,
+        "fear": 1.6608524322509766,
+        "joy": 0.6512530446052551,
+        "neutral": 0.3961758613586426,
+        "sadness": 1.0403707027435303,
+        "surprise": 0.7832581400871277
+    },
+    "seed": 42,
+    "learning_rate": 3e-05,
+    "batch_size": 32,
+    "epochs": 3,
+    "test_examples": 2610,
+    "test_accuracy": 0.6203065134099617,
+    "test_macro_f1": 0.42432935102721064,
+    "test_weighted_f1": 0.6090553935827518,
+    "accuracy": 0.6203065134099617,
+    "macro_f1": 0.42432935102721064,
+    "weighted_f1": 0.6090553935827518,
+    "confusion_matrix": [
+        [
+            113,
+            17,
+            6,
+            62,
+            66,
+            7,
+            74
+        ],
+        [
+            12,
+            15,
+            1,
+            4,
+            19,
+            3,
+            14
+        ],
+        [
+            10,
+            0,
+            7,
+            5,
+            15,
+            4,
+            9
+        ],
+        [
+            22,
+            5,
+            3,
+            249,
+            91,
+            9,
+            23
+        ],
+        [
+            32,
+            11,
+            13,
+            64,
+            1002,
+            33,
+            101
+        ],
+        [
+            23,
+            7,
+            10,
+            23,
+            81,
+            45,
+            19
+        ],
+        [
+            22,
+            2,
+            2,
+            41,
+            20,
+            6,
+            188
+        ]
+    ]
+}

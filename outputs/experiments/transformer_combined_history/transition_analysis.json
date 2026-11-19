@@ -1,0 +1,15 @@
+{
+    "turns_evaluated": 2330,
+    "prior_prediction_correct_count": 1464,
+    "prior_prediction_wrong_count": 866,
+    "accuracy_when_prior_correct": 0.6592,
+    "accuracy_when_prior_wrong": 0.5693,
+    "error_cascade_drop": 0.0899,
+    "persistent_turns_count": 977,
+    "shift_turns_count": 1353,
+    "accuracy_on_persistent_turns": 0.7288,
+    "accuracy_on_shift_turns": 0.5514,
+    "ground_truth_neutral_rate": 0.4794,
+    "oracle_predicted_neutral_rate": 0.5309,
+    "autoregressive_predicted_neutral_rate": 0.5408
+}

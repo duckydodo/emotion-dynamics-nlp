@@ -1,0 +1,5 @@
+model_condition,eval_mode,accuracy,macro_f1,weighted_f1
+DistilBERT Utterance-Only Baseline,Independent,0.594502,0.431416,0.59691
+DistilBERT Text Context-1 Baseline,Concatenated Context,0.607388,0.391191,0.581155
+Emotion-History DistilBERT (Condition 3),Oracle Diagnostic (Teacher-Forced),0.6330472103004292,0.4191089708979544,0.6191307404708688
+Emotion-History DistilBERT (Condition 4),Autoregressive (Deployable),0.6150214592274678,0.3933464181065596,0.5987724145181249

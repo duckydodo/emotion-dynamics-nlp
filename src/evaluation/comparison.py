@@ -19,12 +19,18 @@ def compare_experiments(
     for experiment_name in experiment_names:
         metrics = load_metrics(experiment_name)
 
+        acc = metrics.get("accuracy", metrics.get("test_accuracy"))
+        macro = metrics.get("macro_f1", metrics.get("test_macro_f1"))
+        weighted = metrics.get("weighted_f1", metrics.get("test_weighted_f1"))
+        examples = metrics.get("test_examples", None)
+
         rows.append(
             {
                 "Model": experiment_name,
-                "Accuracy": metrics["accuracy"],
-                "Macro F1": metrics["macro_f1"],
-                "Weighted F1": metrics["weighted_f1"],
+                "Examples": examples,
+                "Accuracy": acc,
+                "Macro F1": macro,
+                "Weighted F1": weighted,
             }
         )
 

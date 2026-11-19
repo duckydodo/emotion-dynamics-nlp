@@ -2,17 +2,17 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# Install the project's existing, pinned dependencies.
-COPY requirements.txt ./
+# Install dependencies using CPU-only PyTorch wheel to prevent CUDA bloat
+COPY requirements-api.txt ./
 RUN python -m pip install --no-cache-dir --upgrade pip \
-    && python -m pip install --no-cache-dir -r requirements.txt
+    && python -m pip install --no-cache-dir torch==2.13.0 --extra-index-url https://download.pytorch.org/whl/cpu \
+    && python -m pip install --no-cache-dir -r requirements-api.txt
 
-# Copy only the files needed to run the existing API and its local models.
+# Copy application code, static UI, and benchmark research artifacts
 COPY src/ ./src/
 COPY static/ ./static/
-COPY checkpoints/transformer_baseline/best/ ./checkpoints/transformer_baseline/best/
-COPY checkpoints/transformer_context_1/best/ ./checkpoints/transformer_context_1/best/
-COPY checkpoints/transformer_context_1_speaker/best/ ./checkpoints/transformer_context_1_speaker/best/
+COPY outputs/tables/ ./outputs/tables/
+COPY outputs/experiments/dialoguernn_unweighted/confusion_matrix.json ./outputs/experiments/dialoguernn_unweighted/confusion_matrix.json
 
 EXPOSE 8000
 

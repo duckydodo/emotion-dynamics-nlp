@@ -1,13 +1,25 @@
-# Raw and processed datasets
-data/raw/
-data/processed/
+# Raw and processed datasets (anchored to repository root)
+/data/
+/data/raw/
+/data/processed/
+*.npz
 
-# Model artifacts
+# Checkpoints and model weights (Critical Git Safety Lock)
+/checkpoints/
+checkpoints/
+checkpoints/**
 outputs/models/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.ckpt
 
-# Python
+# Python caches and bytecode
 __pycache__/
 *.py[cod]
+*$py.class
 *.egg-info/
 
 # Jupyter
@@ -17,10 +29,16 @@ __pycache__/
 .venv/
 venv/
 env/
+ENV/
 
 # Environment variables / secrets
 .env
 .env.*
+.env.local
+
+# Logs
+*.log
+logs/
 
 # IDE
 .vscode/
@@ -36,6 +54,3 @@ Thumbs.db
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-
-# Future transformer checkpoints
-checkpoints/

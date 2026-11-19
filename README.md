@@ -1,11 +1,29 @@
-# Emotion Dynamics in Multi-Party Conversations Using NLP
+# Emotion Dynamics
+*Conversational Emotion Analysis and Research in Multi-Party Dialogue*
 
-An empirical NLP research project and interactive web application investigating how conversational context and speaker identity affect **emotion recognition**, **emotion dynamics**, and **next-emotion forecasting** in multi-party dialogue.
+### Author
+- **Chittaranjan Dutta** (B.Tech in Artificial Intelligence & Data Science, IIITDM Kurnool)
 
-> - **Project Type:** Individual Undergraduate Research Project
-> - **Primary Dataset:** MELD (Multimodal EmotionLines Dataset, text modality)
-> - **Core Architecture:** DistilBERT-base-uncased sequence classification with multi-turn context formatting
-> - **Deployment:** Containerized FastAPI backend with an interactive vanilla JS/Chart.js single-page frontend
+---
+
+### Checkpoint & Dataset Notice
+> **IMPORTANT**:
+> In compliance with GitHub's file size limits, large model checkpoints (`checkpoints/`), weight tensors (`*.safetensors`, `*.pt`, `*.bin`, `*.npz`), and raw conversational corpora (`data/raw/`, `data/processed/`) are **strictly excluded from version control** via `.gitignore`.
+> The repository provides full reproducible extraction and training pipelines (`scripts/`) alongside all verified benchmark tables, statistical tests, and research artifacts in `outputs/`.
+
+---
+
+### Quickstart (Docker Deployment)
+To build and run the complete application in a single isolated command:
+
+```bash
+docker compose up --build
+```
+
+Access the interactive five-screen research application in your browser:
+- **Application Interface:** `http://localhost:8001`
+- **FastAPI OpenAPI Documentation:** `http://localhost:8001/docs`
+- **API Health Check:** `http://localhost:8001/health`
 
 ---
 
@@ -14,16 +32,21 @@ An empirical NLP research project and interactive web application investigating 
 2. [Research Questions & Objectives](#research-questions--objectives)
 3. [Dataset Description & Preprocessing](#dataset-description--preprocessing)
 4. [Model Architecture & Methodology](#model-architecture--methodology)
-5. [Evaluation Results](#evaluation-results)
+   - [Transformer Context Models](#1-transformer-context-models-distilbert)
+   - [Autoregressive History Models](#2-autoregressive-history-models-model-a--b)
+   - [DialogueRNN: Attentive Recurrent Speaker Tracking](#3-dialoguernn-attentive-recurrent-speaker-tracking)
+5. [Evaluation Results & Canonical Benchmarks](#evaluation-results--canonical-benchmarks)
    - [Classical Baselines](#1-classical-n-gram-baselines-meld-test-split)
-   - [Transformer Test Split Results](#2-transformer-test-split-results)
-   - [Matched Context-1 Error Analysis](#3-matched-head-to-head-error-analysis-n--2328)
-   - [Training Split Evaluation](#4-training-split-evaluation-model-fit--generalization-gap)
+   - [Canonical Matched Cross-Model Leaderboard (Cohort A: N=2,328)](#2-canonical-matched-cross-model-leaderboard-cohort-a-n--2328)
+   - [The "Accuracy Illusion" & Minority Collapse](#3-the-accuracy-illusion--minority-collapse)
+   - [Transition Dynamics: Shifts vs. Inertia](#4-transition-dynamics-shifts-vs-inertia)
+   - [Statistical Significance Testing](#5-statistical-significance-testing)
+   - [Training Split Evaluation](#6-training-split-evaluation-model-fit--generalization-gap)
 6. [Emotion Dynamics & Speaker Analysis](#emotion-dynamics--speaker-analysis)
 7. [Next-Emotion Forecasting Experiments](#next-emotion-forecasting-experiments)
 8. [Application Architecture & Features](#application-architecture--features)
 9. [Installation & Execution Guide](#installation--execution-guide)
-   - [Running with Docker Compose (Recommended)](#running-with-docker-compose-recommended)
+   - [Running with Docker (Recommended)](#running-with-docker-recommended)
    - [Running Locally with Python](#running-locally-with-python)
 10. [API Specification & Examples](#api-specification--examples)
 11. [Repository Structure](#repository-structure)
@@ -78,30 +101,55 @@ Contextual examples are constructed using [`src/data/context.py`](file:///home/c
 
 ## Model Architecture & Methodology
 
-All neural models are built on **DistilBERT-base-uncased** (6 transformer layers, 768 hidden dimensions, 12 attention heads, ~66M parameters) fine-tuned for sequence classification using cross-entropy loss:
-- **Optimizer:** AdamW (`lr=2e-5`)
-- **Batch Size:** 4
-- **Epochs:** 3
-- **Max Sequence Length:** 128
-- **Checkpoint Selection:** Best epoch selected based on **Validation Macro F1**.
+The project explores three distinct modeling paradigms for conversational emotion recognition:
 
-### Evaluated Configurations
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        NLP MODELING PARADIGMS                          │
+├─────────────────────────┬──────────────────────────┬───────────────────┤
+│ 1. Context Concatenation│ 2. Autoregressive History│ 3. Recurrent State│
+│    (DistilBERT Encoder) │    (Recursive History)   │    (DialogueRNN)  │
+│  [u_{t-1} [SEP] u_t]    │ [prev_e [SEP] u_{t-1}..] │ Party GRU + Attn  │
+└─────────────────────────┴──────────────────────────┴───────────────────┘
+```
 
-1. **Utterance-only Baseline (`transformer_baseline`):**
-   - Input: Current utterance text $u_t$.
-   - Format: `u_t`
-2. **Context-1 (`transformer_context_1`):**
-   - Input: Concatenation of previous utterance $u_{t-1}$ and current utterance $u_t$.
-   - Format: `u_{t-1}\nu_t`
-3. **Context-1 + Speaker (`transformer_context_1_speaker`):**
-   - Input: Speaker-prefixed previous and current turns.
-   - Format: `[SPEAKER_{s_{t-1}}] u_{t-1}\n[SPEAKER_{s_t}] u_t`
-4. **Context-3 & Context-5:**
-   - Extended histories of 3 and 5 preceding turns concatenated sequentially.
+### 1. Transformer Context Models (DistilBERT)
+Built on `distilbert-base-uncased` (6 layers, 768 hidden dimensions, 12 attention heads, ~66.96M parameters) fine-tuned with AdamW (`lr=2e-5`, batch size 4, max length 128, early stopping on dev Macro F1):
+- **Utterance Baseline (`transformer_baseline`):** Independent turn $u_t$.
+- **Context-1 (`transformer_context_1`):** Two-turn window $[u_{t-1} \text{ [SEP] } u_t]$.
+- **Context-1 + Speaker (`transformer_context_1_speaker`):** Speaker-prefixed turns $[\text{Speaker}_{t-1}\text{: } u_{t-1} \text{ [SEP] Speaker}_t\text{: } u_t]$.
+- **Context-3 & Context-5:** Multi-turn windows of 3 and 5 contiguous preceding turns.
+
+### 2. Autoregressive History Models (Model A & Model B)
+- **Model A (Emotion History):** Prepends the previous turn's emotion label token $\langle\text{prev\_}y_{t-1}\rangle$ before $u_t$.
+- **Model B (Combined Text + Emotion History):** Prepends both $\langle\text{prev\_}y_{t-1}\rangle$ and $u_{t-1}$ before $u_t$.
+- **Inference Evaluation:** Evaluated in both idealized *teacher-forced oracle* mode (using ground-truth prior emotions) and true *causal autoregressive* mode (recursively conditioning on the model's own predictions $\hat{y}_{t-1}$).
+
+### 3. DialogueRNN: Attentive Recurrent Speaker Tracking
+Implements the architecture from **Majumder et al. (AAAI 2019)** ([`src/models/dialoguernn.py`](file:///home/chitta/Projects/emotion-dynamics-nlp/src/models/dialoguernn.py)):
+- **Utterance Encoder:** Frozen 768-dimensional `[CLS]` embeddings pre-extracted from the fine-tuned DistilBERT baseline ([`scripts/extract_dialogue_features.py`](file:///home/chitta/Projects/emotion-dynamics-nlp/scripts/extract_dialogue_features.py)).
+- **Global Context GRU ($D_g = 150$):** Maintains the evolving dialogue context across all turns.
+- **Party State GRUs ($D_p = 100$):** Maintains a separate latent state for each conversational participant $s \in \mathcal{S}$. Only the active speaker's state is updated at turn $t$.
+- **Context Attention ($D_g = 150$):** Queries past global context states using the current party state vector.
+- **Emotion GRU ($D_e = 50$):** Models the speaker's emotional trajectory conditioned on the party state.
+- **Classification Head:** Linear projection on $[h_t \,\|\, q_t^s \,\|\, a_t]$ (300 dimensions $\to$ 7 classes, 670,855 total parameters).
+- **Training Regimes:**
+  - *Unweighted:* Trained with standard cross-entropy loss.
+  - *Class-Weighted:* Trained with inverse class frequencies computed strictly from training split distributions.
+
+### Research Scope & Roadmap
+- **Completed Work:** Classical baselines, DistilBERT context models, Autoregressive history models, DialogueRNN (unweighted & weighted), Canonical evaluation audit, Web application & Docker containerization.
+- **Planned / Future Work:** Relational graph neural networks (DialogueGCN) to address multi-party non-sequential dependencies; multimodal fusion (acoustic + visual features).
 
 ---
 
-## Evaluation Results
+## Evaluation Results & Canonical Benchmarks
+
+To eliminate sample-size discrepancies caused by dialogue gaps (`Utterance_ID` skips in Dialogue 93 and 108), all models are evaluated against the canonical cohorts established in the [Evaluation Audit](outputs/reports/canonical_evaluation_audit.md):
+- **Cohort A ($N=2,328$):** Strict contiguous matched subset where $t \ge 1$ and `Utterance_ID == prev_Utterance_ID + 1`. **The canonical benchmark for comparing contextual models.**
+- **Cohort B ($N=2,330$):** All subsequent sequential turns ($t \ge 1$).
+- **Cohort C ($N=280$):** Dialogue-initial turns ($t = 0$).
+- **Cohort D ($N=2,610$):** Full MELD test set.
 
 ### 1. Classical N-Gram Baselines (MELD Test Split)
 Evaluated on all 2,610 held-out test utterances ([`outputs/experiments/`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/experiments/)):
@@ -111,53 +159,51 @@ Evaluated on all 2,610 held-out test utterances ([`outputs/experiments/`](file:/
 | **Majority Baseline** | Predicts `neutral` | 48.12% | 0.0928 | 0.3127 |
 | **Logistic Regression** | TF-IDF Unigram | 52.68% | 0.2410 | 0.4444 |
 | **Logistic Regression** | TF-IDF Bigram | **53.18%** | 0.2470 | 0.4432 |
-| **Logistic Regression** | TF-IDF Trigram | 52.76% | 0.2327 | 0.4348 |
-| **Linear SVM** | TF-IDF Unigram | 50.57% | 0.2788 | 0.4596 |
 | **Linear SVM** | TF-IDF Bigram | 50.84% | **0.2874** | 0.4641 |
 | **Linear SVM** | TF-IDF Trigram | 51.07% | 0.2822 | **0.4647** |
 
-> **Note on Linear SVM:** Performance depends on the target metric. Linear SVM Bigram achieves the highest Macro F1 (**0.2874**; Accuracy 50.84%), while Linear SVM Trigram achieves the highest raw Accuracy (**51.07%**; Macro F1 0.2822) and Weighted F1 (**0.4647**) among the SVM baselines.
+### 2. Canonical Matched Cross-Model Leaderboard (Cohort A: $N = 2,328$)
+Evaluated on the exact matched subset ([`outputs/tables/dialoguernn_comparison.csv`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/tables/dialoguernn_comparison.csv)):
 
-### 2. Transformer Test Split Results
-Evaluated on the official MELD test split ([`outputs/tables/week6_transformer_comparison.csv`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/tables/week6_transformer_comparison.csv)):
+| Model Configuration | Architecture | Accuracy | Macro F1 | Weighted F1 | Neutral Rec | Fear Rec | Disgust Rec | Anger Rec | Joy Rec | Sadness Rec | Surprise Rec |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **DistilBERT Baseline** | Utterance Only | 59.45% | 0.4314 | 0.5969 | 73.57% | 25.00% | 20.63% | 36.81% | 58.66% | 33.16% | 60.87% |
+| **DistilBERT Context-1** | Text Context ($t-1$) | 60.74% | 0.3912 | 0.5812 | 83.33% | 6.82% | 14.29% | 30.94% | 54.47% | 16.04% | 60.08% |
+| **DistilBERT Context-1+Spk** | Text Context + Speaker | 61.94% | 0.4078 | 0.5981 | 82.35% | 11.36% | 11.11% | 31.60% | 58.38% | 20.32% | 66.01% |
+| **Model A (Autoregressive)** | History Token | 61.47% | 0.3930 | 0.5984 | 78.94% | 2.27% | 4.76% | 39.09% | 63.41% | 28.34% | 57.71% |
+| **Model B (Autoregressive)** | Text + History Token | **62.59%** | 0.3848 | 0.6024 | 82.35% | **0.00%** | **3.17%** | 43.00% | 53.63% | 22.46% | 67.19% |
+| **DialogueRNN (Unweighted)** | Attentive Recurrent | 60.14% | **0.4342** | **0.6025** | 72.85% | 15.91% | 15.87% | **46.91%** | 57.82% | **35.83%** | 60.08% |
+| **DialogueRNN (Weighted)** | Recurrent + Inv. Weight | 59.88% | 0.4284 | 0.5944 | 77.96% | **25.00%** | **25.40%** | 35.50% | 50.84% | 27.81% | 60.87% |
 
-| Model Configuration | Evaluated Test Utterances | Test Accuracy | Test Macro F1 | Test Weighted F1 |
-| :--- | :---: | :---: | :---: | :---: |
-| **Transformer Baseline** (Utterance) | 2,610 | 60.31% | **0.4400** | **0.6054** |
-| **Context-1** | 2,328 | 60.74% | 0.3912 | 0.5812 |
-| **Context-1 + Speaker** | 2,328 | **61.94%** | 0.4078 | 0.5981 |
-| **Context-3** | 1,807 | 58.44% | 0.3863 | 0.5622 |
-| **Context-5** | 1,354 | 57.09% | 0.3798 | 0.5542 |
+### 3. The "Accuracy Illusion" & Minority Collapse
+A critical finding of this research is that naive accuracy is heavily misleading on imbalanced conversational corpora:
+1. **The Spurious Gain:** Model B achieves the highest raw accuracy (**62.59%**), yet exhibits the lowest Macro F1 (**0.3848**). It achieves high accuracy solely by exploiting majority bias: predicting `neutral` on 54.04% of turns and driving neutral recall to 82.35%.
+2. **Minority Extinction:** Context-1 and Model B catastrophically collapse minority classes: Model B achieves **0.0% recall on fear** (0/44 turns detected) and **3.2% recall on disgust** (2/63 detected).
+3. **DialogueRNN Resolution:** DialogueRNN explicitly decouples party states, predicting neutral on 44.63% of turns (matching ground truth 47.94%). It restores Macro F1 to **0.4342** (unweighted) and recovers minority recall to **25.00% for fear** and **25.40% for disgust** (class-weighted).
 
-> **Important Evaluation Note:** Context-3 and Context-5 require 3 and 5 contiguous preceding turns respectively, excluding shorter dialogues and early turns. Their lower accuracy (58.44% and 57.09%) reflects both window dilution and evaluation on a smaller, dialogue-dense subset rather than a direct degradation across identical test turns.
+### 4. Transition Dynamics: Shifts vs. Inertia
+Evaluated on Cohort A ($N=2,328$) partitioned into Emotion Shifts ($N=1,352$) and Emotion Inertia ($N=976$) ([`outputs/tables/dialoguernn_transition_metrics.csv`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/tables/dialoguernn_transition_metrics.csv)):
 
-### 3. Matched Head-to-Head Error Analysis ($N = 2,328$)
-To ensure an exact apples-to-apples comparison between Baseline, Context-1, and Context-1 + Speaker, all models were evaluated on the **identical 2,328 test turns** where Context-1 is available ([`notebooks/21_week6_error_analysis.ipynb`](file:///home/chitta/Projects/emotion-dynamics-nlp/notebooks/21_week6_error_analysis.ipynb)):
+| Model Configuration | Shift Accuracy | Shift Macro F1 | Inertia Accuracy | Inertia Macro F1 | Speaker Change Macro F1 | Same Speaker Macro F1 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **DistilBERT Baseline** | 54.59% | 0.4299 | 66.19% | 0.3977 | 0.4327 | 0.3960 |
+| **DistilBERT Context-1** | 53.11% | 0.3747 | 71.31% | 0.3882 | 0.3820 | 0.3899 |
+| **DistilBERT Context-1 + Spk** | 56.14% | 0.4020 | 69.98% | 0.3746 | 0.3968 | 0.3976 |
+| **Model B (Autoregressive)** | 55.18% | 0.3624 | 72.85% | 0.4064 | 0.3740 | 0.3922 |
+| **DialogueRNN (Unweighted)** | **55.03%** | **0.4271** | 67.21% | **0.4155** | **0.4267** | **0.4230** |
+| **DialogueRNN (Weighted)** | 53.33% | 0.4133 | 68.95% | 0.4135 | 0.4166 | 0.4099 |
 
-| Metric | Utterance Baseline | Context-1 | Context-1 + Speaker |
-| :--- | :---: | :---: | :---: |
-| **Matched Accuracy** | 59.45% | 60.74% (+1.29%) | **61.94%** (+2.49%) |
+*DialogueRNN maintains high discrimination during emotional turning points (Shift Macro F1 = 0.4271), whereas Context-1 and Model B collapse to 0.3747 and 0.3624 due to preceding neutral inertia.*
 
-#### The "Neutral Gravity" Phenomenon: Per-Class Accuracy Breakdown
-* **Neutral ($n=1,116$):** 73.57% (Baseline) $\to$ **83.33%** (Context-1) $\to$ 82.35% (Context-1 + Speaker)
-* **Anger ($n=307$):** **36.81%** (Baseline) $\to$ 30.94% (Context-1) $\to$ 31.60% (Context-1 + Speaker)
-* **Disgust ($n=63$):** **20.63%** (Baseline) $\to$ 14.29% (Context-1) $\to$ 11.11% (Context-1 + Speaker)
-* **Fear ($n=44$):** **25.00%** (Baseline) $\to$ 6.82% (Context-1) $\to$ 11.36% (Context-1 + Speaker)
-* **Joy ($n=358$):** **58.66%** (Baseline) $\to$ 54.47% (Context-1) $\to$ 58.38% (Context-1 + Speaker)
-* **Sadness ($n=187$):** **33.16%** (Baseline) $\to$ 16.04% (Context-1) $\to$ 20.32% (Context-1 + Speaker)
-* **Surprise ($n=253$):** 60.87% (Baseline) $\to$ 60.08% (Context-1) $\to$ **66.01%** (Context-1 + Speaker)
+### 5. Statistical Significance Testing
+Paired tests on Cohort A ($N=2,328$) using McNemar's test with Edwards continuity correction and paired bootstrap resampling (10,000 iterations) ([`outputs/tables/dialoguernn_statistical_tests.csv`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/tables/dialoguernn_statistical_tests.csv)):
+- **DialogueRNN vs Context-1:** $\Delta \text{Macro F1} = \mathbf{+0.0430}$ ($p = 0.0004$, 95% CI: $[+0.0182, +0.0690]$) — **Highly Significant**
+- **DialogueRNN vs Context-1 + Speaker:** $\Delta \text{Macro F1} = \mathbf{+0.0264}$ ($p = 0.0396$, 95% CI: $[+0.0014, +0.0516]$) — **Significant**
+- **DialogueRNN vs Model B (Autoregressive):** $\Delta \text{Macro F1} = \mathbf{+0.0494}$ ($p = 0.0004$, 95% CI: $[+0.0215, +0.0773]$) — **Highly Significant**
+- **DialogueRNN vs DistilBERT Baseline:** $\Delta \text{Macro F1} = +0.0028$ ($p = 0.7382$, 95% CI: $[-0.0143, +0.0196]$) — Equivalent Overall F1
 
-**Core Scientific Finding:**
-Adding raw conversational context ($u_{t-1}\nu_t$) causes the model to bias heavily toward the dominant majority class (`neutral`), increasing Neutral accuracy from 73.57% to 83.33%. However, this comes at the cost of minority emotion recall, causing Macro F1 to drop from 0.4400 to 0.3912. Adding explicit speaker tokens partially alleviates this issue: speaker identity distinguishes self-repetition from interlocutor responses, recovering minority performance (Surprise rises to 66.01%, Macro F1 recovers to 0.4078).
-
-In qualitative error tracking:
-- **Rescued Examples (259 turns):** Context-1 corrected an utterance misclassified by the baseline (e.g., short utterances like *"Push!"* disambiguated from fear to joy).
-- **Broken Examples (229 turns):** Context-1 replaced a correct emotional prediction with neutral due to prior neutral context.
-
----
-
-### 4. Training Split Evaluation (Model Fit & Generalization Gap)
-To verify training convergence and quantify the generalization gap, all checkpoints were evaluated on the MELD training split ([`outputs/tables/training_split_evaluation.csv`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/tables/training_split_evaluation.csv)):
+### 6. Training Split Evaluation (Model Fit & Generalization Gap)
+To verify training convergence and quantify the generalization gap, checkpoints were evaluated on the MELD training split ([`outputs/tables/training_split_evaluation.csv`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/tables/training_split_evaluation.csv)):
 
 | Model Configuration | Evaluated Training Utterances | Accuracy | Macro F1 | Weighted F1 |
 | :--- | :---: | :---: | :---: | :---: |
@@ -217,7 +263,7 @@ Forecasting aims to predict the emotional state of the *subsequent* turn $t+1$ w
 
 ## Application Architecture & Features
 
-The repository includes a production-grade FastAPI service and an interactive web interface:
+The repository includes a production-grade FastAPI service and an interactive web interface supporting four inference engines:
 
 ```
 [User Dialogue Input] (Speaker: Utterance)
@@ -227,13 +273,16 @@ The repository includes a production-grade FastAPI service and an interactive we
          │ Validates syntax, turns, contiguity
          ▼
 [Inference Pipeline] (src/models/inference.py)
-         │ Evaluates turns via DistilBERT Checkpoints
+         ├─ DistilBERT Baseline (Utterance only)
+         ├─ Context-1 / Context-1 + Speaker (Transformer window)
+         └─ DialogueRNN (Attentive Recurrent Party State Tracking)
          ▼
 [Dynamics Engine] (src/analysis/conversation_analysis.py)
          │ Computes transition matrix, shift rates, speaker dynamics, turning points
          ▼
 [Interactive Dashboard] (static/index.html)
-         ├─ Full Stacked Emotion Probability Trajectory (Chart.js)
+         ├─ Model Switcher (Baseline, Context-1, Context-1+Spk, DialogueRNN)
+         ├─ Emotion Trajectory & Probability Breakdown (Chart.js)
          ├─ Conversation Dynamics & Shift Rate KPIs
          ├─ Turn-by-Turn Confidence Table
          ├─ Speaker Shift Breakdown
@@ -244,45 +293,37 @@ The repository includes a production-grade FastAPI service and an interactive we
 
 ## Installation & Execution Guide
 
-### Running with Docker Compose (Recommended)
+### Running with Docker (Recommended)
 
-Docker Compose builds an isolated Python 3.12 environment containing all dependencies and checkpoints.
-
-> **Checkpoint Prerequisite:** The three trained checkpoint directories must exist locally before building the image; they are excluded from Git (`.gitignore`):
-> - `checkpoints/transformer_baseline/best/`
-> - `checkpoints/transformer_context_1/best/`
-> - `checkpoints/transformer_context_1_speaker/best/`
+The project is packaged in a self-contained, CPU-optimized Docker image (`emotion-dynamics-nlp:week11`):
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/duckydodo/emotion-dynamics-nlp.git
-cd emotion-dynamics-nlp
+# 1. Run the containerized web application
+docker run -d --name emotion-app -p 8000:8000 emotion-dynamics-nlp:week11
 
-# 2. Launch the application
-docker compose up -d
+# 2. Access the web dashboard
+# Open http://localhost:8000 in your browser.
 
-# 3. Access the web dashboard
-Open http://localhost:8001 in your browser.
-
-# 4. View API Documentation
-Open http://localhost:8001/docs
+# 3. View API Documentation
+# Open http://localhost:8000/docs
 ```
 
-To stop the container:
+Or using Docker Compose:
 ```bash
-docker compose down
+docker compose up --build
+# Access at http://localhost:8001
 ```
 
 ### Running Locally with Python
 
-*Requires Python 3.12 (to match `pyproject.toml` and PyTorch 2.13 compatibility).*
+*Requires Python 3.10+ (tested on Linux x86_64 with CPU-only PyTorch).*
 
 ```bash
 # 1. Create and activate a virtual environment
-python3.12 -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 
-# 2. Install pinned dependencies
+# 2. Install dependencies
 pip install -r requirements.txt
 pip install -e .
 
@@ -295,17 +336,23 @@ Open `http://localhost:8000` in your browser.
 
 ## API Specification & Examples
 
+### Supported Models (`mode`)
+- `"baseline"`: Utterance-only DistilBERT baseline.
+- `"context_1"`: DistilBERT with preceding utterance text.
+- `"context_1_speaker"`: DistilBERT with speaker prefixes.
+- `"dialoguernn"`: Attentive recurrent speaker-state tracking (DialogueRNN).
+
 ### Endpoints
 - `GET /health`: Health check and list of loaded checkpoints.
-- `POST /predict`: Predicts turn-level emotions.
+- `POST /predict`: Predicts turn-level emotions and class probabilities.
 - `POST /analyze`: Performs full emotion classification and conversation dynamics analysis.
 
-### Sample API Request (`POST /analyze`)
+### Sample API Request (`POST /analyze` with DialogueRNN)
 ```bash
-curl -X POST http://localhost:8001/analyze \
+curl -X POST http://localhost:8000/analyze \
   -H "Content-Type: application/json" \
   -d '{
-    "mode": "context_1_speaker",
+    "mode": "dialoguernn",
     "conversation": "Alice: I was really excited about the trip.\nBob: Me too. I thought everything was finally going well.\nAlice: Then why did you cancel the tickets?\nBob: I didn'\''t cancel them. The airline did."
   }'
 ```
@@ -313,12 +360,12 @@ curl -X POST http://localhost:8001/analyze \
 ### Sample Response Snippet
 ```json
 {
-  "mode": "context_1_speaker",
+  "mode": "dialoguernn",
   "turns": [
-    {"turn_id": 0, "speaker": "Alice", "text": "I was really excited about the trip.", "emotion": "joy", "confidence": 0.70},
-    {"turn_id": 1, "speaker": "Bob", "text": "Me too. I thought everything was finally going well.", "emotion": "joy", "confidence": 0.74},
-    {"turn_id": 2, "speaker": "Alice", "text": "Then why did you cancel the tickets?", "emotion": "anger", "confidence": 0.65},
-    {"turn_id": 3, "speaker": "Bob", "text": "I didn't cancel them. The airline did.", "emotion": "neutral", "confidence": 0.71}
+    {"turn_id": 0, "speaker": "Alice", "text": "I was really excited about the trip.", "emotion": "joy", "confidence": 0.68},
+    {"turn_id": 1, "speaker": "Bob", "text": "Me too. I thought everything was finally going well.", "emotion": "joy", "confidence": 0.72},
+    {"turn_id": 2, "speaker": "Alice", "text": "Then why did you cancel the tickets?", "emotion": "anger", "confidence": 0.64},
+    {"turn_id": 3, "speaker": "Bob", "text": "I didn't cancel them. The airline did.", "emotion": "neutral", "confidence": 0.70}
   ],
   "analysis": {
     "total_transitions": 3,
@@ -348,36 +395,45 @@ emotion-dynamics-nlp/
 ├── checkpoints/                        # Model weights (excluded from Git; included in Docker)
 │   ├── transformer_baseline/best/      # DistilBERT utterance model (256MB)
 │   ├── transformer_context_1/best/     # DistilBERT Context-1 model (256MB)
-│   └── transformer_context_1_speaker/  # DistilBERT Context-1 + Speaker model (256MB)
+│   ├── transformer_context_1_speaker/  # DistilBERT Context-1 + Speaker model (256MB)
+│   ├── dialoguernn_unweighted/         # DialogueRNN unweighted checkpoint (2.7MB)
+│   └── dialoguernn_weighted/           # DialogueRNN class-weighted checkpoint (2.7MB)
 ├── data/                               # Local dataset storage (excluded from Git)
-│   └── raw/meld/                       # Official MELD train/dev/test CSV files
-├── docs/                               # Project documentation and decision logs
-│   └── gate1_dataset_selection.md      # Candidate dataset comparison analysis
+│   ├── raw/meld/                       # Official MELD train/dev/test CSV files
+│   └── processed/dialoguernn/          # Pre-extracted DistilBERT CLS embeddings (.npz)
 ├── notebooks/                          # Jupyter experiment notebooks (Weeks 1–10)
-│   ├── 01_dailydialog_eda.ipynb ... 03_emowoz_eda.ipynb
-│   ├── 10_majority_baseline.ipynb ... 14_tfidf_ngram_experiments.ipynb
-│   ├── 15_transformer_baseline.ipynb ... 19_context_1_speaker.ipynb
-│   ├── 20_transformer_error_analysis.ipynb ... 21_week6_error_analysis.ipynb
-│   └── 22_week7_trajectory_analysis.ipynb ... 25_week10_higher_order_markov.ipynb
 ├── outputs/                            # Persisted research outputs
-│   ├── experiments/                    # Model metrics.json and confusion matrices
-│   ├── figures/                        # Transition heatmaps and dynamics plots
-│   └── tables/                         # CSV comparison tables and methodology notes
-│       ├── training_split_evaluation.csv
-│       ├── week6_transformer_comparison.csv
-│       └── week9_forecasting_results.csv
+│   ├── experiments/                    # Model metrics.json and training histories
+│   ├── figures/                        # Transition heatmaps and multi-panel confusion matrices
+│   ├── reports/                        # Formal research reports & audit documentation
+│   │   ├── canonical_evaluation_audit.md
+│   │   ├── dialoguernn_error_analysis.md
+│   │   ├── dialoguernn_implementation_report.md
+│   │   ├── dialoguernn_training_report.md
+│   │   └── research_progress_report.md
+│   └── tables/                         # CSV benchmark tables and statistical significance tests
+│       ├── canonical_test_comparison.csv
+│       ├── dialoguernn_comparison.csv
+│       ├── dialoguernn_per_class.csv
+│       ├── dialoguernn_statistical_tests.csv
+│       └── dialoguernn_transition_metrics.csv
 ├── scripts/                            # Reproducible automation scripts
-│   └── evaluate_training_split.py      # Standalone training set evaluation script
+│   ├── extract_dialogue_features.py    # DistilBERT CLS feature extraction
+│   ├── train_dialoguernn.py            # DialogueRNN training pipeline
+│   ├── evaluate_dialoguernn_analysis.py# Canonical cohort evaluation & error analysis
+│   └── evaluate_training_split.py      # Training set evaluation script
 ├── src/                                # Core Python source library
 │   ├── analysis/                       # Dynamics, trajectories, forecasting
-│   ├── application/                    # Pipeline orchestration
+│   ├── application/                    # Pipeline orchestration & EmotionAnalyzer
 │   ├── data/                           # Loaders, context builders, conversation parser
 │   ├── evaluation/                     # Metrics, comparisons, confusion matrices
-│   ├── features/                       # TF-IDF extractors
-│   ├── models/                         # Classifiers, trainer, and inference engine
+│   ├── models/                         # Classifiers, DialogueRNN, trainer, inference engine
 │   └── api.py                          # FastAPI web application
 ├── static/                             # Frontend assets
-│   └── index.html                      # Interactive dashboard UI
+│   └── index.html                      # Interactive dashboard UI with model switcher
+├── tests/                              # Unit and integration test suite
+│   ├── test_dialoguernn.py             # 11 unit tests for DialogueRNN architecture
+│   └── test_application_integration.py # 10 integration tests for inference & API
 ├── compose.yaml                        # Docker Compose deployment specification
 ├── Dockerfile                          # Multi-stage Docker build recipe
 └── requirements.txt                    # Pinned Python dependencies
@@ -388,13 +444,13 @@ emotion-dynamics-nlp/
 ## Limitations & Open Challenges
 
 1. **Extreme Class Imbalance:**
-   `neutral` accounts for 47% of MELD utterances. Models easily latch onto neutral context, suppressing rare emotions like `fear` (50 test instances) and `disgust` (68 test instances).
+   `neutral` accounts for 47% of MELD utterances. While DialogueRNN successfully avoids majority collapse, detecting rare emotions (`fear` and `disgust`) without false-positive inflation remains challenging.
 2. **Train–Test Generalization Gap:**
-   While models achieve ~88% accuracy and ~0.78 Macro F1 on the training split, held-out test performance is ~61% accuracy and ~0.41 Macro F1. Multi-party dialogue exhibits significant stylistic variance across different conversational scenes.
+   While models achieve ~88% accuracy and ~0.78 Macro F1 on the training split, held-out test performance is ~60% accuracy and ~0.43 Macro F1. Multi-party dialogue exhibits significant stylistic variance across different conversational scenes.
 3. **Domain Specificity & Sitcom Bias:**
    MELD consists of scripts from the TV sitcom *Friends*. The dialogue is theatrical, highly punchy, and dramatic. True out-of-distribution generalization across everyday conversation (DailyDialog) or task-oriented dialogue (EmoWOZ) has not been benchmarked.
-4. **Speaker Tag Delimitation:**
-   In `context_1_speaker`, speaker names observed during training were limited to recurring characters (e.g., Joey, Rachel). When tested on custom names (e.g., Alice, Bob), the tokens serve primarily as turn-boundary indicators rather than learned speaker representations.
+4. **Sequential Recurrent Window vs. Graph Structure:**
+   DialogueRNN processes turns in a linear sequence ($t-1 \to t$). In multi-party conversations ($>3$ participants), an utterance often addresses a turn spoken several steps earlier by another speaker, motivating graph neural networks (DialogueGCN).
 5. **Acoustic and Visual Modalities Excluded:**
    This project focuses strictly on NLP text processing. Non-verbal signals (pitch, vocal intensity, facial expressions), which frequently carry the emotion in sarcastic or deadpan remarks, are not modeled.
 
@@ -402,22 +458,49 @@ emotion-dynamics-nlp/
 
 ## Reproducibility & Checkpoints
 
-To replicate the training set evaluation reported in Section 5:
+To replicate the complete DialogueRNN research pipeline from scratch:
+
 ```bash
-# Run the evaluation script inside Docker
-docker run --rm \
-  -e PYTHONPATH=/app \
-  -w /app \
-  -v $(pwd):/app_mount \
-  emotion-dynamics-nlp:week11 \
-  python /app_mount/scripts/evaluate_training_split.py
+# 1. Feature Extraction (Extract 768-d DistilBERT CLS embeddings)
+python scripts/extract_dialogue_features.py \
+    --model_dir checkpoints/transformer_baseline/best \
+    --data_dir data/raw/meld \
+    --output_dir data/processed/dialoguernn
+
+# 2. Train DialogueRNN (Unweighted)
+python scripts/train_dialoguernn.py \
+    --features_dir data/processed/dialoguernn \
+    --raw_data_dir data/raw/meld \
+    --output_dir outputs/experiments/dialoguernn_unweighted \
+    --checkpoint_dir checkpoints/dialoguernn_unweighted \
+    --seed 42
+
+# 3. Train DialogueRNN (Class-Weighted)
+python scripts/train_dialoguernn.py \
+    --features_dir data/processed/dialoguernn \
+    --raw_data_dir data/raw/meld \
+    --output_dir outputs/experiments/dialoguernn_weighted \
+    --checkpoint_dir checkpoints/dialoguernn_weighted \
+    --class_weighted \
+    --seed 42
+
+# 4. Canonical Evaluation & Error Analysis
+python scripts/evaluate_dialoguernn_analysis.py \
+    --raw_test data/raw/meld/test_sent_emo.csv \
+    --features_test data/processed/dialoguernn/test_features.npz \
+    --unweighted_checkpoint checkpoints/dialoguernn_unweighted/best_model.pt \
+    --weighted_checkpoint checkpoints/dialoguernn_weighted/best_model.pt \
+    --output_dir outputs
+
+# 5. Run Test Suite
+python -m unittest tests/test_dialoguernn.py tests/test_application_integration.py
 ```
-This regenerates [`outputs/tables/training_split_evaluation.csv`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/tables/training_split_evaluation.csv) and [`outputs/tables/training_split_evaluation_notes.txt`](file:///home/chitta/Projects/emotion-dynamics-nlp/outputs/tables/training_split_evaluation_notes.txt).
 
 ---
 
 ## References & Acknowledgments
 
-- **MELD Dataset:** Poria et al. (2019). *MELD: A Multimodal Multi-Party Dataset for Emotion Recognition in Conversations*. ACL 2019.
-- **DistilBERT:** Sanh et al. (2019). *DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter*. NeurIPS EMC^2 Workshop.
+- **DialogueRNN:** Majumder, N., Poria, S., Hazarika, D., Mihalcea, R., Gelbukh, A., & Cambria, E. (2019). *DialogueRNN: An Attentive RNN for Emotion Detection in Conversations*. In Proceedings of the AAAI Conference on Artificial Intelligence (AAAI 2019), 33(01), 6818-6825.
+- **MELD Dataset:** Poria, S., Hazarika, D., Majumder, N., Naik, G., Cambria, E., & Mihalcea, R. (2019). *MELD: A Multimodal Multi-Party Dataset for Emotion Recognition in Conversations*. In Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL 2019), 527-536.
+- **DistilBERT:** Sanh, V., Debut, L., Chaumond, J., & Wolf, T. (2019). *DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter*. NeurIPS EMC^2 Workshop.
 - **Hugging Face Transformers:** Wolf et al. (2020). *Transformers: State-of-the-Art Natural Language Processing*. EMNLP 2020.

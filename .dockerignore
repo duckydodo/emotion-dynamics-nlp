@@ -8,7 +8,12 @@ __pycache__/
 
 data/
 notebooks/
-outputs/
+outputs/*
+!outputs/tables/
+!outputs/tables/**
+!outputs/experiments/
+!outputs/experiments/dialoguernn_unweighted/
+!outputs/experiments/dialoguernn_unweighted/confusion_matrix.json
 docs/
 *.ipynb
 *.egg-info/

@@ -1,0 +1,3 @@
+-r requirements-api.txt
+ipykernel==7.3.0
+jupyterlab==4.6.2

@@ -1,0 +1,38 @@
+{
+  "model_architecture": "DialogueGCN",
+  "random_seed": 42,
+  "parameters": 452487,
+  "epochs_trained": 15,
+  "best_dev_macro_f1": 0.4527650588821221,
+  "cohort_a_accuracy": 0.6091065292096219,
+  "cohort_a_macro_f1": 0.43847987041563463,
+  "cohort_a_weighted_f1": 0.6009180731592823,
+  "total_training_duration_sec": 71.86977696418762,
+  "cpu_latency": {
+    "mean_latency_ms": 0.7358071994531201,
+    "std_latency_ms": 0.05270110180744821,
+    "median_latency_ms": 0.7097244997567032,
+    "p95_latency_ms": 0.8311043478897773,
+    "turns_in_sample": 3
+  },
+  "hyperparameters": {
+    "feature_dir": "data/processed/dialoguernn",
+    "data_dir": "data/raw/meld",
+    "checkpoint_dir": "checkpoints/dialoguegcn",
+    "output_dir": "outputs/experiments/dialoguegcn",
+    "epochs": 30,
+    "batch_size": 16,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "dropout": 0.1,
+    "hidden_dim": 128,
+    "num_layers": 2,
+    "window_past": 10,
+    "window_future": 10,
+    "patience": 10,
+    "grad_clip": 1.0,
+    "seed": 42,
+    "device": "cpu",
+    "dry_run": false
+  }
+}

@@ -1,0 +1,154 @@
+[
+  {
+    "category": "Identity",
+    "check": "Browser Title",
+    "expected": "Emotion Dynamics \u2014 Conversational Emotion Analysis and Research",
+    "actual": "Emotion Dynamics \u2014 Conversational Emotion Analysis and Research",
+    "status": "PASS",
+    "detail": "Page title: Emotion Dynamics \u2014 Conversational Emotion Analysis and Research"
+  },
+  {
+    "category": "Identity",
+    "check": "Header Brand Title",
+    "expected": "Emotion Dynamics",
+    "actual": "Emotion Dynamics",
+    "status": "PASS",
+    "detail": "Brand title: Emotion Dynamics"
+  },
+  {
+    "category": "Identity",
+    "check": "Header Brand Subtitle",
+    "expected": "Conversational Emotion Analysis and Research",
+    "actual": "Conversational Emotion Analysis and Research",
+    "status": "PASS",
+    "detail": "Subtitle: Conversational Emotion Analysis and Research"
+  },
+  {
+    "category": "Identity",
+    "check": "Custom Waveform Favicon",
+    "expected": "SVG favicon defined with warm charcoal/sage wave",
+    "actual": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org",
+    "status": "PASS",
+    "detail": "Favicon embedded as inline SVG"
+  },
+  {
+    "category": "Design Tokens",
+    "check": "Warm Charcoal Background (#171B18)",
+    "expected": "#171b18",
+    "actual": "#171b18",
+    "status": "PASS",
+    "detail": "Computed --bg-base: #171b18"
+  },
+  {
+    "category": "Design Tokens",
+    "check": "Muted Sage Accent (#91A58B)",
+    "expected": "#91a58b",
+    "actual": "#91a58b",
+    "status": "PASS",
+    "detail": "Computed --accent-primary: #91a58b"
+  },
+  {
+    "category": "Design Tokens",
+    "check": "Restrained Copper Highlight (#C18A68)",
+    "expected": "#c18a68",
+    "actual": "#c18a68",
+    "status": "PASS",
+    "detail": "Computed --highlight-secondary: #c18a68"
+  },
+  {
+    "category": "Typography",
+    "check": "Primary Typeface",
+    "expected": "Plus Jakarta Sans",
+    "actual": "\"Plus Jakarta Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+    "status": "PASS",
+    "detail": "Body font: \"Plus Jakarta Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+  },
+  {
+    "category": "Design System",
+    "check": "Strict Zero-Emoji Enforcement",
+    "expected": "0 emoji violations across core Home screen UI",
+    "actual": "0 violations",
+    "status": "PASS",
+    "detail": "Violations list: []"
+  },
+  {
+    "category": "Home Screen",
+    "check": "Screen Heading",
+    "expected": "Conversation Ingestion & Sequence Analysis",
+    "actual": "Conversation Ingestion & Sequence Analysis",
+    "status": "PASS",
+    "detail": "Heading: Conversation Ingestion & Sequence Analysis"
+  },
+  {
+    "category": "Home Screen",
+    "check": "Preset Sample Buttons",
+    "expected": "4 preset transcript pills",
+    "actual": "4 pills",
+    "status": "PASS",
+    "detail": "Found Conflict & Resolution, WhatsApp, Instagram, Three-Party pills"
+  },
+  {
+    "category": "Home Screen",
+    "check": "Dual Ingestion Workbench",
+    "expected": "Dropzone and Direct Dialogue textarea both present",
+    "actual": "dropzone=True, textarea=True",
+    "status": "PASS",
+    "detail": "Both ingestion modalities available"
+  },
+  {
+    "category": "Home Screen",
+    "check": "Model Selector Options",
+    "expected": "['dialoguegcn', 'dialoguernn', 'distilbert']",
+    "actual": "['distilbert', 'dialoguernn', 'dialoguegcn']",
+    "status": "PASS",
+    "detail": "Registered models: ['distilbert', 'dialoguernn', 'dialoguegcn']"
+  },
+  {
+    "category": "Home Screen",
+    "check": "Ingestion Preview & Schema Audit",
+    "expected": "Preview displayed, plain text format, 9 turns, 2 speakers, timestamp warning visible",
+    "actual": "display=True, format='plain text', turns=9, spk='2 (Alice, Bob)', warns=True",
+    "status": "PASS",
+    "detail": "Preview turns: 9, Speakers: 2 (Alice, Bob)"
+  },
+  {
+    "category": "Mobile Layout",
+    "check": "Viewport Fit & No Horizontal Overflow",
+    "expected": "scrollWidth <= 390px (window.innerWidth)",
+    "actual": "no_overflow=True",
+    "status": "PASS",
+    "detail": "Mobile layout fits cleanly without horizontal scroll blowout"
+  },
+  {
+    "category": "Mobile Layout",
+    "check": "Workbench Vertical Stacking",
+    "expected": "Upload card stacks cleanly above Direct Paste card",
+    "actual": "stacked=True",
+    "status": "PASS",
+    "detail": "Responsive single-column stacking verified"
+  },
+  {
+    "category": "Mobile Layout",
+    "check": "Primary Touch Target Ergonomics",
+    "expected": "All primary action buttons and tabs have height >= 36px",
+    "actual": "0 undersized buttons",
+    "status": "PASS",
+    "detail": "Touch targets: []"
+  },
+  {
+    "category": "Workflow",
+    "check": "Analyze Action -> Viewer Transition",
+    "expected": "Transitions to Screen 2 (Viewer) with 9 bubbles rendered",
+    "actual": "viewer_active=True, bubbles=9",
+    "status": "PASS",
+    "detail": "Single-model analysis succeeded (9 turns)"
+  },
+  {
+    "category": "Workflow",
+    "check": "Compare Action -> Comparison Transition",
+    "expected": "Transitions to Screen 4 (Comparison) with 3x3 matrix and consensus badge",
+    "actual": "compare_active=True, consensus='Consensus Rate: 78% (3 models)', cells=9",
+    "status": "PASS",
+    "detail": "Multi-model comparison succeeded (Consensus Rate: 78% (3 models))"
+  }
+]

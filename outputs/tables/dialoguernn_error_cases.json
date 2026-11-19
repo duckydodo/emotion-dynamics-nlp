@@ -1,0 +1,688 @@
+{
+  "neutral_gravitation_recovered": [
+    {
+      "key": [
+        0,
+        1
+      ],
+      "dialogue_id": 0,
+      "utterance_id": 1,
+      "speaker": "Rachel",
+      "utterance": "Oh. That\u2019s so Monica can keep track. That way if one on them is missing, she can be like, \u2018Where\u2019s number 27?!\u2019",
+      "true_emotion": "anger",
+      "prev_speaker": "Mark",
+      "prev_emotion": "surprise",
+      "prev_utterance": "Why do all you\u2019re coffee mugs have numbers on the bottom?",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "anger",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "surprise",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "sadness"
+    },
+    {
+      "key": [
+        9,
+        9
+      ],
+      "dialogue_id": 9,
+      "utterance_id": 9,
+      "speaker": "Phoebe",
+      "utterance": "Oh, it\u2019s bad. It\u2019s really bad. The only thing in there that isn\u2019t burned is an ass. Which I do",
+      "true_emotion": "sadness",
+      "prev_speaker": "Joey",
+      "prev_emotion": "sadness",
+      "prev_utterance": "Oh, how bad is it?",
+      "is_shift": false,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "sadness",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "joy",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "sadness",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "sadness",
+      "DialogueRNN (Class-Weighted)": "fear"
+    },
+    {
+      "key": [
+        12,
+        6
+      ],
+      "dialogue_id": 12,
+      "utterance_id": 6,
+      "speaker": "Ross",
+      "utterance": "Two very good points, look I\u2019ve known you both a long time, and I\u2019ve never seen either of you one/millionth as happy as you\u2019ve been since you\u2019ve got together.",
+      "true_emotion": "sadness",
+      "prev_speaker": "Ross",
+      "prev_emotion": "anger",
+      "prev_utterance": "Okay-okay!",
+      "is_shift": true,
+      "is_spk_change": false,
+      "DistilBERT Utterance Baseline": "sadness",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "joy",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "sadness",
+      "DialogueRNN (Unweighted)": "sadness",
+      "DialogueRNN (Class-Weighted)": "anger"
+    }
+  ],
+  "neutral_gravitation_failures": [
+    {
+      "key": [
+        1,
+        5
+      ],
+      "dialogue_id": 1,
+      "utterance_id": 5,
+      "speaker": "Joey",
+      "utterance": "Let's\u2014  I was just\u2014yeah, right.",
+      "true_emotion": "joy",
+      "prev_speaker": "Joey",
+      "prev_emotion": "joy",
+      "prev_utterance": "Let's get that ball and really move, hey, hey, ho, ho.",
+      "is_shift": false,
+      "is_spk_change": false,
+      "DistilBERT Utterance Baseline": "neutral",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "neutral",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "neutral",
+      "DialogueRNN (Class-Weighted)": "neutral"
+    },
+    {
+      "key": [
+        2,
+        2
+      ],
+      "dialogue_id": 2,
+      "utterance_id": 2,
+      "speaker": "Ross",
+      "utterance": "Uhh, yes I did but there isn't. Okay, here we go.",
+      "true_emotion": "sadness",
+      "prev_speaker": "Rachel",
+      "prev_emotion": "neutral",
+      "prev_utterance": "Ross, didn't you say that there was an elevator in here?",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "neutral",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "neutral",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "neutral",
+      "DialogueRNN (Class-Weighted)": "neutral"
+    },
+    {
+      "key": [
+        3,
+        4
+      ],
+      "dialogue_id": 3,
+      "utterance_id": 4,
+      "speaker": "Steve",
+      "utterance": "Okay, fine, whatever. Welcome to the building.",
+      "true_emotion": "anger",
+      "prev_speaker": "Ross",
+      "prev_emotion": "neutral",
+      "prev_utterance": "Yes but too me he's just, man.",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "neutral",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "neutral",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "neutral",
+      "DialogueRNN (Class-Weighted)": "neutral"
+    }
+  ],
+  "fear_recovered": [
+    {
+      "key": [
+        17,
+        16
+      ],
+      "dialogue_id": 17,
+      "utterance_id": 16,
+      "speaker": "Phoebe",
+      "utterance": "I\u2019m, I\u2019m freaking out!",
+      "true_emotion": "fear",
+      "prev_speaker": "Ross",
+      "prev_emotion": "neutral",
+      "prev_utterance": "Hey Pheebs, what are you doing?",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "fear",
+      "DistilBERT Context-1": "surprise",
+      "DistilBERT Context-1 + Speaker": "joy",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "joy",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "surprise",
+      "DialogueRNN (Unweighted)": "fear",
+      "DialogueRNN (Class-Weighted)": "fear"
+    },
+    {
+      "key": [
+        105,
+        1
+      ],
+      "dialogue_id": 105,
+      "utterance_id": 1,
+      "speaker": "Phoebe",
+      "utterance": "No! No!! It\u2019s me! It\u2019s me! I-I didn\u2019t want to make any noise!",
+      "true_emotion": "fear",
+      "prev_speaker": "Phoebe",
+      "prev_emotion": "anger",
+      "prev_utterance": "Ow! My ass. Okay. Okay.  Oh, shhh!",
+      "is_shift": true,
+      "is_spk_change": false,
+      "DistilBERT Utterance Baseline": "fear",
+      "DistilBERT Context-1": "surprise",
+      "DistilBERT Context-1 + Speaker": "fear",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "joy",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "anger",
+      "DialogueRNN (Unweighted)": "fear",
+      "DialogueRNN (Class-Weighted)": "fear"
+    },
+    {
+      "key": [
+        126,
+        4
+      ],
+      "dialogue_id": 126,
+      "utterance_id": 4,
+      "speaker": "Rachel",
+      "utterance": "No-no! Big bear! Big bear outside! I think I-I\u2014would you\u2014actually, would you go check on that?",
+      "true_emotion": "fear",
+      "prev_speaker": "Paul",
+      "prev_emotion": "neutral",
+      "prev_utterance": "What\u2019s the matter honey? Did you see a little mouse?",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "fear",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "joy",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "joy",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "anger",
+      "DialogueRNN (Unweighted)": "fear",
+      "DialogueRNN (Class-Weighted)": "joy"
+    }
+  ],
+  "disgust_recovered": [
+    {
+      "key": [
+        57,
+        5
+      ],
+      "dialogue_id": 57,
+      "utterance_id": 5,
+      "speaker": "Monica",
+      "utterance": "But you will always be the guy who peed on me.",
+      "true_emotion": "disgust",
+      "prev_speaker": "Monica",
+      "prev_emotion": "joy",
+      "prev_utterance": "Okay, all right, I think you\u2019re great, I think you\u2019re sweet, and you\u2019re smart, and I love you.",
+      "is_shift": true,
+      "is_spk_change": false,
+      "DistilBERT Utterance Baseline": "disgust",
+      "DistilBERT Context-1": "sadness",
+      "DistilBERT Context-1 + Speaker": "sadness",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "joy",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "sadness",
+      "DialogueRNN (Unweighted)": "disgust",
+      "DialogueRNN (Class-Weighted)": "sadness"
+    },
+    {
+      "key": [
+        70,
+        10
+      ],
+      "dialogue_id": 70,
+      "utterance_id": 10,
+      "speaker": "Joey",
+      "utterance": "No ... the leather sticks to my ass.",
+      "true_emotion": "disgust",
+      "prev_speaker": "Ross",
+      "prev_emotion": "disgust",
+      "prev_utterance": "What do you think you're gonna do, have sex with her right here    on my couch?",
+      "is_shift": false,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "disgust",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "sadness",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "anger",
+      "DialogueRNN (Unweighted)": "disgust",
+      "DialogueRNN (Class-Weighted)": "disgust"
+    },
+    {
+      "key": [
+        175,
+        8
+      ],
+      "dialogue_id": 175,
+      "utterance_id": 8,
+      "speaker": "Rachel",
+      "utterance": "Y\u2019know, like the thing when you put the phone in your pants?",
+      "true_emotion": "disgust",
+      "prev_speaker": "Tag",
+      "prev_emotion": "neutral",
+      "prev_utterance": "Like what?",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "disgust",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "neutral",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "disgust",
+      "DialogueRNN (Class-Weighted)": "disgust"
+    }
+  ],
+  "emotion_persistence_recovered": [
+    {
+      "key": [
+        12,
+        5
+      ],
+      "dialogue_id": 12,
+      "utterance_id": 5,
+      "speaker": "Ross",
+      "utterance": "Okay-okay!",
+      "true_emotion": "anger",
+      "prev_speaker": "Chandler",
+      "prev_emotion": "anger",
+      "prev_utterance": "Well, why don\u2019t you tell her to stop being silly!",
+      "is_shift": false,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "joy",
+      "DistilBERT Context-1": "joy",
+      "DistilBERT Context-1 + Speaker": "joy",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "anger"
+    },
+    {
+      "key": [
+        17,
+        8
+      ],
+      "dialogue_id": 17,
+      "utterance_id": 8,
+      "speaker": "Monica",
+      "utterance": "I know!",
+      "true_emotion": "anger",
+      "prev_speaker": "Janice",
+      "prev_emotion": "anger",
+      "prev_utterance": "Oh, I cannot believe he\u2019s using our divorce to sell mattresses.",
+      "is_shift": false,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "joy",
+      "DistilBERT Context-1": "surprise",
+      "DistilBERT Context-1 + Speaker": "surprise",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "surprise",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "surprise",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "surprise"
+    },
+    {
+      "key": [
+        52,
+        8
+      ],
+      "dialogue_id": 52,
+      "utterance_id": 8,
+      "speaker": "Ross",
+      "utterance": "Yeah, you didn\u2019t expect her to live there with a baby did you?",
+      "true_emotion": "surprise",
+      "prev_speaker": "Joey",
+      "prev_emotion": "surprise",
+      "prev_utterance": "She is?",
+      "is_shift": false,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "neutral",
+      "DistilBERT Context-1": "surprise",
+      "DistilBERT Context-1 + Speaker": "surprise",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "neutral",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "surprise",
+      "DialogueRNN (Unweighted)": "surprise",
+      "DialogueRNN (Class-Weighted)": "surprise"
+    }
+  ],
+  "emotion_shift_turning_points": [
+    {
+      "key": [
+        12,
+        11
+      ],
+      "dialogue_id": 12,
+      "utterance_id": 11,
+      "speaker": "Monica",
+      "utterance": "Love is the best medicine.",
+      "true_emotion": "joy",
+      "prev_speaker": "Chandler",
+      "prev_emotion": "neutral",
+      "prev_utterance": "Well, we are fond of the silliness, but we also have a soft spot for the love.",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "joy",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "neutral",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "joy",
+      "DialogueRNN (Class-Weighted)": "joy"
+    },
+    {
+      "key": [
+        14,
+        9
+      ],
+      "dialogue_id": 14,
+      "utterance_id": 9,
+      "speaker": "Phoebe",
+      "utterance": "We\u2019re just celebrating that Joey got his health insurance back.",
+      "true_emotion": "joy",
+      "prev_speaker": "Chandler",
+      "prev_emotion": "neutral",
+      "prev_utterance": "What are you doing?",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "joy",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "joy",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "joy",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "joy",
+      "DialogueRNN (Unweighted)": "joy",
+      "DialogueRNN (Class-Weighted)": "joy"
+    },
+    {
+      "key": [
+        25,
+        10
+      ],
+      "dialogue_id": 25,
+      "utterance_id": 10,
+      "speaker": "Rachel",
+      "utterance": "Now that you\u2019re on you\u2019re own, you\u2019re free to look as stupid as you like.",
+      "true_emotion": "anger",
+      "prev_speaker": "Rachel",
+      "prev_emotion": "neutral",
+      "prev_utterance": "Oh I see, so this suit is making a point.",
+      "is_shift": true,
+      "is_spk_change": false,
+      "DistilBERT Utterance Baseline": "anger",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "neutral"
+    }
+  ],
+  "cross_speaker_transitions": [
+    {
+      "key": [
+        0,
+        1
+      ],
+      "dialogue_id": 0,
+      "utterance_id": 1,
+      "speaker": "Rachel",
+      "utterance": "Oh. That\u2019s so Monica can keep track. That way if one on them is missing, she can be like, \u2018Where\u2019s number 27?!\u2019",
+      "true_emotion": "anger",
+      "prev_speaker": "Mark",
+      "prev_emotion": "surprise",
+      "prev_utterance": "Why do all you\u2019re coffee mugs have numbers on the bottom?",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "anger",
+      "DistilBERT Context-1": "neutral",
+      "DistilBERT Context-1 + Speaker": "neutral",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "surprise",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "sadness"
+    },
+    {
+      "key": [
+        2,
+        4
+      ],
+      "dialogue_id": 2,
+      "utterance_id": 4,
+      "speaker": "Rachel",
+      "utterance": "Okay, y'know what? There is no more left, left!",
+      "true_emotion": "anger",
+      "prev_speaker": "Ross",
+      "prev_emotion": "surprise",
+      "prev_utterance": "Okay, go left. Left! Left!",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "anger",
+      "DistilBERT Context-1": "joy",
+      "DistilBERT Context-1 + Speaker": "anger",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "anger",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "anger"
+    },
+    {
+      "key": [
+        4,
+        2
+      ],
+      "dialogue_id": 4,
+      "utterance_id": 2,
+      "speaker": "Phoebe",
+      "utterance": "It kicked! I think the baby kicked!",
+      "true_emotion": "surprise",
+      "prev_speaker": "Monica",
+      "prev_emotion": "neutral",
+      "prev_utterance": "What?",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "surprise",
+      "DistilBERT Context-1": "anger",
+      "DistilBERT Context-1 + Speaker": "surprise",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "joy",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "surprise",
+      "DialogueRNN (Unweighted)": "surprise",
+      "DialogueRNN (Class-Weighted)": "surprise"
+    }
+  ],
+  "ambiguous_short_utterances": [
+    {
+      "key": [
+        1,
+        1
+      ],
+      "dialogue_id": 1,
+      "utterance_id": 1,
+      "speaker": "Joey",
+      "utterance": "Push!",
+      "true_emotion": "joy",
+      "prev_speaker": "Joey",
+      "prev_emotion": "neutral",
+      "prev_utterance": "Come on, Lydia, you can do it.",
+      "is_shift": true,
+      "is_spk_change": false,
+      "DistilBERT Utterance Baseline": "anger",
+      "DistilBERT Context-1": "anger",
+      "DistilBERT Context-1 + Speaker": "joy",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "anger",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "fear"
+    },
+    {
+      "key": [
+        1,
+        6
+      ],
+      "dialogue_id": 1,
+      "utterance_id": 6,
+      "speaker": "Joey",
+      "utterance": "Push!",
+      "true_emotion": "joy",
+      "prev_speaker": "Joey",
+      "prev_emotion": "joy",
+      "prev_utterance": "Let's\u2014  I was just\u2014yeah, right.",
+      "is_shift": false,
+      "is_spk_change": false,
+      "DistilBERT Utterance Baseline": "anger",
+      "DistilBERT Context-1": "joy",
+      "DistilBERT Context-1 + Speaker": "anger",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "anger",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "anger"
+    },
+    {
+      "key": [
+        1,
+        7
+      ],
+      "dialogue_id": 1,
+      "utterance_id": 7,
+      "speaker": "Joey",
+      "utterance": "Push!",
+      "true_emotion": "joy",
+      "prev_speaker": "Joey",
+      "prev_emotion": "joy",
+      "prev_utterance": "Push!",
+      "is_shift": false,
+      "is_spk_change": false,
+      "DistilBERT Utterance Baseline": "anger",
+      "DistilBERT Context-1": "anger",
+      "DistilBERT Context-1 + Speaker": "anger",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "anger",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "anger"
+    },
+    {
+      "key": [
+        4,
+        3
+      ],
+      "dialogue_id": 4,
+      "utterance_id": 3,
+      "speaker": "Monica",
+      "utterance": "Oh my God!",
+      "true_emotion": "surprise",
+      "prev_speaker": "Phoebe",
+      "prev_emotion": "surprise",
+      "prev_utterance": "It kicked! I think the baby kicked!",
+      "is_shift": false,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "surprise",
+      "DistilBERT Context-1": "surprise",
+      "DistilBERT Context-1 + Speaker": "surprise",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "surprise",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "surprise",
+      "DialogueRNN (Unweighted)": "surprise",
+      "DialogueRNN (Class-Weighted)": "surprise"
+    }
+  ],
+  "context_dependent_success": [
+    {
+      "key": [
+        4,
+        7
+      ],
+      "dialogue_id": 4,
+      "utterance_id": 7,
+      "speaker": "Joey",
+      "utterance": "Look, I know I feel asleep before I could shower and now I don\u2019t have time!",
+      "true_emotion": "anger",
+      "prev_speaker": "Monica",
+      "prev_emotion": "disgust",
+      "prev_utterance": "Oh wait, Joey, you can\u2019t go like that! You stink!",
+      "is_shift": true,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "sadness",
+      "DistilBERT Context-1": "anger",
+      "DistilBERT Context-1 + Speaker": "anger",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "anger",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "anger"
+    },
+    {
+      "key": [
+        12,
+        5
+      ],
+      "dialogue_id": 12,
+      "utterance_id": 5,
+      "speaker": "Ross",
+      "utterance": "Okay-okay!",
+      "true_emotion": "anger",
+      "prev_speaker": "Chandler",
+      "prev_emotion": "anger",
+      "prev_utterance": "Well, why don\u2019t you tell her to stop being silly!",
+      "is_shift": false,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "joy",
+      "DistilBERT Context-1": "joy",
+      "DistilBERT Context-1 + Speaker": "joy",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "anger",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "neutral",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "anger"
+    },
+    {
+      "key": [
+        17,
+        8
+      ],
+      "dialogue_id": 17,
+      "utterance_id": 8,
+      "speaker": "Monica",
+      "utterance": "I know!",
+      "true_emotion": "anger",
+      "prev_speaker": "Janice",
+      "prev_emotion": "anger",
+      "prev_utterance": "Oh, I cannot believe he\u2019s using our divorce to sell mattresses.",
+      "is_shift": false,
+      "is_spk_change": true,
+      "DistilBERT Utterance Baseline": "joy",
+      "DistilBERT Context-1": "surprise",
+      "DistilBERT Context-1 + Speaker": "surprise",
+      "Model A: Emotion-History DistilBERT (Autoregressive)": "surprise",
+      "Model B: Combined-History DistilBERT (Autoregressive)": "surprise",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "surprise"
+    }
+  ],
+  "gap_turns": [
+    {
+      "dialogue_id": 93,
+      "utterance_id": 8,
+      "speaker": "Joey",
+      "utterance": "Oh, Chandler, Wayne.",
+      "true_emotion": "neutral",
+      "DialogueRNN (Unweighted)": "neutral",
+      "DialogueRNN (Class-Weighted)": "neutral",
+      "DistilBERT Utterance Baseline": "neutral",
+      "DistilBERT Context-1": "OMITTED_BY_GAP"
+    },
+    {
+      "dialogue_id": 108,
+      "utterance_id": 3,
+      "speaker": "Phoebe",
+      "utterance": "I mean if you buy a bed from Janice\u2019s ex-husband, that\u2019s like betraying Chandler.",
+      "true_emotion": "anger",
+      "DialogueRNN (Unweighted)": "anger",
+      "DialogueRNN (Class-Weighted)": "sadness",
+      "DistilBERT Utterance Baseline": "anger",
+      "DistilBERT Context-1": "OMITTED_BY_GAP"
+    }
+  ]
+}

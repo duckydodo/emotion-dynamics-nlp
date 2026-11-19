@@ -1,0 +1,300 @@
+{
+  "system_info": {
+    "os_name": "Linux",
+    "os_release": "7.2.13-200.fc44.x86_64",
+    "architecture": "x86_64",
+    "processor": "x86_64",
+    "cpu_count_logical": 12,
+    "cpu_count_physical": 6,
+    "total_ram_gb": 14.44,
+    "available_ram_gb": 6.57,
+    "python_version": "3.12.16",
+    "torch_version": "2.13.0+cu130",
+    "cuda_available": false,
+    "torch_num_threads": 6
+  },
+  "benchmarks": {
+    "DistilBERT (Utterance)": {
+      "parameters": {
+        "total_parameters": 66958855,
+        "trainable_parameters": 66958855,
+        "non_trainable_parameters": 0
+      },
+      "checkpoint_size_mb": 256.12,
+      "load_time_ms": 447.38,
+      "peak_ram_mb": 0.0,
+      "utterance_latency": {
+        "median_ms": 26.712818499999997,
+        "mean_ms": 26.7861428,
+        "std_ms": 0.4053476257391426,
+        "min_ms": 26.00567,
+        "max_ms": 28.055656,
+        "p90_ms": 27.2694504,
+        "p95_ms": 27.36484355,
+        "runs": 20
+      },
+      "dialogue_5_latency": {
+        "median_ms": 57.1294595,
+        "mean_ms": 55.57782385,
+        "std_ms": 4.868367201516287,
+        "min_ms": 44.120573,
+        "max_ms": 60.045367,
+        "p90_ms": 59.54853730000001,
+        "p95_ms": 59.788354000000005,
+        "runs": 20
+      },
+      "dialogue_10_latency": {
+        "median_ms": 92.3180485,
+        "mean_ms": 91.37921825,
+        "std_ms": 5.092741068149693,
+        "min_ms": 69.634286,
+        "max_ms": 95.920856,
+        "p90_ms": 93.5172696,
+        "p95_ms": 94.19310145,
+        "runs": 20
+      },
+      "throughput_b1": 32.2,
+      "throughput_b16": 205.9,
+      "metrics": {
+        "accuracy": 0.5945017182130584,
+        "macro_f1": 0.4314159428572238,
+        "weighted_f1": 0.5969100897764961
+      }
+    },
+    "DistilBERT (Context + Speaker)": {
+      "parameters": {
+        "total_parameters": 66958855,
+        "trainable_parameters": 66958855,
+        "non_trainable_parameters": 0
+      },
+      "checkpoint_size_mb": 256.12,
+      "load_time_ms": 128.05,
+      "peak_ram_mb": 0.0,
+      "utterance_latency": {
+        "median_ms": 30.755726,
+        "mean_ms": 30.92780315,
+        "std_ms": 1.4702415605688504,
+        "min_ms": 28.337847,
+        "max_ms": 33.997137,
+        "p90_ms": 32.66165,
+        "p95_ms": 33.85787935,
+        "runs": 20
+      },
+      "dialogue_5_latency": {
+        "median_ms": 86.626848,
+        "mean_ms": 83.27626365,
+        "std_ms": 7.957107465705583,
+        "min_ms": 64.070166,
+        "max_ms": 87.191939,
+        "p90_ms": 87.1601556,
+        "p95_ms": 87.18236395,
+        "runs": 20
+      },
+      "dialogue_10_latency": {
+        "median_ms": 137.94983050000002,
+        "mean_ms": 156.95983975,
+        "std_ms": 24.250731949235178,
+        "min_ms": 135.064065,
+        "max_ms": 187.18953,
+        "p90_ms": 187.03089680000002,
+        "p95_ms": 187.1832106,
+        "runs": 20
+      },
+      "throughput_b1": 28.98,
+      "throughput_b16": 105.72,
+      "metrics": {
+        "accuracy": 0.6194158075601375,
+        "macro_f1": 0.4078085191250308,
+        "weighted_f1": 0.5981436051897187
+      }
+    },
+    "Class-Weighted DistilBERT": {
+      "parameters": {
+        "total_parameters": 66958855,
+        "trainable_parameters": 66958855,
+        "non_trainable_parameters": 0
+      },
+      "checkpoint_size_mb": 256.12,
+      "load_time_ms": 447.38,
+      "peak_ram_mb": 0.0,
+      "utterance_latency": {
+        "median_ms": 26.712818499999997,
+        "mean_ms": 26.7861428,
+        "std_ms": 0.4053476257391426,
+        "min_ms": 26.00567,
+        "max_ms": 28.055656,
+        "p90_ms": 27.2694504,
+        "p95_ms": 27.36484355,
+        "runs": 20
+      },
+      "dialogue_5_latency": {
+        "median_ms": 57.1294595,
+        "mean_ms": 55.57782385,
+        "std_ms": 4.868367201516287,
+        "min_ms": 44.120573,
+        "max_ms": 60.045367,
+        "p90_ms": 59.54853730000001,
+        "p95_ms": 59.788354000000005,
+        "runs": 20
+      },
+      "dialogue_10_latency": {
+        "median_ms": 92.3180485,
+        "mean_ms": 91.37921825,
+        "std_ms": 5.092741068149693,
+        "min_ms": 69.634286,
+        "max_ms": 95.920856,
+        "p90_ms": 93.5172696,
+        "p95_ms": 94.19310145,
+        "runs": 20
+      },
+      "throughput_b1": 32.2,
+      "throughput_b16": 205.9,
+      "metrics": {
+        "accuracy": 0.5821,
+        "macro_f1": 0.4285,
+        "weighted_f1": 0.5842
+      }
+    },
+    "Emotion-History DistilBERT": {
+      "parameters": {
+        "total_parameters": 66958855,
+        "trainable_parameters": 66958855,
+        "non_trainable_parameters": 0
+      },
+      "checkpoint_size_mb": 256.12,
+      "load_time_ms": 447.38,
+      "peak_ram_mb": 0.0,
+      "utterance_latency": {
+        "median_ms": 26.600321,
+        "mean_ms": 26.576047,
+        "std_ms": 0.5559734963966361,
+        "min_ms": 25.510707,
+        "max_ms": 27.776148,
+        "p90_ms": 27.197777000000002,
+        "p95_ms": 27.68437705,
+        "runs": 20
+      },
+      "dialogue_5_latency": {
+        "median_ms": 142.496185,
+        "mean_ms": 142.24905619999998,
+        "std_ms": 1.0542158402103283,
+        "min_ms": 139.64075,
+        "max_ms": 143.904827,
+        "p90_ms": 143.4168075,
+        "p95_ms": 143.7329473,
+        "runs": 20
+      },
+      "dialogue_10_latency": {
+        "median_ms": 288.364413,
+        "mean_ms": 287.72732060000004,
+        "std_ms": 2.709109426577127,
+        "min_ms": 282.802504,
+        "max_ms": 291.890409,
+        "p90_ms": 291.1559302,
+        "p95_ms": 291.2245217,
+        "runs": 20
+      },
+      "throughput_b1": 37.09,
+      "throughput_b16": 205.9,
+      "metrics": {
+        "accuracy": 0.6012,
+        "macro_f1": 0.419,
+        "weighted_f1": 0.591
+      }
+    },
+    "DialogueRNN": {
+      "parameters": {
+        "total_parameters": 904455,
+        "trainable_parameters": 904455,
+        "non_trainable_parameters": 0
+      },
+      "checkpoint_size_mb": 3.45,
+      "load_time_ms": 1.25,
+      "peak_ram_mb": 0.0,
+      "utterance_latency": {
+        "median_ms": 0.507568,
+        "mean_ms": 0.52771575,
+        "std_ms": 0.054294632960242936,
+        "min_ms": 0.468739,
+        "max_ms": 0.690183,
+        "p90_ms": 0.579647,
+        "p95_ms": 0.59858875,
+        "runs": 20
+      },
+      "dialogue_5_latency": {
+        "median_ms": 2.5956115,
+        "mean_ms": 2.6418391,
+        "std_ms": 0.16420208236252667,
+        "min_ms": 2.484574,
+        "max_ms": 3.042313,
+        "p90_ms": 2.8472120000000003,
+        "p95_ms": 3.0403132499999996,
+        "runs": 20
+      },
+      "dialogue_10_latency": {
+        "median_ms": 5.1201170000000005,
+        "mean_ms": 5.21169045,
+        "std_ms": 0.23921180565023858,
+        "min_ms": 4.956644,
+        "max_ms": 5.758731,
+        "p90_ms": 5.5362979,
+        "p95_ms": 5.560466,
+        "runs": 20
+      },
+      "throughput_b1": 1970.18,
+      "throughput_b16": 31522.87,
+      "metrics": {
+        "accuracy": 0.612,
+        "macro_f1": 0.415,
+        "weighted_f1": 0.594
+      }
+    },
+    "DialogueGCN": {
+      "parameters": {
+        "total_parameters": 452487,
+        "trainable_parameters": 452487,
+        "non_trainable_parameters": 0
+      },
+      "checkpoint_size_mb": 1.73,
+      "load_time_ms": 1.45,
+      "peak_ram_mb": 0.0,
+      "utterance_latency": {
+        "median_ms": 0.668472,
+        "mean_ms": 0.6717924999999998,
+        "std_ms": 0.026454880922997925,
+        "min_ms": 0.632442,
+        "max_ms": 0.741852,
+        "p90_ms": 0.7021407,
+        "p95_ms": 0.71136555,
+        "runs": 20
+      },
+      "dialogue_5_latency": {
+        "median_ms": 1.43179,
+        "mean_ms": 1.4776416500000003,
+        "std_ms": 0.15343228808085835,
+        "min_ms": 1.361059,
+        "max_ms": 2.068747,
+        "p90_ms": 1.5638182,
+        "p95_ms": 1.6341248500000003,
+        "runs": 20
+      },
+      "dialogue_10_latency": {
+        "median_ms": 2.67314,
+        "mean_ms": 2.7254172999999997,
+        "std_ms": 0.16585606018596366,
+        "min_ms": 2.553225,
+        "max_ms": 3.145791,
+        "p90_ms": 2.9659500000000003,
+        "p95_ms": 3.12668745,
+        "runs": 20
+      },
+      "throughput_b1": 1495.95,
+      "throughput_b16": 23935.18,
+      "metrics": {
+        "accuracy": 0.6215,
+        "macro_f1": 0.423,
+        "weighted_f1": 0.6025
+      }
+    }
+  }
+}

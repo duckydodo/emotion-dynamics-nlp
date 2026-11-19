@@ -1,0 +1,155 @@
+Model,Cohort,Emotion,Precision,Recall,F1,Support
+DistilBERT Utterance Baseline,Cohort A: Strict Contiguous Matched Subset,anger,0.46887966804979253,0.36807817589576547,0.4124087591240876,307
+DistilBERT Utterance Baseline,Cohort A: Strict Contiguous Matched Subset,disgust,0.34210526315789475,0.20634920634920634,0.25742574257425743,63
+DistilBERT Utterance Baseline,Cohort A: Strict Contiguous Matched Subset,fear,0.12790697674418605,0.25,0.16923076923076924,44
+DistilBERT Utterance Baseline,Cohort A: Strict Contiguous Matched Subset,joy,0.5011933174224343,0.5865921787709497,0.5405405405405406,358
+DistilBERT Utterance Baseline,Cohort A: Strict Contiguous Matched Subset,neutral,0.7804182509505704,0.735663082437276,0.757380073800738,1116
+DistilBERT Utterance Baseline,Cohort A: Strict Contiguous Matched Subset,sadness,0.36046511627906974,0.3315508021390374,0.34540389972144847,187
+DistilBERT Utterance Baseline,Cohort A: Strict Contiguous Matched Subset,surprise,0.48125,0.6086956521739131,0.537521815008726,253
+DistilBERT Utterance Baseline,Cohort B: All Subsequent Sequential Turns,anger,0.47107438016528924,0.37012987012987014,0.41454545454545455,308
+DistilBERT Utterance Baseline,Cohort B: All Subsequent Sequential Turns,disgust,0.34210526315789475,0.20634920634920634,0.25742574257425743,63
+DistilBERT Utterance Baseline,Cohort B: All Subsequent Sequential Turns,fear,0.12790697674418605,0.25,0.16923076923076924,44
+DistilBERT Utterance Baseline,Cohort B: All Subsequent Sequential Turns,joy,0.5011933174224343,0.5865921787709497,0.5405405405405406,358
+DistilBERT Utterance Baseline,Cohort B: All Subsequent Sequential Turns,neutral,0.7806267806267806,0.7358997314234557,0.7576036866359447,1117
+DistilBERT Utterance Baseline,Cohort B: All Subsequent Sequential Turns,sadness,0.36046511627906974,0.3315508021390374,0.34540389972144847,187
+DistilBERT Utterance Baseline,Cohort B: All Subsequent Sequential Turns,surprise,0.48125,0.6086956521739131,0.537521815008726,253
+DistilBERT Utterance Baseline,Cohort C: Dialogue Initial Turns (t=0),anger,0.4642857142857143,0.35135135135135137,0.4,37
+DistilBERT Utterance Baseline,Cohort C: Dialogue Initial Turns (t=0),disgust,0.6,0.6,0.6,5
+DistilBERT Utterance Baseline,Cohort C: Dialogue Initial Turns (t=0),fear,0.16666666666666666,0.3333333333333333,0.2222222222222222,6
+DistilBERT Utterance Baseline,Cohort C: Dialogue Initial Turns (t=0),joy,0.6739130434782609,0.7045454545454546,0.6888888888888889,44
+DistilBERT Utterance Baseline,Cohort C: Dialogue Initial Turns (t=0),neutral,0.8467153284671532,0.8345323741007195,0.8405797101449275,139
+DistilBERT Utterance Baseline,Cohort C: Dialogue Initial Turns (t=0),sadness,0.375,0.2857142857142857,0.32432432432432434,21
+DistilBERT Utterance Baseline,Cohort C: Dialogue Initial Turns (t=0),surprise,0.4722222222222222,0.6071428571428571,0.53125,28
+DistilBERT Utterance Baseline,Cohort D: Full Test Set,anger,0.4703703703703704,0.3681159420289855,0.41300813008130083,345
+DistilBERT Utterance Baseline,Cohort D: Full Test Set,disgust,0.37209302325581395,0.23529411764705882,0.2882882882882883,68
+DistilBERT Utterance Baseline,Cohort D: Full Test Set,fear,0.1326530612244898,0.26,0.17567567567567569,50
+DistilBERT Utterance Baseline,Cohort D: Full Test Set,joy,0.5182795698924731,0.599502487562189,0.5559400230680508,402
+DistilBERT Utterance Baseline,Cohort D: Full Test Set,neutral,0.788235294117647,0.7468152866242038,0.7669664758789861,1256
+DistilBERT Utterance Baseline,Cohort D: Full Test Set,sadness,0.3617021276595745,0.3269230769230769,0.3434343434343434,208
+DistilBERT Utterance Baseline,Cohort D: Full Test Set,surprise,0.4803370786516854,0.608540925266904,0.5368916797488226,281
+DistilBERT Context-1,Cohort A: Strict Contiguous Matched Subset,anger,0.5053191489361702,0.30944625407166126,0.3838383838383838,307
+DistilBERT Context-1,Cohort A: Strict Contiguous Matched Subset,disgust,0.3,0.14285714285714285,0.1935483870967742,63
+DistilBERT Context-1,Cohort A: Strict Contiguous Matched Subset,fear,0.11538461538461539,0.06818181818181818,0.08571428571428572,44
+DistilBERT Context-1,Cohort A: Strict Contiguous Matched Subset,joy,0.491183879093199,0.5446927374301676,0.5165562913907285,358
+DistilBERT Context-1,Cohort A: Strict Contiguous Matched Subset,neutral,0.6976744186046512,0.8333333333333334,0.759493670886076,1116
+DistilBERT Context-1,Cohort A: Strict Contiguous Matched Subset,sadness,0.44776119402985076,0.16042780748663102,0.23622047244094488,187
+DistilBERT Context-1,Cohort A: Strict Contiguous Matched Subset,surprise,0.5296167247386759,0.6007905138339921,0.562962962962963,253
+DistilBERT Context-1 + Speaker,Cohort A: Strict Contiguous Matched Subset,anger,0.5052083333333334,0.31596091205211724,0.38877755511022044,307
+DistilBERT Context-1 + Speaker,Cohort A: Strict Contiguous Matched Subset,disgust,0.3684210526315789,0.1111111111111111,0.17073170731707318,63
+DistilBERT Context-1 + Speaker,Cohort A: Strict Contiguous Matched Subset,fear,0.15625,0.11363636363636363,0.13157894736842105,44
+DistilBERT Context-1 + Speaker,Cohort A: Strict Contiguous Matched Subset,joy,0.5160493827160494,0.5837988826815642,0.5478374836173001,358
+DistilBERT Context-1 + Speaker,Cohort A: Strict Contiguous Matched Subset,neutral,0.7340255591054313,0.8234767025089605,0.7761824324324325,1116
+DistilBERT Context-1 + Speaker,Cohort A: Strict Contiguous Matched Subset,sadness,0.42696629213483145,0.20320855614973263,0.2753623188405797,187
+DistilBERT Context-1 + Speaker,Cohort A: Strict Contiguous Matched Subset,surprise,0.49262536873156343,0.6600790513833992,0.5641891891891891,253
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,anger,0.4743083003952569,0.39087947882736157,0.42857142857142855,307
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,disgust,0.2727272727272727,0.047619047619047616,0.08108108108108109,63
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,fear,0.16666666666666666,0.022727272727272728,0.04,44
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,joy,0.49780701754385964,0.6340782122905028,0.5577395577395577,358
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,neutral,0.7415824915824916,0.7894265232974911,0.7647569444444444,1116
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,sadness,0.3581081081081081,0.28342245989304815,0.3164179104477612,187
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,surprise,0.5488721804511278,0.5770750988142292,0.5626204238921002,253
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,anger,0.4763779527559055,0.39285714285714285,0.4306049822064057,308
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,disgust,0.2727272727272727,0.047619047619047616,0.08108108108108109,63
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,fear,0.16666666666666666,0.022727272727272728,0.04,44
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,joy,0.49780701754385964,0.6340782122905028,0.5577395577395577,358
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,neutral,0.7417998317914214,0.7896150402864817,0.7649609713790113,1117
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,sadness,0.3581081081081081,0.28342245989304815,0.3164179104477612,187
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,surprise,0.5488721804511278,0.5770750988142292,0.5626204238921002,253
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),anger,0.41379310344827586,0.32432432432432434,0.36363636363636365,37
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),disgust,0.0,0.0,0.0,5
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),fear,0.0,0.0,0.0,6
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),joy,0.5423728813559322,0.7272727272727273,0.6213592233009708,44
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),neutral,0.8,0.8633093525179856,0.8304498269896193,139
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),sadness,0.375,0.14285714285714285,0.20689655172413793,21
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),surprise,0.48484848484848486,0.5714285714285714,0.5245901639344263,28
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort D: Full Test Set,anger,0.46996466431095407,0.3855072463768116,0.42356687898089174,345
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort D: Full Test Set,disgust,0.2727272727272727,0.04411764705882353,0.0759493670886076,68
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort D: Full Test Set,fear,0.14285714285714285,0.02,0.03508771929824561,50
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort D: Full Test Set,joy,0.5029126213592233,0.6442786069651741,0.5648854961832062,402
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort D: Full Test Set,neutral,0.748319641523525,0.7977707006369427,0.7722543352601156,1256
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort D: Full Test Set,sadness,0.358974358974359,0.2692307692307692,0.3076923076923077,208
+Model A: Emotion-History DistilBERT (Autoregressive),Cohort D: Full Test Set,surprise,0.5418060200668896,0.5765124555160143,0.5586206896551724,281
+Model B: Combined-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,anger,0.46153846153846156,0.42996742671009774,0.4451939291736931,307
+Model B: Combined-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,disgust,0.6666666666666666,0.031746031746031744,0.06060606060606061,63
+Model B: Combined-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,fear,0.0,0.0,0.0,44
+Model B: Combined-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,joy,0.5962732919254659,0.5363128491620112,0.5647058823529412,358
+Model B: Combined-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,neutral,0.7305246422893482,0.8234767025089605,0.7742207245155855,1116
+Model B: Combined-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,sadness,0.4117647058823529,0.22459893048128343,0.2906574394463668,187
+Model B: Combined-History DistilBERT (Autoregressive),Cohort A: Strict Contiguous Matched Subset,surprise,0.47752808988764045,0.6719367588932806,0.5582922824302134,253
+Model B: Combined-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,anger,0.46153846153846156,0.42857142857142855,0.4444444444444444,308
+Model B: Combined-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,disgust,0.6666666666666666,0.031746031746031744,0.06060606060606061,63
+Model B: Combined-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,fear,0.0,0.0,0.0,44
+Model B: Combined-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,joy,0.5962732919254659,0.5363128491620112,0.5647058823529412,358
+Model B: Combined-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,neutral,0.7301587301587301,0.8236347358997315,0.7740849810685738,1117
+Model B: Combined-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,sadness,0.4117647058823529,0.22459893048128343,0.2906574394463668,187
+Model B: Combined-History DistilBERT (Autoregressive),Cohort B: All Subsequent Sequential Turns,surprise,0.47752808988764045,0.6719367588932806,0.5582922824302134,253
+Model B: Combined-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),anger,0.4444444444444444,0.32432432432432434,0.375,37
+Model B: Combined-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),disgust,1.0,0.2,0.3333333333333333,5
+Model B: Combined-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),fear,0.0,0.0,0.0,6
+Model B: Combined-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),joy,0.6818181818181818,0.6818181818181818,0.6818181818181818,44
+Model B: Combined-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),neutral,0.7716049382716049,0.8992805755395683,0.8305647840531561,139
+Model B: Combined-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),sadness,0.25,0.14285714285714285,0.18181818181818182,21
+Model B: Combined-History DistilBERT (Autoregressive),Cohort C: Dialogue Initial Turns (t=0),surprise,0.4411764705882353,0.5357142857142857,0.4838709677419355,28
+Model B: Combined-History DistilBERT (Autoregressive),Cohort D: Full Test Set,anger,0.46006389776357826,0.41739130434782606,0.4376899696048632,345
+Model B: Combined-History DistilBERT (Autoregressive),Cohort D: Full Test Set,disgust,0.75,0.04411764705882353,0.08333333333333333,68
+Model B: Combined-History DistilBERT (Autoregressive),Cohort D: Full Test Set,fear,0.0,0.0,0.0,50
+Model B: Combined-History DistilBERT (Autoregressive),Cohort D: Full Test Set,joy,0.6065573770491803,0.5522388059701493,0.578125,402
+Model B: Combined-History DistilBERT (Autoregressive),Cohort D: Full Test Set,neutral,0.7348804500703235,0.8320063694267515,0.7804331590739357,1256
+Model B: Combined-History DistilBERT (Autoregressive),Cohort D: Full Test Set,sadness,0.39473684210526316,0.21634615384615385,0.2795031055900621,208
+Model B: Combined-History DistilBERT (Autoregressive),Cohort D: Full Test Set,surprise,0.47435897435897434,0.6583629893238434,0.5514157973174366,281
+DialogueRNN (Unweighted),Cohort A: Strict Contiguous Matched Subset,anger,0.45141065830721006,0.46905537459283386,0.46006389776357826,307
+DialogueRNN (Unweighted),Cohort A: Strict Contiguous Matched Subset,disgust,0.3225806451612903,0.15873015873015872,0.2127659574468085,63
+DialogueRNN (Unweighted),Cohort A: Strict Contiguous Matched Subset,fear,0.175,0.1590909090909091,0.16666666666666666,44
+DialogueRNN (Unweighted),Cohort A: Strict Contiguous Matched Subset,joy,0.5036496350364964,0.5782122905027933,0.5383615084525357,358
+DialogueRNN (Unweighted),Cohort A: Strict Contiguous Matched Subset,neutral,0.782483156881617,0.728494623655914,0.7545243619489559,1116
+DialogueRNN (Unweighted),Cohort A: Strict Contiguous Matched Subset,sadness,0.3582887700534759,0.3582887700534759,0.3582887700534759,187
+DialogueRNN (Unweighted),Cohort A: Strict Contiguous Matched Subset,surprise,0.5049833887043189,0.6007905138339921,0.5487364620938628,253
+DialogueRNN (Unweighted),Cohort B: All Subsequent Sequential Turns,anger,0.453125,0.4707792207792208,0.46178343949044587,308
+DialogueRNN (Unweighted),Cohort B: All Subsequent Sequential Turns,disgust,0.3225806451612903,0.15873015873015872,0.2127659574468085,63
+DialogueRNN (Unweighted),Cohort B: All Subsequent Sequential Turns,fear,0.175,0.1590909090909091,0.16666666666666666,44
+DialogueRNN (Unweighted),Cohort B: All Subsequent Sequential Turns,joy,0.5036496350364964,0.5782122905027933,0.5383615084525357,358
+DialogueRNN (Unweighted),Cohort B: All Subsequent Sequential Turns,neutral,0.7826923076923077,0.7287376902417189,0.7547519703291609,1117
+DialogueRNN (Unweighted),Cohort B: All Subsequent Sequential Turns,sadness,0.3582887700534759,0.3582887700534759,0.3582887700534759,187
+DialogueRNN (Unweighted),Cohort B: All Subsequent Sequential Turns,surprise,0.5049833887043189,0.6007905138339921,0.5487364620938628,253
+DialogueRNN (Unweighted),Cohort C: Dialogue Initial Turns (t=0),anger,0.5357142857142857,0.40540540540540543,0.46153846153846156,37
+DialogueRNN (Unweighted),Cohort C: Dialogue Initial Turns (t=0),disgust,0.75,0.6,0.6666666666666666,5
+DialogueRNN (Unweighted),Cohort C: Dialogue Initial Turns (t=0),fear,0.14285714285714285,0.16666666666666666,0.15384615384615385,6
+DialogueRNN (Unweighted),Cohort C: Dialogue Initial Turns (t=0),joy,0.5961538461538461,0.7045454545454546,0.6458333333333334,44
+DialogueRNN (Unweighted),Cohort C: Dialogue Initial Turns (t=0),neutral,0.8169014084507042,0.8345323741007195,0.8256227758007118,139
+DialogueRNN (Unweighted),Cohort C: Dialogue Initial Turns (t=0),sadness,0.4117647058823529,0.3333333333333333,0.3684210526315789,21
+DialogueRNN (Unweighted),Cohort C: Dialogue Initial Turns (t=0),surprise,0.5666666666666667,0.6071428571428571,0.5862068965517241,28
+DialogueRNN (Unweighted),Cohort D: Full Test Set,anger,0.45977011494252873,0.463768115942029,0.46176046176046176,345
+DialogueRNN (Unweighted),Cohort D: Full Test Set,disgust,0.37142857142857144,0.19117647058823528,0.2524271844660194,68
+DialogueRNN (Unweighted),Cohort D: Full Test Set,fear,0.1702127659574468,0.16,0.16494845360824742,50
+DialogueRNN (Unweighted),Cohort D: Full Test Set,joy,0.5140388768898488,0.5920398009950248,0.5502890173410404,402
+DialogueRNN (Unweighted),Cohort D: Full Test Set,neutral,0.7868020304568528,0.7404458598726115,0.7629204265791633,1256
+DialogueRNN (Unweighted),Cohort D: Full Test Set,sadness,0.3627450980392157,0.3557692307692308,0.3592233009708738,208
+DialogueRNN (Unweighted),Cohort D: Full Test Set,surprise,0.5105740181268882,0.6014234875444839,0.5522875816993464,281
+DialogueRNN (Class-Weighted),Cohort A: Strict Contiguous Matched Subset,anger,0.5141509433962265,0.3550488599348534,0.42003853564547206,307
+DialogueRNN (Class-Weighted),Cohort A: Strict Contiguous Matched Subset,disgust,0.2909090909090909,0.25396825396825395,0.2711864406779661,63
+DialogueRNN (Class-Weighted),Cohort A: Strict Contiguous Matched Subset,fear,0.16176470588235295,0.25,0.19642857142857142,44
+DialogueRNN (Class-Weighted),Cohort A: Strict Contiguous Matched Subset,joy,0.5244956772334294,0.5083798882681564,0.5163120567375886,358
+DialogueRNN (Class-Weighted),Cohort A: Strict Contiguous Matched Subset,neutral,0.7512953367875648,0.7795698924731183,0.7651715039577837,1116
+DialogueRNN (Class-Weighted),Cohort A: Strict Contiguous Matched Subset,sadness,0.32298136645962733,0.27807486631016043,0.2988505747126437,187
+DialogueRNN (Class-Weighted),Cohort A: Strict Contiguous Matched Subset,surprise,0.4709480122324159,0.6086956521739131,0.5310344827586206,253
+DialogueRNN (Class-Weighted),Cohort B: All Subsequent Sequential Turns,anger,0.5141509433962265,0.3538961038961039,0.41923076923076924,308
+DialogueRNN (Class-Weighted),Cohort B: All Subsequent Sequential Turns,disgust,0.2909090909090909,0.25396825396825395,0.2711864406779661,63
+DialogueRNN (Class-Weighted),Cohort B: All Subsequent Sequential Turns,fear,0.16176470588235295,0.25,0.19642857142857142,44
+DialogueRNN (Class-Weighted),Cohort B: All Subsequent Sequential Turns,joy,0.5244956772334294,0.5083798882681564,0.5163120567375886,358
+DialogueRNN (Class-Weighted),Cohort B: All Subsequent Sequential Turns,neutral,0.7515099223468508,0.7797672336615935,0.7653778558875219,1117
+DialogueRNN (Class-Weighted),Cohort B: All Subsequent Sequential Turns,sadness,0.32098765432098764,0.27807486631016043,0.2979942693409742,187
+DialogueRNN (Class-Weighted),Cohort B: All Subsequent Sequential Turns,surprise,0.4709480122324159,0.6086956521739131,0.5310344827586206,253
+DialogueRNN (Class-Weighted),Cohort C: Dialogue Initial Turns (t=0),anger,0.5714285714285714,0.32432432432432434,0.41379310344827586,37
+DialogueRNN (Class-Weighted),Cohort C: Dialogue Initial Turns (t=0),disgust,0.375,0.6,0.46153846153846156,5
+DialogueRNN (Class-Weighted),Cohort C: Dialogue Initial Turns (t=0),fear,0.25,0.3333333333333333,0.2857142857142857,6
+DialogueRNN (Class-Weighted),Cohort C: Dialogue Initial Turns (t=0),joy,0.5185185185185185,0.6363636363636364,0.5714285714285714,44
+DialogueRNN (Class-Weighted),Cohort C: Dialogue Initial Turns (t=0),neutral,0.8055555555555556,0.8345323741007195,0.8197879858657244,139
+DialogueRNN (Class-Weighted),Cohort C: Dialogue Initial Turns (t=0),sadness,0.2222222222222222,0.09523809523809523,0.13333333333333333,21
+DialogueRNN (Class-Weighted),Cohort C: Dialogue Initial Turns (t=0),surprise,0.5277777777777778,0.6785714285714286,0.59375,28
+DialogueRNN (Class-Weighted),Cohort D: Full Test Set,anger,0.51931330472103,0.3507246376811594,0.4186851211072664,345
+DialogueRNN (Class-Weighted),Cohort D: Full Test Set,disgust,0.30158730158730157,0.27941176470588236,0.2900763358778626,68
+DialogueRNN (Class-Weighted),Cohort D: Full Test Set,fear,0.17105263157894737,0.26,0.20634920634920634,50
+DialogueRNN (Class-Weighted),Cohort D: Full Test Set,joy,0.5236907730673317,0.5223880597014925,0.523038605230386,402
+DialogueRNN (Class-Weighted),Cohort D: Full Test Set,neutral,0.7574827321565618,0.785828025477707,0.7713950762016413,1256
+DialogueRNN (Class-Weighted),Cohort D: Full Test Set,sadness,0.3157894736842105,0.25961538461538464,0.2849604221635884,208
+DialogueRNN (Class-Weighted),Cohort D: Full Test Set,surprise,0.4765840220385675,0.6156583629893239,0.5372670807453416,281

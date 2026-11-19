@@ -83,6 +83,10 @@ class TransformerTrainer:
         epochs=3,
         max_length=128,
         seed=42,
+        class_weights=None,
+        loss_fn=None,
+        weighting_method="unweighted",
+        weighting_params=None,
     ):
         self.classifier = classifier
         self.model = classifier.model
@@ -94,6 +98,23 @@ class TransformerTrainer:
         self.epochs = epochs
         self.max_length = max_length
         self.seed = seed
+
+        self.class_weights = (
+            class_weights
+            if class_weights is not None
+            else getattr(classifier, "class_weights", None)
+        )
+        if loss_fn is not None:
+            self.loss_fn = loss_fn
+        elif self.class_weights is not None:
+            self.loss_fn = torch.nn.CrossEntropyLoss(
+                weight=self.class_weights.to(self.device)
+            )
+        else:
+            self.loss_fn = getattr(classifier, "loss_fn", None)
+
+        self.weighting_method = weighting_method
+        self.weighting_params = weighting_params or {}
 
         self.optimizer = AdamW(
             self.model.parameters(),
@@ -136,9 +157,14 @@ class TransformerTrainer:
 
             self.optimizer.zero_grad()
 
+            labels = batch.get("labels")
+
             outputs = self.model(**batch)
 
-            loss = outputs.loss
+            if self.loss_fn is not None and labels is not None:
+                loss = self.loss_fn(outputs.logits, labels)
+            else:
+                loss = outputs.loss
 
             loss.backward()
 
@@ -249,6 +275,9 @@ class TransformerTrainer:
             exist_ok=True,
         )
 
+        temp_file = checkpoint_dir / "latest_training_state.pt.tmp"
+        target_file = checkpoint_dir / "latest_training_state.pt"
+
         torch.save(
             {
                 "epoch": epoch,
@@ -257,8 +286,10 @@ class TransformerTrainer:
                 "best_macro_f1": best_macro_f1,
                 "history": self.history,
             },
-            checkpoint_dir / "latest_training_state.pt",
+            temp_file,
         )
+
+        temp_file.replace(target_file)
 
     def load_training_checkpoint(
         self,
@@ -309,17 +340,25 @@ class TransformerTrainer:
             "w",
         ) as file:
 
+            config_data = {
+                "model_name": self.classifier.model_name,
+                "learning_rate": self.learning_rate,
+                "batch_size": self.batch_size,
+                "epochs": self.epochs,
+                "max_length": self.max_length,
+                "seed": self.seed,
+                "best_val_macro_f1": best_macro_f1,
+                "labels": LABELS,
+                "weighting_method": self.weighting_method,
+                "weighting_params": self.weighting_params,
+            }
+            if self.class_weights is not None:
+                config_data["class_weights"] = [
+                    float(w) for w in self.class_weights.cpu().numpy()
+                ]
+
             json.dump(
-                {
-                    "model_name": self.classifier.model_name,
-                    "learning_rate": self.learning_rate,
-                    "batch_size": self.batch_size,
-                    "epochs": self.epochs,
-                    "max_length": self.max_length,
-                    "seed": self.seed,
-                    "best_val_macro_f1": best_macro_f1,
-                    "labels": LABELS,
-                },
+                config_data,
                 file,
                 indent=2,
             )

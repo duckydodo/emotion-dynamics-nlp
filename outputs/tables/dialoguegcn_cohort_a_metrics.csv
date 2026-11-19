@@ -1,0 +1,7 @@
+Model,Parameters,Receptive_Field,Cohort_A_Accuracy,Cohort_A_Macro_F1,Cohort_A_Weighted_F1
+DistilBERT Utterance Baseline,66960000,Single utterance,0.5945,0.4314,0.5794
+DistilBERT Context-1,66960000,t-1 + t,0.6259,0.3912,0.6053
+DistilBERT Context-1 + Speaker,66960000,t-1 + t + Speaker,0.6134,0.4078,0.5986
+DialogueRNN (Unweighted),670855,Past 0..t (causal),0.6014,0.4342,0.5892
+DialogueRNN (Class-Weighted),670855,Past 0..t (causal),0.5988,0.4284,0.5857
+DialogueGCN (Ours),452487,Past & Future +/-10 (graph),0.6091065292096219,0.43847987041563463,0.6009180731592823

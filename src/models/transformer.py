@@ -13,6 +13,16 @@ LABELS = [
     "surprise",
 ]
 
+LABEL_TO_ID = {
+    label: index
+    for index, label in enumerate(LABELS)
+}
+
+ID_TO_LABEL = {
+    index: label
+    for label, index in LABEL_TO_ID.items()
+}
+
 
 class TransformerEmotionClassifier:
     def __init__(
@@ -21,6 +31,8 @@ class TransformerEmotionClassifier:
         num_labels=7,
         device=None,
         model_path=None,
+        class_weights=None,
+        loss_fn=None,
     ):
         self.model_name = model_name
         self.num_labels = num_labels
@@ -44,6 +56,8 @@ class TransformerEmotionClassifier:
                 label2id={label: i for i, label in enumerate(LABELS)},
             )
 
+        self.class_weights = class_weights
+        self.loss_fn = loss_fn
         self.model.to(self.device)
         self.model.eval()
 

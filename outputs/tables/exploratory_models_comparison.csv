@@ -1,0 +1,7 @@
+Model,Type,Causal,Parameters,Accuracy,Macro_F1,Weighted_F1
+DistilBERT Baseline (3-Epoch),Utterance-only Transformer,Yes (Turn Isolated),66960000,0.5945,0.4314,0.5794
+DialogueRNN,Recurrent (GRU Party Tracking),Yes (Sequential History),670855,0.6014,0.4342,0.5892
+DialogueGCN,Graph Convolutional (Relational),No (Bidirectional Window=10),452487,0.6091,0.4385,0.6009
+Temporal CNN (Causal),"Dilated 1D Conv (k=3, d=[1,2,4])",Yes (Left-Padded RF=15),823303,0.6026632302405498,0.4246803002224115,0.595165274609107
+Linear-Chain CRF (Viterbi),Structured Sequence CRF,No (Global Viterbi Decoding),5446,0.6000859106529209,0.4244422152321095,0.594686589253214
+Linear-Chain CRF (Causal),Structured Sequence CRF,Yes (Online Greedy Decoding),5446,0.6018041237113402,0.4314670592094151,0.5963039025603618

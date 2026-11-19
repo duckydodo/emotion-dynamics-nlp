@@ -1,0 +1,21 @@
+{
+    "mode": "autoregressive_deployable",
+    "full_test": {
+        "n": 2610,
+        "accuracy": 0.6298850574712643,
+        "macro_f1": 0.38721433784566156,
+        "weighted_f1": 0.606277581987027
+    },
+    "turn_0": {
+        "n": 280,
+        "accuracy": 0.6642857142857143,
+        "macro_f1": 0.4123436355378269,
+        "weighted_f1": 0.636988359160755
+    },
+    "turns_subsequent": {
+        "n": 2330,
+        "accuracy": 0.6257510729613734,
+        "macro_f1": 0.3846844414783715,
+        "weighted_f1": 0.6021998236370537
+    }
+}

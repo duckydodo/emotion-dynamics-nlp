@@ -1,0 +1,391 @@
+{
+  "dialogue_length": 6,
+  "dialoguernn": [
+    {
+      "turn_id": 0,
+      "speaker": "Ross",
+      "text": "Rachel, can we please talk about last night?",
+      "full_prediction": "sadness",
+      "full_confidence": 0.4705,
+      "full_probabilities": {
+        "anger": 0.055,
+        "disgust": 0.0684,
+        "fear": 0.2617,
+        "joy": 0.0468,
+        "neutral": 0.064,
+        "sadness": 0.4705,
+        "surprise": 0.0334
+      },
+      "isolated_prediction": "sadness",
+      "isolated_confidence": 0.4705,
+      "isolated_probabilities": {
+        "anger": 0.055,
+        "disgust": 0.0684,
+        "fear": 0.2617,
+        "joy": 0.0468,
+        "neutral": 0.064,
+        "sadness": 0.4705,
+        "surprise": 0.0334
+      },
+      "prediction_flipped": false,
+      "confidence_delta": -0.0,
+      "target_prob_delta": -0.0,
+      "entropy_full": 1.4815,
+      "entropy_isolated": 1.4815
+    },
+    {
+      "turn_id": 1,
+      "speaker": "Rachel",
+      "text": "There is nothing to talk about, Ross. We are done.",
+      "full_prediction": "neutral",
+      "full_confidence": 0.9329,
+      "full_probabilities": {
+        "anger": 0.0127,
+        "disgust": 0.001,
+        "fear": 0.0048,
+        "joy": 0.0235,
+        "neutral": 0.9329,
+        "sadness": 0.0237,
+        "surprise": 0.0014
+      },
+      "isolated_prediction": "neutral",
+      "isolated_confidence": 0.9496,
+      "isolated_probabilities": {
+        "anger": 0.0088,
+        "disgust": 0.0007,
+        "fear": 0.0031,
+        "joy": 0.0206,
+        "neutral": 0.9496,
+        "sadness": 0.0161,
+        "surprise": 0.0011
+      },
+      "prediction_flipped": false,
+      "confidence_delta": -0.0167,
+      "target_prob_delta": -0.0167,
+      "entropy_full": 0.3388,
+      "entropy_isolated": 0.2674
+    },
+    {
+      "turn_id": 2,
+      "speaker": "Ross",
+      "text": "I made a mistake, okay? It didn't mean anything!",
+      "full_prediction": "anger",
+      "full_confidence": 0.4553,
+      "full_probabilities": {
+        "anger": 0.4553,
+        "disgust": 0.032,
+        "fear": 0.0727,
+        "joy": 0.0266,
+        "neutral": 0.0337,
+        "sadness": 0.3679,
+        "surprise": 0.0118
+      },
+      "isolated_prediction": "anger",
+      "isolated_confidence": 0.7695,
+      "isolated_probabilities": {
+        "anger": 0.7695,
+        "disgust": 0.0183,
+        "fear": 0.0344,
+        "joy": 0.0225,
+        "neutral": 0.0307,
+        "sadness": 0.114,
+        "surprise": 0.0105
+      },
+      "prediction_flipped": false,
+      "confidence_delta": -0.3142,
+      "target_prob_delta": -0.3142,
+      "entropy_full": 1.2901,
+      "entropy_isolated": 0.8786
+    },
+    {
+      "turn_id": 3,
+      "speaker": "Rachel",
+      "text": "It meant everything to me.",
+      "full_prediction": "sadness",
+      "full_confidence": 0.9326,
+      "full_probabilities": {
+        "anger": 0.011,
+        "disgust": 0.0044,
+        "fear": 0.0294,
+        "joy": 0.0098,
+        "neutral": 0.0119,
+        "sadness": 0.9326,
+        "surprise": 0.0009
+      },
+      "isolated_prediction": "sadness",
+      "isolated_confidence": 0.8916,
+      "isolated_probabilities": {
+        "anger": 0.0159,
+        "disgust": 0.0078,
+        "fear": 0.0463,
+        "joy": 0.0148,
+        "neutral": 0.0212,
+        "sadness": 0.8916,
+        "surprise": 0.0024
+      },
+      "prediction_flipped": false,
+      "confidence_delta": 0.041,
+      "target_prob_delta": 0.041,
+      "entropy_full": 0.3464,
+      "entropy_isolated": 0.5066
+    },
+    {
+      "turn_id": 4,
+      "speaker": "Ross",
+      "text": "Fine, walk away! See if I care!",
+      "full_prediction": "anger",
+      "full_confidence": 0.958,
+      "full_probabilities": {
+        "anger": 0.958,
+        "disgust": 0.0097,
+        "fear": 0.0055,
+        "joy": 0.0043,
+        "neutral": 0.008,
+        "sadness": 0.0112,
+        "surprise": 0.0032
+      },
+      "isolated_prediction": "anger",
+      "isolated_confidence": 0.9387,
+      "isolated_probabilities": {
+        "anger": 0.9387,
+        "disgust": 0.0139,
+        "fear": 0.0081,
+        "joy": 0.0075,
+        "neutral": 0.0134,
+        "sadness": 0.0118,
+        "surprise": 0.0066
+      },
+      "prediction_flipped": false,
+      "confidence_delta": 0.0193,
+      "target_prob_delta": 0.0193,
+      "entropy_full": 0.2457,
+      "entropy_isolated": 0.3378
+    },
+    {
+      "turn_id": 5,
+      "speaker": "Rachel",
+      "text": "I will.",
+      "full_prediction": "neutral",
+      "full_confidence": 0.9347,
+      "full_probabilities": {
+        "anger": 0.0139,
+        "disgust": 0.0008,
+        "fear": 0.0048,
+        "joy": 0.0191,
+        "neutral": 0.9347,
+        "sadness": 0.0251,
+        "surprise": 0.0015
+      },
+      "isolated_prediction": "neutral",
+      "isolated_confidence": 0.9729,
+      "isolated_probabilities": {
+        "anger": 0.0048,
+        "disgust": 0.0005,
+        "fear": 0.0023,
+        "joy": 0.0103,
+        "neutral": 0.9729,
+        "sadness": 0.0077,
+        "surprise": 0.0014
+      },
+      "prediction_flipped": false,
+      "confidence_delta": -0.0382,
+      "target_prob_delta": -0.0382,
+      "entropy_full": 0.332,
+      "entropy_isolated": 0.1644
+    }
+  ],
+  "dialoguegcn": [
+    {
+      "turn_id": 0,
+      "speaker": "Ross",
+      "text": "Rachel, can we please talk about last night?",
+      "full_prediction": "sadness",
+      "full_confidence": 0.9791,
+      "full_probabilities": {
+        "anger": 0.0046,
+        "disgust": 0.0131,
+        "fear": 0.0024,
+        "joy": 0.0003,
+        "neutral": 0.0006,
+        "sadness": 0.9791,
+        "surprise": 0.0
+      },
+      "isolated_prediction": "sadness",
+      "isolated_confidence": 0.956,
+      "isolated_probabilities": {
+        "anger": 0.0005,
+        "disgust": 0.0013,
+        "fear": 0.042,
+        "joy": 0.0002,
+        "neutral": 0.0001,
+        "sadness": 0.956,
+        "surprise": 0.0
+      },
+      "prediction_flipped": false,
+      "confidence_delta": 0.0231,
+      "target_prob_delta": 0.0231,
+      "entropy_full": 0.1233,
+      "entropy_isolated": 0.191
+    },
+    {
+      "turn_id": 1,
+      "speaker": "Rachel",
+      "text": "There is nothing to talk about, Ross. We are done.",
+      "full_prediction": "neutral",
+      "full_confidence": 0.9997,
+      "full_probabilities": {
+        "anger": 0.0003,
+        "disgust": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "neutral": 0.9997,
+        "sadness": 0.0,
+        "surprise": 0.0
+      },
+      "isolated_prediction": "neutral",
+      "isolated_confidence": 1.0,
+      "isolated_probabilities": {
+        "anger": 0.0,
+        "disgust": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "neutral": 1.0,
+        "sadness": 0.0,
+        "surprise": 0.0
+      },
+      "prediction_flipped": false,
+      "confidence_delta": -0.0003,
+      "target_prob_delta": -0.0003,
+      "entropy_full": 0.003,
+      "entropy_isolated": 0.0001
+    },
+    {
+      "turn_id": 2,
+      "speaker": "Ross",
+      "text": "I made a mistake, okay? It didn't mean anything!",
+      "full_prediction": "anger",
+      "full_confidence": 0.9992,
+      "full_probabilities": {
+        "anger": 0.9992,
+        "disgust": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "neutral": 0.0,
+        "sadness": 0.0008,
+        "surprise": 0.0
+      },
+      "isolated_prediction": "anger",
+      "isolated_confidence": 0.886,
+      "isolated_probabilities": {
+        "anger": 0.886,
+        "disgust": 0.0,
+        "fear": 0.0123,
+        "joy": 0.0,
+        "neutral": 0.0002,
+        "sadness": 0.1014,
+        "surprise": 0.0001
+      },
+      "prediction_flipped": false,
+      "confidence_delta": 0.1132,
+      "target_prob_delta": 0.1132,
+      "entropy_full": 0.0069,
+      "entropy_isolated": 0.3961
+    },
+    {
+      "turn_id": 3,
+      "speaker": "Rachel",
+      "text": "It meant everything to me.",
+      "full_prediction": "sadness",
+      "full_confidence": 0.9953,
+      "full_probabilities": {
+        "anger": 0.0046,
+        "disgust": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "neutral": 0.0001,
+        "sadness": 0.9953,
+        "surprise": 0.0
+      },
+      "isolated_prediction": "sadness",
+      "isolated_confidence": 0.9987,
+      "isolated_probabilities": {
+        "anger": 0.0009,
+        "disgust": 0.0,
+        "fear": 0.0001,
+        "joy": 0.0,
+        "neutral": 0.0001,
+        "sadness": 0.9987,
+        "surprise": 0.0001
+      },
+      "prediction_flipped": false,
+      "confidence_delta": -0.0034,
+      "target_prob_delta": -0.0034,
+      "entropy_full": 0.0307,
+      "entropy_isolated": 0.011
+    },
+    {
+      "turn_id": 4,
+      "speaker": "Ross",
+      "text": "Fine, walk away! See if I care!",
+      "full_prediction": "anger",
+      "full_confidence": 1.0,
+      "full_probabilities": {
+        "anger": 1.0,
+        "disgust": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "neutral": 0.0,
+        "sadness": 0.0,
+        "surprise": 0.0
+      },
+      "isolated_prediction": "anger",
+      "isolated_confidence": 0.9999,
+      "isolated_probabilities": {
+        "anger": 0.9999,
+        "disgust": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "neutral": 0.0,
+        "sadness": 0.0,
+        "surprise": 0.0
+      },
+      "prediction_flipped": false,
+      "confidence_delta": 0.0001,
+      "target_prob_delta": 0.0001,
+      "entropy_full": 0.0,
+      "entropy_isolated": 0.0009
+    },
+    {
+      "turn_id": 5,
+      "speaker": "Rachel",
+      "text": "I will.",
+      "full_prediction": "neutral",
+      "full_confidence": 0.9918,
+      "full_probabilities": {
+        "anger": 0.0006,
+        "disgust": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "neutral": 0.9918,
+        "sadness": 0.0076,
+        "surprise": 0.0
+      },
+      "isolated_prediction": "neutral",
+      "isolated_confidence": 1.0,
+      "isolated_probabilities": {
+        "anger": 0.0,
+        "disgust": 0.0,
+        "fear": 0.0,
+        "joy": 0.0,
+        "neutral": 1.0,
+        "sadness": 0.0,
+        "surprise": 0.0
+      },
+      "prediction_flipped": false,
+      "confidence_delta": -0.0082,
+      "target_prob_delta": -0.0082,
+      "entropy_full": 0.0497,
+      "entropy_isolated": 0.0002
+    }
+  ]
+}

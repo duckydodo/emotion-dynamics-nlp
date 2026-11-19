@@ -1,0 +1,10 @@
+{
+  "feature_dim": 768,
+  "hidden_dim": 128,
+  "num_classes": 7,
+  "num_relations": 2,
+  "num_layers": 2,
+  "dropout": 0.1,
+  "window_past": 10,
+  "window_future": 10
+}
