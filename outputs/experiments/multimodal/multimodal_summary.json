@@ -1,0 +1,70 @@
+{
+  "total_turns": 2328,
+  "universal_text_errors": 737,
+  "models": {
+    "Bimodal_DialogueRNN": {
+      "modalities": "text+audio",
+      "cohort_a_accuracy": 0.6095360824742269,
+      "cohort_a_macro_f1": 0.43589728740347067,
+      "cohort_a_weighted_f1": 0.6034150463034297,
+      "recovered_universal_errors": 28,
+      "per_class_f1": {
+        "anger": 0.4529505582137161,
+        "disgust": 0.23529411764705882,
+        "fear": 0.1978021978021978,
+        "joy": 0.5407608695652174,
+        "neutral": 0.765399737876802,
+        "sadness": 0.34782608695652173,
+        "surprise": 0.5112474437627812
+      }
+    },
+    "Bimodal_DialogueGCN": {
+      "modalities": "text+audio",
+      "cohort_a_accuracy": 0.6000859106529209,
+      "cohort_a_macro_f1": 0.4234090662652733,
+      "cohort_a_weighted_f1": 0.5946623369470087,
+      "recovered_universal_errors": 29,
+      "per_class_f1": {
+        "anger": 0.4355400696864111,
+        "disgust": 0.22950819672131148,
+        "fear": 0.16279069767441862,
+        "joy": 0.5355648535564853,
+        "neutral": 0.7573497147871874,
+        "sadness": 0.3212121212121212,
+        "surprise": 0.5218978102189781
+      }
+    },
+    "Trimodal_DialogueRNN": {
+      "modalities": "text+audio+video",
+      "cohort_a_accuracy": 0.6073883161512027,
+      "cohort_a_macro_f1": 0.4265376080436712,
+      "cohort_a_weighted_f1": 0.6035938945488877,
+      "recovered_universal_errors": 23,
+      "per_class_f1": {
+        "anger": 0.46153846153846156,
+        "disgust": 0.21428571428571427,
+        "fear": 0.16091954022988506,
+        "joy": 0.5454545454545454,
+        "neutral": 0.768276473194506,
+        "sadness": 0.31974921630094044,
+        "surprise": 0.5155393053016454
+      }
+    },
+    "Trimodal_DialogueGCN": {
+      "modalities": "text+audio+video",
+      "cohort_a_accuracy": 0.5992268041237113,
+      "cohort_a_macro_f1": 0.4294281268007562,
+      "cohort_a_weighted_f1": 0.5965085325157568,
+      "recovered_universal_errors": 24,
+      "per_class_f1": {
+        "anger": 0.43478260869565216,
+        "disgust": 0.23880597014925373,
+        "fear": 0.20224719101123595,
+        "joy": 0.5436337625178826,
+        "neutral": 0.7592017738359201,
+        "sadness": 0.3023255813953488,
+        "surprise": 0.525
+      }
+    }
+  }
+}

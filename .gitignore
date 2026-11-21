@@ -54,3 +54,7 @@ Thumbs.db
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# Kaggle upload bundle
+kaggle_upload_bundle/
+kaggle_upload_bundle.zip

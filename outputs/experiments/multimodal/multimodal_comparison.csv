@@ -1,0 +1,5 @@
+Model,Modalities,CohortA_Accuracy,CohortA_Macro_F1,CohortA_Weighted_F1,Universal_Errors_Recovered,Fear_F1,Disgust_F1
+Bimodal_DialogueRNN,text+audio,60.95%,0.4359,0.6034,28,19.78%,23.53%
+Bimodal_DialogueGCN,text+audio,60.01%,0.4234,0.5947,29,16.28%,22.95%
+Trimodal_DialogueRNN,text+audio+video,60.74%,0.4265,0.6036,23,16.09%,21.43%
+Trimodal_DialogueGCN,text+audio+video,59.92%,0.4294,0.5965,24,20.22%,23.88%

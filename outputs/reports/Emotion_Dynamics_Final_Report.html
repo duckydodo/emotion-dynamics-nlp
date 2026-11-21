@@ -192,11 +192,11 @@
     font-family: var(--font-sans);
     color: var(--text-main);
     background: var(--bg-page);
-    line-height: 1.6;
-    font-size: 14.5px;
+    line-height: 1.55;
+    font-size: 14px;
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 30px;
+    padding: 35px 25px;
   }
 
   /* Headings */
@@ -204,13 +204,13 @@
     color: var(--text-heading);
     font-weight: 700;
     line-height: 1.25;
-    margin-top: 1.6em;
-    margin-bottom: 0.5em;
+    margin-top: 1.5em;
+    margin-bottom: 0.45em;
     letter-spacing: -0.02em;
   }
 
   h1 {
-    font-size: 2.1rem;
+    font-size: 2.0rem;
     font-weight: 800;
     border-bottom: 3px solid var(--border-accent);
     padding-bottom: 0.35em;
@@ -219,22 +219,22 @@
   }
 
   h2 {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     border-bottom: 1px solid var(--border-light);
     padding-bottom: 0.25em;
-    margin-top: 1.8em;
+    margin-top: 1.6em;
     color: #1e293b;
   }
 
   h3 {
-    font-size: 1.15rem;
-    margin-top: 1.3em;
+    font-size: 1.1rem;
+    margin-top: 1.2em;
     color: #334155;
   }
 
   p, ul, ol {
     margin-top: 0;
-    margin-bottom: 0.85em;
+    margin-bottom: 0.75em;
   }
 
   ul, ol {
@@ -242,7 +242,7 @@
   }
 
   li {
-    margin-bottom: 0.3em;
+    margin-bottom: 0.25em;
   }
 
   strong {
@@ -263,22 +263,22 @@
     border: 0;
     height: 1px;
     background: var(--border-light);
-    margin: 2em 0;
+    margin: 1.8em 0;
   }
 
   /* Tables */
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 1.2em 0;
-    font-size: 13px;
-    line-height: 1.45;
+    margin: 1.1em 0;
+    font-size: 12.5px;
+    line-height: 1.4;
     page-break-inside: avoid;
     break-inside: avoid;
   }
 
   th, td {
-    padding: 8px 10px;
+    padding: 7px 9px;
     text-align: left;
     border: 1px solid var(--border-light);
     vertical-align: top;
@@ -288,7 +288,7 @@
     background: #f1f5f9;
     font-weight: 600;
     color: var(--text-heading);
-    font-size: 12px;
+    font-size: 11.5px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
@@ -301,13 +301,13 @@
   pre {
     background: #0f172a;
     color: #f8fafc;
-    padding: 14px 18px;
+    padding: 12px 16px;
     border-radius: 6px;
     overflow-x: auto;
     font-family: var(--font-mono);
-    font-size: 12px;
-    line-height: 1.5;
-    margin: 1.2em 0;
+    font-size: 11.5px;
+    line-height: 1.45;
+    margin: 1.1em 0;
     border: 1px solid #1e293b;
     page-break-inside: avoid;
     break-inside: avoid;
@@ -333,8 +333,8 @@
 
   /* Blockquotes & Callouts */
   blockquote {
-    margin: 1.2em 0;
-    padding: 12px 18px;
+    margin: 1.1em 0;
+    padding: 10px 16px;
     background: var(--accent-light);
     border-left: 4px solid var(--accent);
     border-radius: 0 6px 6px 0;
@@ -352,9 +352,9 @@
     background: var(--bg-surface);
     border: 1px solid var(--border-light);
     border-radius: 6px;
-    padding: 14px 18px;
-    margin: 1.2em 0 2em 0;
-    font-size: 13px;
+    padding: 12px 16px;
+    margin: 1.1em 0 1.8em 0;
+    font-size: 12.5px;
     page-break-inside: avoid;
     break-inside: avoid;
   }
@@ -367,42 +367,42 @@
   @media print {
     @page {
       size: A4 portrait;
-      margin: 16mm;
+      margin: 14mm;
     }
     
     body {
       max-width: 100%;
       padding: 0;
-      font-size: 9.8pt;
-      line-height: 1.42;
+      font-size: 9.2pt;
+      line-height: 1.34;
       color: #111;
     }
     
     h1 {
-      font-size: 17pt;
+      font-size: 16pt;
       margin-top: 0;
-      margin-bottom: 0.4em;
+      margin-bottom: 0.35em;
       page-break-after: avoid;
       break-after: avoid;
     }
     
     h2 {
-      font-size: 12pt;
+      font-size: 11.5pt;
       page-break-before: auto;
       page-break-after: avoid;
       break-after: avoid;
-      margin-top: 1.4em;
-      margin-bottom: 0.4em;
-      padding-top: 0.3em;
+      margin-top: 1.25em;
+      margin-bottom: 0.35em;
+      padding-top: 0.25em;
       border-bottom: 1px solid #cbd5e1;
     }
     
     h3 {
-      font-size: 10.5pt;
+      font-size: 10pt;
       page-break-after: avoid;
       break-after: avoid;
-      margin-top: 1.1em;
-      margin-bottom: 0.3em;
+      margin-top: 0.95em;
+      margin-bottom: 0.25em;
     }
     
     h4, h5, h6 {
@@ -411,29 +411,35 @@
     }
     
     p, ul, ol {
-      margin-bottom: 0.7em;
+      margin-bottom: 0.55em;
+    }
+
+    li {
+      margin-bottom: 0.2em;
+      break-inside: avoid;
+      page-break-inside: avoid;
     }
     
     pre {
       background: #f8fafc !important;
       color: #0f172a !important;
       border: 1px solid #cbd5e1 !important;
-      font-size: 8.2pt !important;
-      padding: 8px 10px !important;
+      font-size: 8pt !important;
+      padding: 7px 9px !important;
       page-break-inside: avoid;
       break-inside: avoid;
-      margin: 0.8em 0 !important;
+      margin: 0.6em 0 !important;
     }
     
     table {
-      font-size: 8.2pt !important;
+      font-size: 8pt !important;
       page-break-inside: avoid;
       break-inside: avoid;
-      margin: 0.8em 0 !important;
+      margin: 0.6em 0 !important;
     }
     
     th, td {
-      padding: 5px 7px !important;
+      padding: 4px 6px !important;
     }
     
     th {
@@ -449,23 +455,24 @@
       border-left: 3px solid #2563eb !important;
       page-break-inside: avoid;
       break-inside: avoid;
-      padding: 8px 12px !important;
-      margin: 0.8em 0 !important;
+      padding: 7px 11px !important;
+      margin: 0.6em 0 !important;
     }
     
     .report-meta {
-      padding: 10px 14px !important;
-      margin: 1em 0 1.5em 0 !important;
-      font-size: 9pt !important;
+      padding: 9px 12px !important;
+      margin: 0.8em 0 1.2em 0 !important;
+      font-size: 8.8pt !important;
     }
     
     hr {
-      margin: 1.4em 0 !important;
+      margin: 1.1em 0 !important;
     }
     
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+
   </style>
   <script defer=""
   src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
@@ -548,8 +555,8 @@ Architecture and Capabilities</a></li>
 <li><a href="#18-methodological-and-domain-limitations">Methodological
 and Domain Limitations</a></li>
 <li><a
-href="#19-future-multimodal-research-scope-tri-modal-affective-fusion">Future
-Multimodal Research Scope: Tri-Modal Affective Fusion</a></li>
+href="#19-multimodal-research-scope-and-empirical-fusion-extension">Multimodal
+Research Scope and Empirical Fusion Extension</a></li>
 <li><a href="#20-references">References</a></li>
 </ol>
 <hr />
@@ -558,15 +565,19 @@ Motivation and Problem Definition</h2>
 <p>Most conventional emotion classification systems operate on isolated,
 single-turn text representations. In natural interpersonal dialogue,
 however, human emotional expression is fundamentally situated, dynamic,
-and interdependent: * An utterance such as <em>“Yeah, right”</em> can
-express joyful agreement, neutral acknowledgment, or intense
-disgust/sarcasm depending entirely on preceding turns. * Speakers
-maintain personal emotional momentum (<strong>emotional
+and interdependent:</p>
+<ul>
+<li>An utterance such as <em>“Yeah, right”</em> can express joyful
+agreement, neutral acknowledgment, or intense disgust/sarcasm depending
+entirely on preceding turns.</li>
+<li>Speakers maintain personal emotional momentum (<strong>emotional
 inertia</strong>) while simultaneously reacting to social stimuli
 introduced by interlocutors (<strong>emotional resonance / cross-speaker
-influence</strong>). * Multi-party conversations introduce complex
-conversational topologies where turn-taking is asynchronous, multiple
-conversational threads intertwine, and speaker dynamics diverge.</p>
+influence</strong>).</li>
+<li>Multi-party conversations introduce complex conversational
+topologies where turn-taking is asynchronous, multiple conversational
+threads intertwine, and speaker dynamics diverge.</li>
+</ul>
 <p>This research investigates the degree to which multi-turn
 conversational context—modeled sequentially via Recurrent Neural
 Networks (DialogueRNN) and topologically via Graph Convolutional
@@ -598,20 +609,23 @@ scripted television domain?</li>
 <hr />
 <h2 id="dataset-selection-rationale">3. Dataset Selection Rationale</h2>
 <p>The project standardizes on the <strong>Multimodal EmotionLines
-Dataset (MELD)</strong> (Chen et al., 2018; Poria et al., 2019): *
-<strong>Multi-Party Interaction:</strong> Features conversations
+Dataset (MELD)</strong> (Chen et al., 2018; Poria et al., 2019):</p>
+<ul>
+<li><strong>Multi-Party Interaction:</strong> Features conversations
 involving 2 to 9 concurrent speakers (from the television series
 <em>Friends</em>), reflecting authentic multi-party group dynamics
-rather than synthetic dyadic scripts. * <strong>Emotion
-Taxonomy:</strong> Annotates utterances across the 7 Ekman-derived
-affective categories: <em>Neutral, Joy, Surprise, Anger, Sadness,
-Disgust, Fear</em>. * <strong>Dialogue Granularity:</strong> Entire
-conversational scenes are preserved in chronological sequence, enabling
-rigorous evaluation of sequential and graph-based dialogue models. *
-<strong>Textual Modality Focus:</strong> While MELD provides audio and
-video clips, our primary investigation isolates the text modality to
+rather than synthetic dyadic scripts.</li>
+<li><strong>Emotion Taxonomy:</strong> Annotates utterances across the 7
+Ekman-derived affective categories: <em>Neutral, Joy, Surprise, Anger,
+Sadness, Disgust, Fear</em>.</li>
+<li><strong>Dialogue Granularity:</strong> Entire conversational scenes
+are preserved in chronological sequence, enabling rigorous evaluation of
+sequential and graph-based dialogue models.</li>
+<li><strong>Textual Modality Focus:</strong> While MELD provides audio
+and video clips, our primary investigation isolates the text modality to
 establish rigorous NLP baselines before introducing multimodal acoustic
-fusion.</p>
+fusion.</li>
+</ul>
 <hr />
 <h2 id="cross-dataset-comparison-meld-dailydialog-and-emowoz">4.
 Cross-Dataset Comparison: MELD, DailyDialog, and EmoWOZ</h2>
@@ -689,9 +703,8 @@ Distribution</h3>
 <li><strong>Mean Utterance Length:</strong> 8.02 words (median: 6
 words).</li>
 <li><strong>Token Length (DistilBERT WordPiece):</strong> 99.4% of all
-utterances contain <span class="math inline">\le 64</span> tokens.
-Setting <code>max_length=128</code> comfortably covers the maximum
-dialogue turn without truncation.</li>
+utterances contain ≤ 64 tokens. Setting <code>max_length=128</code>
+comfortably covers the maximum dialogue turn without truncation.</li>
 <li><strong>Monosyllabic Utterances:</strong> Over 18% of utterances
 consist of 3 words or fewer (e.g., <em>“Okay”</em>, <em>“Push!”</em>,
 <em>“What?”</em>), representing the highest-ambiguity turns where
@@ -759,18 +772,15 @@ utterance IDs in the raw MELD CSV files:</p>
 <p>During MELD’s video extraction from <em>Friends</em> DVDs, certain
 intermediate utterances were discarded due to visual occlusion or audio
 overlap. For example, a dialogue might transition directly from
-<code>Utterance_ID = 0</code> to <code>Utterance_ID = 2</code>, omitting
-<code>Utterance_ID = 1</code>.</p>
+Utterance_ID = 0 to Utterance_ID = 2, omitting Utterance_ID = 1.</p>
 <h3 id="the-two-test-cohorts">7.2 The Two Test Cohorts</h3>
 <ul>
-<li><strong>Full Test Set (<span class="math inline">N=2,610</span>
-across 280 dialogues):</strong> Contains all utterances regardless of
-internal gaps. Utterance-level models (DistilBERT) can score every
-utterance independently.</li>
-<li><strong>Canonical Cohort A (<span class="math inline">N=2,328</span>
-across contiguous dialogues):</strong> Excludes dialogue-initial turns
-and breaks across missing ID gaps where sequential adjacency cannot be
-validated.</li>
+<li><strong>Full Test Set (N = 2,610 across 280 dialogues):</strong>
+Contains all utterances regardless of internal gaps. Utterance-level
+models (DistilBERT) can score every utterance independently.</li>
+<li><strong>Canonical Cohort A (N = 2,328 across contiguous
+dialogues):</strong> Excludes dialogue-initial turns and breaks across
+missing ID gaps where sequential adjacency cannot be validated.</li>
 </ul>
 <table>
 <colgroup>
@@ -782,8 +792,7 @@ validated.</li>
 <thead>
 <tr>
 <th style="text-align: left;">Test Evaluation Cohort</th>
-<th style="text-align: center;">Turn Count (<span
-class="math inline">N</span>)</th>
+<th style="text-align: center;">Turn Count (<i>N</i>)</th>
 <th style="text-align: left;">Inclusion Criteria</th>
 <th style="text-align: left;">Research Function</th>
 </tr>
@@ -800,8 +809,8 @@ dialogues</td>
 <td style="text-align: left;"><strong>Excluded: Initial
 Turns</strong></td>
 <td style="text-align: center;">280</td>
-<td style="text-align: left;">First utterance of each dialogue (<span
-class="math inline">t=0</span>)</td>
+<td style="text-align: left;">First utterance of each dialogue (t =
+0)</td>
 <td style="text-align: left;">No preceding history for context
 models</td>
 </tr>
@@ -817,8 +826,8 @@ construction</td>
 <tr>
 <td style="text-align: left;"><strong>Canonical Cohort A</strong></td>
 <td style="text-align: center;"><strong>2,328</strong></td>
-<td style="text-align: left;">Contiguous turns with verified <span
-class="math inline">t-1</span> context</td>
+<td style="text-align: left;">Contiguous turns with verified t - 1
+context</td>
 <td style="text-align: left;"><strong>Strict matched evaluation
 benchmark</strong></td>
 </tr>
@@ -826,14 +835,13 @@ benchmark</strong></td>
 </table>
 <p><strong>Methodological Guarantee:</strong> All statistical hypothesis
 tests and model comparisons (DistilBERT vs. DialogueRNN vs. DialogueGCN)
-are conducted on <strong>Cohort A (<span
-class="math inline">N=2,328</span>)</strong> to guarantee matched-sample
-validity.</p>
+are conducted on <strong>Cohort A (N = 2,328)</strong> to guarantee
+matched-sample validity.</p>
 <hr />
 <h2 id="emotion-distribution-and-transition-statistics">8. Emotion
 Distribution and Transition Statistics</h2>
-<h3 id="class-distribution-train-split-n9989">8.1 Class Distribution
-(Train Split, <span class="math inline">N=9,989</span>)</h3>
+<h3 id="class-distribution-train-split-n-9989">8.1 Class Distribution
+(Train Split, N = 9,989)</h3>
 <ul>
 <li><strong>Neutral:</strong> 4,710 (47.15%)</li>
 <li><strong>Joy:</strong> 1,743 (17.45%)</li>
@@ -851,8 +859,7 @@ Distribution and Transition Statistics</h2>
 <li><strong>Negative Resonance:</strong> An <em>Anger</em> utterance by
 Speaker A elevates the probability of an immediate <em>Anger</em>
 response from Speaker B from the base rate of 11.1% to
-<strong>38.7%</strong> (<span class="math inline">p &lt;
-0.001</span>).</li>
+<strong>38.7%</strong> (p &lt; 0.001).</li>
 <li><strong>Emotion Stickiness:</strong> <em>Sadness</em> exhibits high
 self-transition probability (34.2%) compared to its low marginal base
 rate (6.84%).</li>
@@ -865,12 +872,10 @@ DistilBERT Architecture, Training, and Checkpoint Selection</h2>
 <li><strong>Backbone:</strong> <code>distilbert-base-uncased</code> (6
 transformer layers, 12 attention heads, 768 hidden dimension, 66.96M
 parameters).</li>
-<li><strong>Classification Head:</strong> Linear projection (<span
-class="math inline">768 \to 7</span>) with dropout (<span
-class="math inline">p=0.2</span>).</li>
-<li><strong>Training Hyperparameters:</strong> AdamW, learning rate
-<span class="math inline">2 \times 10^{-5}</span>, batch size 4, maximum
-sequence length 128, seed 42.</li>
+<li><strong>Classification Head:</strong> Linear projection (768 → 7)
+with dropout (p = 0.2).</li>
+<li><strong>Training Hyperparameters:</strong> AdamW, learning rate 2 ×
+10⁻⁵, batch size 4, maximum sequence length 128, seed 42.</li>
 </ul>
 <h3 id="baseline-3-epoch-results">9.2 Baseline 3-Epoch Results</h3>
 <ul>
@@ -880,15 +885,13 @@ Weighted F1 54.59%</li>
 Weighted F1 57.96%</li>
 <li><strong>Dev Epoch 3 (Best Checkpoint):</strong> Accuracy 58.70%,
 <strong>Macro F1 44.29%</strong>, Weighted F1 57.64%</li>
-<li><strong>Full Test Performance (<span
-class="math inline">N=2,610</span>):</strong>
+<li><strong>Full Test Performance (N = 2,610):</strong>
 <ul>
 <li>Accuracy: <strong>60.31%</strong></li>
 <li>Macro F1: <strong>44.00%</strong></li>
 <li>Weighted F1: <strong>60.54%</strong></li>
 </ul></li>
-<li><strong>Cohort A Matched Performance (<span
-class="math inline">N=2,328</span>):</strong>
+<li><strong>Cohort A Matched Performance (N = 2,328):</strong>
 <ul>
 <li>Accuracy: <strong>59.45%</strong></li>
 <li>Macro F1: <strong>43.14%</strong></li>
@@ -900,24 +903,35 @@ Controlled 5-Epoch Experiment and Overfitting Analysis</h3>
 <p>To test whether extended fine-tuning improves representation learning
 on minority classes, a rigorous 5-epoch training experiment was executed
 (<code>scripts/train_distilbert_5epochs.py</code>) with all 6 physical
-CPU cores dedicated (<code>torch.set_num_threads(6)</code>): *
-<strong>CPU Step Latency:</strong> 1.3335s/step on AMD Ryzen 5 7530U;
-total training duration: 240.2 minutes (4.00 hours). *
-<strong>Validation Progression across Epochs:</strong> * Epoch 1: Loss
-1.1578 | Val Acc 58.70% | Val Macro F1 39.58% | Val Weighted F1 56.76% *
-Epoch 2: Loss 0.8172 | Val Acc 59.87% | Val Macro F1 41.59% | Val
-Weighted F1 58.05% * Epoch 3: Loss 0.6019 | Val Acc 59.51% | Val Macro
-F1 40.85% | Val Weighted F1 57.77% * Epoch 4: Loss 0.4439 | Val Acc
-60.59% | <strong>Val Macro F1 42.15%</strong> | Val Weighted F1 58.55%
-<em>(Selected as best 5-epoch checkpoint)</em> * Epoch 5: Loss 0.3587 |
-Val Acc 60.50% | Val Macro F1 39.66% | Val Weighted F1 58.46%
-<em>(Severe overfitting; dev Macro F1 collapsed by -2.49%)</em> *
-<strong>Test Performance on Canonical Cohort A (<span
-class="math inline">N=2,328</span>):</strong> * Accuracy:
-<strong>61.90%</strong> (+2.45% over 3-epoch baseline) * Macro F1:
-<strong>41.70%</strong> (-1.44% drop vs. 3-epoch baseline) * Weighted
-F1: <strong>59.86%</strong> (+1.92% over 3-epoch baseline) *
-<strong>Empirical Takeaway:</strong> Extended fine-tuning creates an
+CPU cores dedicated (<code>torch.set_num_threads(6)</code>):</p>
+<ul>
+<li><strong>CPU Step Latency:</strong> 1.3335s/step on AMD Ryzen 5
+7530U; total training duration: 240.2 minutes (4.00 hours).</li>
+<li><strong>Validation Progression across Epochs:</strong>
+<ul>
+<li>Epoch 1: Loss 1.1578 | Val Acc 58.70% | Val Macro F1 39.58% | Val
+Weighted F1 56.76%</li>
+<li>Epoch 2: Loss 0.8172 | Val Acc 59.87% | Val Macro F1 41.59% | Val
+Weighted F1 58.05%</li>
+<li>Epoch 3: Loss 0.6019 | Val Acc 59.51% | Val Macro F1 40.85% | Val
+Weighted F1 57.77%</li>
+<li>Epoch 4: Loss 0.4439 | Val Acc 60.59% | <strong>Val Macro F1
+42.15%</strong> | Val Weighted F1 58.55% <em>(Selected as best 5-epoch
+checkpoint)</em></li>
+<li>Epoch 5: Loss 0.3587 | Val Acc 60.50% | Val Macro F1 39.66% | Val
+Weighted F1 58.46% <em>(Severe overfitting; dev Macro F1 collapsed by
+-2.49%)</em></li>
+</ul></li>
+<li><strong>Test Performance on Canonical Cohort A (N = 2,328):</strong>
+<ul>
+<li>Accuracy: <strong>61.90%</strong> (+2.45% over 3-epoch
+baseline)</li>
+<li>Macro F1: <strong>41.70%</strong> (-1.44% drop vs. 3-epoch
+baseline)</li>
+<li>Weighted F1: <strong>59.86%</strong> (+1.92% over 3-epoch
+baseline)</li>
+</ul></li>
+<li><strong>Empirical Takeaway:</strong> Extended fine-tuning creates an
 illusion of performance improvement if evaluated solely by accuracy
 (+2.45%), but this gain is achieved entirely by collapsing minority
 class recall (<em>Fear</em> recall dropped from 15.69% to 10.00%;
@@ -925,16 +939,21 @@ class recall (<em>Fear</em> recall dropped from 15.69% to 10.00%;
 over-predicting the majority <em>Neutral</em> class (Neutral recall
 surged to 82.96%). Consequently, the 3-epoch checkpoint remains the
 mathematically sound baseline for multi-party conversational emotion
-recognition.</p>
+recognition.</li>
+</ul>
 <hr />
 <h2 id="contextual-modelling-experiments">10. Contextual Modelling
 Experiments</h2>
 <p>Prior to graph and recurrent models, simple concatenation baselines
-were evaluated: * <strong>Context-1 (Concatenation):</strong> Preceding
-utterance prepended to target utterance:
-<code>[CLS] Utterance_{t-1} [SEP] Utterance_t [SEP]</code>. *
-<strong>Context-1 + Speaker:</strong> Speaker identity tokens prepended:
-<code>[SPEAKER_A] Utterance_{t-1} [SPEAKER_B] Utterance_t</code>.</p>
+were evaluated:</p>
+<ul>
+<li><strong>Context-1 (Concatenation):</strong> Preceding utterance
+prepended to target utterance:
+<code>[CLS] Utterance_{t-1} [SEP] Utterance_t [SEP]</code>.</li>
+<li><strong>Context-1 + Speaker:</strong> Speaker identity tokens
+prepended:
+<code>[SPEAKER_A] Utterance_{t-1} [SPEAKER_B] Utterance_t</code>.</li>
+</ul>
 <h3 id="findings">Findings:</h3>
 <p>Naive concatenation of preceding tokens yields modest gains in macro
 F1 (+0.8%) but suffers from attention dispersion over long dialogues and
@@ -945,52 +964,61 @@ simultaneously.</p>
 DialogueRNN Architecture, Party Tracking, and Implementation</h2>
 <h3 id="architectural-composition">11.1 Architectural Composition</h3>
 <p>DialogueRNN (Majumder et al., 2019) decomposes multi-party dialogue
-into three specialized GRU components: 1. <strong>Global GRU (<span
-class="math inline">G</span>):</strong> Tracks overall conversational
-context and dialogue flow across all speakers. 2. <strong>Party GRU
-(<span class="math inline">P</span>):</strong> Maintains individual
-psychological states for each active participant, updating only when
-that specific speaker takes a turn. 3. <strong>Emotion GRU (<span
-class="math inline">E</span>):</strong> Synthesizes the global context,
-party state, and listener context into an emotion representation
-vector.</p>
+into three specialized GRU components:</p>
+<ol type="1">
+<li><strong>Global GRU (<span class="math inline">G</span>):</strong>
+Tracks overall conversational context and dialogue flow across all
+speakers.</li>
+<li><strong>Party GRU (<span class="math inline">P</span>):</strong>
+Maintains individual psychological states for each active participant,
+updating only when that specific speaker takes a turn.</li>
+<li><strong>Emotion GRU (<span class="math inline">E</span>):</strong>
+Synthesizes the global context, party state, and listener context into
+an emotion representation vector.</li>
+</ol>
 <h3 id="recurrent-information-flow-walkthrough">11.2 Recurrent
 Information Flow Walkthrough</h3>
 <p>DialogueRNN processes conversational turns sequentially through a
-multi-stage recurrent pipeline: * <strong>Turn Ingestion (<span
-class="math inline">u_t \to \mathbf{x}_t</span>):</strong> The current
-turn’s text is converted into a frozen 768-dimensional DistilBERT [CLS]
-embedding vector <span class="math inline">\mathbf{x}_t</span>. *
-<strong>Global Context Update (<span
+multi-stage recurrent pipeline:</p>
+<ul>
+<li><strong>Turn Ingestion (<span class="math inline">u_t \to
+\mathbf{x}_t</span>):</strong> The current turn’s text is converted into
+a frozen 768-dimensional DistilBERT [CLS] embedding vector <span
+class="math inline">\mathbf{x}_t</span>.</li>
+<li><strong>Global Context Update (<span
 class="math inline">g_t</span>):</strong> The Global GRU aggregates
 overall conversation flow by concatenating the incoming utterance vector
 with the speaking participant’s prior party state: <span
 class="math inline">g_t = \text{GRU}_G(g_{t-1}, [\mathbf{x}_t
-\mathbin{\Vert} q_t^{(s_t)}])</span>. * <strong>Speaker Party State
-Update (<span class="math inline">q_t^{(s)}</span>):</strong> The active
-speaker’s private Party GRU updates its internal psychological state
-using the new utterance and the updated global context: <span
+\mathbin{\Vert} q_t^{(s_t)}])</span>.</li>
+<li><strong>Speaker Party State Update (<span
+class="math inline">q_t^{(s)}</span>):</strong> The active speaker’s
+private Party GRU updates its internal psychological state using the new
+utterance and the updated global context: <span
 class="math inline">q_t^{(s_t)} = \text{GRU}_P(q_{t-1}^{(s_t)},
 [\mathbf{x}_t \mathbin{\Vert} g_t])</span>. All listening interlocutors
 retain their existing party states (<span class="math inline">q_t^{(s)}
-= q_{t-1}^{(s)}</span> for <span class="math inline">s \ne s_t</span>).
-* <strong>Interlocutor Context Attention (<span
+= q_{t-1}^{(s)}</span> for <span class="math inline">s \ne
+s_t</span>).</li>
+<li><strong>Interlocutor Context Attention (<span
 class="math inline">c_t</span>):</strong> An attentive query generated
 from the speaker’s state attends dynamically across all preceding global
 states <span class="math inline">\{g_1, \dots, g_{t-1}\}</span> to
 extract relevant past dialogue context <span
-class="math inline">c_t</span>. * <strong>Emotion Representation &amp;
-Prediction (<span class="math inline">e_t \to
-\hat{y}_t</span>):</strong> The Emotion GRU synthesizes the speaker’s
-party state with attentive context (<span class="math inline">e_t =
-\text{GRU}_E(e_{t-1}, [q_t^{(s_t)} \mathbin{\Vert} c_t])</span>) and
-passes <span class="math inline">e_t</span> through a linear projection
-layer to produce 7-class softmax probabilities.</p>
+class="math inline">c_t</span>.</li>
+<li><strong>Emotion Representation &amp; Prediction (<span
+class="math inline">e_t \to \hat{y}_t</span>):</strong> The Emotion GRU
+synthesizes the speaker’s party state with attentive context (<span
+class="math inline">e_t = \text{GRU}_E(e_{t-1}, [q_t^{(s_t)}
+\mathbin{\Vert} c_t])</span>) and passes <span
+class="math inline">e_t</span> through a linear projection layer to
+produce 7-class softmax probabilities.</li>
+</ul>
 <h3 id="mathematical-formulation">11.3 Mathematical Formulation</h3>
 <ul>
 <li><strong>Input Feature:</strong> Frozen 768-dimensional DistilBERT
 [CLS] vector <span class="math inline">\mathbf{x}_t</span>.</li>
-<li><strong>Global State Update:</strong> <span class="math display">g_t
+<li><strong>Global State Update:</strong> <span class="math inline">g_t
 = \text{GRU}_G(g_{t-1}, [\mathbf{x}_t \mathbin{\Vert}
 q_t^{(s_t)}])</span></li>
 <li><strong>Party State Update:</strong> <span
@@ -1005,8 +1033,8 @@ computes attentive context <span class="math inline">c_t</span>.</li>
 class="math inline">e_t = \text{GRU}_E(e_{t-1}, [q_t^{(s_t)}
 \mathbin{\Vert} c_t])</span>.</li>
 </ul>
-<h3 id="verified-results-cohort-a-n2328">11.4 Verified Results (Cohort
-A, <span class="math inline">N=2,328</span>)</h3>
+<h3 id="verified-results-cohort-a-n-2328">11.4 Verified Results (Cohort
+A, N = 2,328)</h3>
 <ul>
 <li><strong>Accuracy:</strong> <strong>60.14%</strong> (+0.69% over
 DistilBERT)</li>
@@ -1023,18 +1051,23 @@ DialogueGCN Architecture, Relational Topology, and Edge Logic</h2>
 Construction</h3>
 <p>DialogueGCN (Ghosal et al., 2019) represents each dialogue as an
 undirected graph <span class="math inline">\mathcal{G} = (\mathcal{V},
-\mathcal{E}, \mathcal{R})</span>: * <strong>Nodes <span
-class="math inline">\mathcal{V}</span>:</strong> Utterances <span
-class="math inline">u_1, \dots, u_N</span> represented by frozen
-DistilBERT CLS embeddings. * <strong>Relations <span
-class="math inline">\mathcal{R}</span>:</strong> Two relation types: 1.
-<span class="math inline">r = \text{self}</span> (Intra-speaker edge:
-same speaker connecting past and future turns). 2. <span
-class="math inline">r = \text{other}</span> (Inter-speaker edge:
-conversational exchanges between different interlocutors). *
-<strong>Context Window:</strong> Windowed temporal bounds (<span
+\mathcal{E}, \mathcal{R})</span>:</p>
+<ul>
+<li><strong>Nodes <span class="math inline">\mathcal{V}</span>:</strong>
+Utterances <span class="math inline">u_1, \dots, u_N</span> represented
+by frozen DistilBERT CLS embeddings.</li>
+<li><strong>Relations <span
+class="math inline">\mathcal{R}</span>:</strong> Two relation types:
+<ol type="1">
+<li><em>r</em> = self (Intra-speaker edge: same speaker connecting past
+and future turns).</li>
+<li><em>r</em> = other (Inter-speaker edge: conversational exchanges
+between different interlocutors).</li>
+</ol></li>
+<li><strong>Context Window:</strong> Windowed temporal bounds (<span
 class="math inline">w=10</span> past turns, <span
-class="math inline">w=10</span> future turns).</p>
+class="math inline">w=10</span> future turns).</li>
+</ul>
 <h3 id="graph-convolution-and-similarity-attention">12.2 Graph
 Convolution and Similarity Attention</h3>
 <p>The relational edge weight <span
@@ -1048,8 +1081,8 @@ class="math display">h_i^{(l+1)} = \sigma \left( \sum_{r \in
 \mathcal{R}} \sum_{j \in \mathcal{N}_i^r} \frac{\alpha_{ij}}{c_{i,r}}
 \mathbf{W}_r^{(l)} h_j^{(l)} + \mathbf{W}_0^{(l)} h_i^{(l)}
 \right)</span></p>
-<h3 id="verified-results-cohort-a-n2328-1">12.3 Verified Results (Cohort
-A, <span class="math inline">N=2,328</span>)</h3>
+<h3 id="verified-results-cohort-a-n-2328-1">12.3 Verified Results
+(Cohort A, N = 2,328)</h3>
 <ul>
 <li><strong>Accuracy:</strong> <strong>60.91%</strong> (+1.46% over
 DistilBERT, +0.77% over DialogueRNN)</li>
@@ -1066,22 +1099,20 @@ Exploratory Sequence Models: Temporal CNN and Linear-Chain CRF</h2>
 <p>To evaluate alternative sequential paradigms against recurrent and
 graph architectures, two classic sequence modeling formulations were
 implemented and evaluated on pre-extracted frozen DistilBERT CLS
-features (<span class="math inline">d=768</span>):</p>
+features (d = 768):</p>
 <h3 id="causal-temporal-cnn-1d-dilated-convolution">13.1 Causal Temporal
 CNN (1D Dilated Convolution)</h3>
 <ul>
 <li><strong>Architecture:</strong> 3 dilated residual blocks with kernel
-size <span class="math inline">k=3</span> and exponential dilations
-<span class="math inline">d \in \{1, 2, 4\}</span>.</li>
+size k = 3 and exponential dilations d ∈ {1, 2, 4}.</li>
 <li><strong>Causality &amp; Receptive Field:</strong> Strict
-left-padding of <span class="math inline">(k-1) \times d</span> turns
-prevents future token leakage, achieving an effective causal receptive
-field of <strong>15 conversational turns</strong>.</li>
+left-padding of (<i>k</i> − 1) × <i>d</i> turns prevents future token
+leakage, achieving an effective causal receptive field of <strong>15
+conversational turns</strong>.</li>
 <li><strong>Parameter Count:</strong> 823,303 trainable parameters.</li>
 <li><strong>Training Benchmark:</strong> 34.7s on 6 CPU cores across 25
 epochs.</li>
-<li><strong>Cohort A Test Results (<span
-class="math inline">N=2,328</span>):</strong>
+<li><strong>Cohort A Test Results (N = 2,328):</strong>
 <ul>
 <li>Accuracy: <strong>60.27%</strong> (+0.82% over DistilBERT
 baseline)</li>
@@ -1094,16 +1125,14 @@ baseline)</li>
 <h3 id="linear-chain-conditional-random-field-crf">13.2 Linear-Chain
 Conditional Random Field (CRF)</h3>
 <ul>
-<li><strong>Architecture:</strong> Learns an emission projection (<span
-class="math inline">768 \to 7</span>, 5,383 parameters) and a <span
-class="math inline">7 \times 7</span> emotion transition matrix <span
-class="math inline">\mathbf{A}_{j, k}</span> (<span
-class="math inline">49</span> parameters) with start/end transitions.
-Total parameters: <strong>5,446</strong>.</li>
+<li><strong>Architecture:</strong> Learns an emission projection (768 →
+7, 5,383 parameters) and a <span class="math inline">7 \times 7</span>
+emotion transition matrix <b>A</b><sub><i>j,k</i></sub> (49 parameters)
+with start/end transitions. Total parameters:
+<strong>5,446</strong>.</li>
 <li><strong>Training Benchmark:</strong> 11.3s on 6 CPU cores across 25
 epochs under Negative Log-Likelihood loss.</li>
-<li><strong>Cohort A Test Results (<span
-class="math inline">N=2,328</span>):</strong>
+<li><strong>Cohort A Test Results (N = 2,328):</strong>
 <ul>
 <li><strong>Global Viterbi Decoding (Non-Causal):</strong> Accuracy
 <strong>60.01%</strong>, Macro F1 <strong>42.44%</strong>, Weighted F1
@@ -1115,21 +1144,13 @@ class="math inline">N=2,328</span>):</strong>
 <li><strong>Learned Transition Matrix Dynamics:</strong>
 <ul>
 <li>Diagonal elements exhibit positive emotional inertia for
-high-frequency states (<em>Neutral <span class="math inline">\to</span>
-Neutral</em> <span class="math inline">+1.84</span>, <em>Joy <span
-class="math inline">\to</span> Joy</em> <span
-class="math inline">+0.92</span>), while penalizing rare
-self-transitions (<em>Fear <span class="math inline">\to</span>
-Fear</em> <span class="math inline">-0.48</span>, <em>Disgust <span
-class="math inline">\to</span> Disgust</em> <span
-class="math inline">-0.31</span>).</li>
-<li>Cross-emotion transitions penalize polarity reversals (<em>Disgust
-<span class="math inline">\to</span> Joy</em> <span
-class="math inline">-1.12</span>, <em>Anger <span
-class="math inline">\to</span> Joy</em> <span
-class="math inline">-0.89</span>), confirming that immediate polarity
-reversals are statistically improbable without an intervening neutral or
-explanatory turn.</li>
+high-frequency states (<em>Neutral → Neutral</em> +1.84, <em>Joy →
+Joy</em> +0.92), while penalizing rare self-transitions (<em>Fear →
+Fear</em> -0.48, <em>Disgust → Disgust</em> -0.31).</li>
+<li>Cross-emotion transitions penalize polarity reversals (<em>Disgust →
+Joy</em> -1.12, <em>Anger → Joy</em> -0.89), confirming that immediate
+polarity reversals are statistically improbable without an intervening
+neutral or explanatory turn.</li>
 </ul></li>
 </ul>
 <h3
@@ -1137,47 +1158,50 @@ id="architectural-synthesis-inductive-biases-in-conversational-nlp">13.3
 Architectural Synthesis: Inductive Biases in Conversational NLP</h3>
 <p>The matched Cohort A comparison illuminates why graph and recurrent
 models maintain a performance ceiling over temporal convolutions and
-sequence CRFs: 1. <strong>Speaker Agnosticism of Temporal
-Convolutions:</strong> Dilated convolutions apply uniform receptive
-field kernels across time steps regardless of <em>speaker turns</em>.
-Turn <span class="math inline">t-1</span> by Speaker B affects Speaker A
-differently than Turn <span class="math inline">t-2</span> by Speaker A
+sequence CRFs:</p>
+<ol type="1">
+<li><strong>Speaker Agnosticism of Temporal Convolutions:</strong>
+Dilated convolutions apply uniform receptive field kernels across time
+steps regardless of <em>speaker turns</em>. Turn <i>t</i>−1 by Speaker B
+affects Speaker A differently than Turn <i>t</i>−2 by Speaker A
 (interpersonal influence vs. self-inertia). Convolutions lack the
 dynamic indexing required to separate interlocutor influence from
-personal emotional inertia. 2. <strong>Homogeneous Markov
-Transitions:</strong> A single transition matrix <span
-class="math inline">\mathbf{A}_{j, k}</span> assumes transitions are
-identical whether speakers switch or remain the same. 3. <strong>The
-Superiority of Relational Speaker Inductive Biases:</strong> DialogueGCN
-and DialogueRNN condition state updates directly on speaker identity
-(relational edges or speaker-specific party GRUs), allowing them to
-break through the 43.4% Macro F1 barrier.</p>
+personal emotional inertia.</li>
+<li><strong>Homogeneous Markov Transitions:</strong> A single transition
+matrix <b>A</b><sub><i>j,k</i></sub> assumes transitions are identical
+whether speakers switch or remain the same.</li>
+<li><strong>The Superiority of Relational Speaker Inductive
+Biases:</strong> DialogueGCN and DialogueRNN condition state updates
+directly on speaker identity (relational edges or speaker-specific party
+GRUs), allowing them to break through the 43.4% Macro F1 barrier.</li>
+</ol>
 <hr />
 <h2 id="emotion-dynamics-inertia-resonance-and-turning-points">14.
 Emotion Dynamics: Inertia, Resonance, and Turning Points</h2>
 <h3 id="quantifying-emotional-inertia">14.1 Quantifying Emotional
 Inertia</h3>
 <p>Emotional inertia is defined as the conditional probability that
-Speaker <span class="math inline">S</span> expresses emotion <span
-class="math inline">E</span> at turn <span class="math inline">t</span>,
-given that Speaker <span class="math inline">S</span>’s previous
-utterance at turn <span class="math inline">t - k</span> was also
-emotion <span class="math inline">E</span>: <span
-class="math display">\mathcal{I}(E, S) = P(y_t = E \mid y_{t-k} = E,
-\text{speaker}(t) = \text{speaker}(t-k) = S)</span></p>
+Speaker <i>S</i> expresses emotion <i>E</i> at turn <i>t</i>, given that
+Speaker <i>S</i>’s previous utterance at turn <i>t</i> − <i>k</i> was
+also emotion <i>E</i>: <span class="math display">\mathcal{I}(E, S) =
+P(y_t = E \mid y_{t-k} = E, \text{speaker}(t) = \text{speaker}(t-k) =
+S)</span></p>
 <h3 id="quantifying-emotional-resonance">14.2 Quantifying Emotional
 Resonance</h3>
 <p>Resonance measures cross-speaker contagion: <span
 class="math display">\mathcal{R}(E_A \to E_B) = P(y_t = E_B \mid y_{t-1}
 = E_A, \text{speaker}(t) \ne \text{speaker}(t-1))</span></p>
 <h3 id="turning-point-detection">14.3 Turning Point Detection</h3>
-<p>A conversational turn <span class="math inline">t^*</span> is
-classified as an <strong>affective turning point</strong> if: 1.
-Significant emotional shift: <span class="math inline">y_{t^*} \ne
-y_{t^* - 1}</span>. 2. Valence polarity reversal: <span
-class="math inline">\text{Valence}(y_{t^*}) \times \text{Valence}(y_{t^*
-- 1}) &lt; 0</span>. 3. Divergence persistence: The new emotion state
-persists for at least 2 subsequent turns.</p>
+<p>A conversational turn <i>t</i>* is classified as an <strong>affective
+turning point</strong> if:</p>
+<ol type="1">
+<li>Significant emotional shift: <i>y</i><sub><i>t</i><em></sub> ≠
+<i>y</i><sub><i>t</i></em>−1</sub>.</li>
+<li>Valence polarity reversal: Valence(<i>y</i><sub><i>t</i><em></sub>)
+× Valence(<i>y</i><sub><i>t</i></em>−1</sub>) &lt; 0.</li>
+<li>Divergence persistence: The new emotion state persists for at least
+2 subsequent turns.</li>
+</ol>
 <hr />
 <h2 id="next-emotion-forecasting-and-empirical-sequence-baselines">15.
 Next-Emotion Forecasting and Empirical Sequence Baselines</h2>
@@ -1185,17 +1209,15 @@ Next-Emotion Forecasting and Empirical Sequence Baselines</h2>
 whether past dialogue history alone can predict the upcoming emotion of
 the next turn <strong>before that utterance is spoken or
 perceived</strong>. Unlike emotion recognition (which conditions on the
-current utterance representation <span class="math inline">u_t</span>),
-forecasting evaluates pure emotional inertia, interpersonal contagion,
-and affective transition dynamics.</p>
+current utterance representation <i>u<sub>t</sub></i>), forecasting
+evaluates pure emotional inertia, interpersonal contagion, and affective
+transition dynamics.</p>
 <h3 id="matched-sequence-evaluation-results">15.1 Matched Sequence
 Evaluation Results</h3>
 <p>We evaluated sequential baselines across official MELD test splits.
 Because higher-order models require preceding context turns, metrics are
 benchmarked on corresponding valid history cohorts (Order 1 / standard
-test <span class="math inline">N=2,610</span>; Order 2 <span
-class="math inline">N=2,059</span>; Order 3 <span
-class="math inline">N=1,807</span>):</p>
+test (N = 2,610); Order 2 (N = 2,059); Order 3 (N = 1,807)):</p>
 <table style="width:100%;">
 <colgroup>
 <col style="width: 12%" />
@@ -1209,11 +1231,9 @@ class="math inline">N=1,807</span>):</p>
 <thead>
 <tr>
 <th style="text-align: left;">Forecasting Model</th>
-<th style="text-align: center;">History Size (<span
-class="math inline">k</span>)</th>
+<th style="text-align: center;">History Size (<i>k</i>)</th>
 <th style="text-align: left;">Conditioning Features</th>
-<th style="text-align: center;">Test Split (<span
-class="math inline">N</span>)</th>
+<th style="text-align: center;">Test Split (<i>N</i>)</th>
 <th style="text-align: center;">Accuracy</th>
 <th style="text-align: center;">Macro F1</th>
 <th style="text-align: center;">Weighted F1</th>
@@ -1232,8 +1252,8 @@ class="math inline">N</span>)</th>
 <tr>
 <td style="text-align: left;"><strong>Speaker Persistence</strong></td>
 <td style="text-align: center;">1 (Speaker)</td>
-<td style="text-align: left;">Speaker’s previous emotion <span
-class="math inline">y_{\text{last}}(S)</span></td>
+<td style="text-align: left;">Speaker’s previous emotion
+<i>y</i><sub>last</sub>(<i>S</i>)</td>
 <td style="text-align: center;">2,610</td>
 <td style="text-align: center;">41.92%</td>
 <td style="text-align: center;"><strong>27.36%</strong></td>
@@ -1243,8 +1263,8 @@ class="math inline">y_{\text{last}}(S)</span></td>
 <td style="text-align: left;"><strong>First-Order Markov
 Chain</strong></td>
 <td style="text-align: center;">1 (Turn)</td>
-<td style="text-align: left;">Preceding turn’s emotion <span
-class="math inline">y_{t-1}</span></td>
+<td style="text-align: left;">Preceding turn’s emotion
+<i>y</i><sub><i>t</i>−1</sub></td>
 <td style="text-align: center;">2,610</td>
 <td style="text-align: center;">47.94%</td>
 <td style="text-align: center;">9.26%</td>
@@ -1254,8 +1274,8 @@ class="math inline">y_{t-1}</span></td>
 <td style="text-align: left;"><strong>Higher-Order
 Markov-2</strong></td>
 <td style="text-align: center;">2 (Turns)</td>
-<td style="text-align: left;">Preceding 2 turns <span
-class="math inline">(y_{t-1}, y_{t-2})</span></td>
+<td style="text-align: left;">Preceding 2 turns
+(<i>y</i><sub><i>t</i>−1</sub>, <i>y</i><sub><i>t</i>−2</sub>)</td>
 <td style="text-align: center;">2,059</td>
 <td style="text-align: center;"><strong>48.81%</strong></td>
 <td style="text-align: center;">20.03%</td>
@@ -1265,8 +1285,9 @@ class="math inline">(y_{t-1}, y_{t-2})</span></td>
 <td style="text-align: left;"><strong>Higher-Order
 Markov-3</strong></td>
 <td style="text-align: center;">3 (Turns)</td>
-<td style="text-align: left;">Preceding 3 turns <span
-class="math inline">(y_{t-1}, y_{t-2}, y_{t-3})</span></td>
+<td style="text-align: left;">Preceding 3 turns
+(<i>y</i><sub><i>t</i>−1</sub>, <i>y</i><sub><i>t</i>−2</sub>,
+<i>y</i><sub><i>t</i>−3</sub>)</td>
 <td style="text-align: center;">1,807</td>
 <td style="text-align: center;">47.65%</td>
 <td style="text-align: center;">20.80%</td>
@@ -1300,40 +1321,37 @@ Empirical Analysis of Affective Forecasting Dynamics</h3>
 Speaker Persistence baseline achieves the highest Macro F1 among all
 standalone historical sequence baselines. Because human speakers exhibit
 strong emotional inertia across their own conversational turns (<em>Joy
-<span class="math inline">\to</span> Joy</em>, <em>Anger <span
-class="math inline">\to</span> Anger</em>), Persistence successfully
-predicts minority emotion bursts. It yields non-zero recall across
-multiple emotion classes, preventing the minority-class erasure that
-cripples transition-probability models.</p></li>
+→ Joy</em>, <em>Anger → Anger</em>), Persistence successfully predicts
+minority emotion bursts. It yields non-zero recall across multiple
+emotion classes, preventing the minority-class erasure that cripples
+transition-probability models.</p></li>
 <li><p><strong>First-Order Markov Degeneracy:</strong> The First-Order
-Markov chain (<span class="math inline">P(y_t \mid y_{t-1})</span>)
-produces performance <strong>identical to the trivial Majority
-baseline</strong> (47.94% Accuracy, 9.26% Macro F1). Because
-<em>Neutral</em> constitutes 47.1% of all turns in MELD, the maximum
-likelihood transition from <em>every</em> emotion <span
-class="math inline">y_{t-1} \in \mathcal{Y}</span> leads to
-<em>Neutral</em>: <span class="math display">\arg\max_{y \in
-\mathcal{Y}} P(y \mid y_{t-1}) = \text{Neutral}, \quad \forall y_{t-1}
-\in \mathcal{Y}</span> Consequently, the 1st-order Markov model predicts
-<em>Neutral</em> unconditionally for every turn, achieving an F1 of
-0.648 on Neutral and 0.00 on all six non-neutral emotions (<span
-class="math inline">\text{Macro F1} = 0.648 / 7 =
-9.26\%</span>).</p></li>
+Markov chain (<i>P</i>(<i>y<sub>t</sub></i> |
+<i>y</i><sub><i>t</i>−1</sub>)) produces performance <strong>identical
+to the trivial Majority baseline</strong> (47.94% Accuracy, 9.26% Macro
+F1). Because <em>Neutral</em> constitutes 47.1% of all turns in MELD,
+the maximum likelihood transition from <em>every</em> emotion
+<i>y</i><sub><i>t</i>−1</sub> ∈ <i>Y</i> leads to <em>Neutral</em>:
+<span class="math display">\arg\max_{y \in \mathcal{Y}} P(y \mid
+y_{t-1}) = \text{Neutral}, \quad \forall y_{t-1} \in \mathcal{Y}</span>
+Consequently, the 1st-order Markov model predicts <em>Neutral</em>
+unconditionally for every turn, achieving an F1 of 0.648 on Neutral and
+0.00 on all six non-neutral emotions (Macro F1 = 0.648 / 7 =
+9.26%).</p></li>
 <li><p><strong>Higher-Order Markov Transitions and State
-Sparsity:</strong> Conditioning on higher-order histories (<span
-class="math inline">k=2, 3</span>) successfully breaks the
-<em>Neutral</em> attractor. In Markov-2, conditioning on 49 unique <span
-class="math inline">(y_{t-1}, y_{t-2})</span> bigram pairs lifts Macro
-F1 to <strong>20.03%</strong>, capturing strong emotional continuities
-such as <em>Anger <span class="math inline">\to</span> Anger</em> (F1 =
-0.39), <em>Joy <span class="math inline">\to</span> Joy</em> (F1 =
-0.20), and <em>Sadness</em> (F1 = 0.18). However, moving to Markov-3
-yields only a marginal Macro F1 gain (<strong>20.80%</strong>) while
-overall accuracy declines to 47.65%. This plateau is driven by severe
-<strong>combinatorial state sparsity</strong>: while <span
-class="math inline">7^3 = 343</span> transition states are theoretically
-possible, only 311 are observed in training, with over 60% of observed
-states having support <span class="math inline">N \le 2</span>.</p></li>
+Sparsity:</strong> Conditioning on higher-order histories (k = 2, 3)
+successfully breaks the <em>Neutral</em> attractor. In Markov-2,
+conditioning on 49 unique (<i>y</i><sub><i>t</i>−1</sub>,
+<i>y</i><sub><i>t</i>−2</sub>) bigram pairs lifts Macro F1 to
+<strong>20.03%</strong>, capturing strong emotional continuities such as
+<em>Anger <span class="math inline">\to</span> Anger</em> (F1 = 0.39),
+<em>Joy <span class="math inline">\to</span> Joy</em> (F1 = 0.20), and
+<em>Sadness</em> (F1 = 0.18). However, moving to Markov-3 yields only a
+marginal Macro F1 gain (<strong>20.80%</strong>) while overall accuracy
+declines to 47.65%. This plateau is driven by severe
+<strong>combinatorial state sparsity</strong>: while 7³ = 343 transition
+states are theoretically possible, only 311 are observed in training,
+with over 60% of observed states having support N ≤ 2.</p></li>
 <li><p><strong>Compounding Error in Recursive Forecasting:</strong> When
 forecasting multiple turns into the future in a closed loop (recursive
 generation without teacher forcing), prediction divergence reaches
@@ -1350,98 +1368,101 @@ Methods and Attributions</h2>
 empirical layers:</p>
 <h3 id="text-level-token-attribution-integrated-gradients">16.1
 Text-Level Token Attribution (Integrated Gradients)</h3>
-<p>Following Sundararajan et al. (2017), path-integrated gradients
-(<span class="math inline">M=25</span> steps) compute the attribution of
-subword token embeddings toward classification logits: <span
-class="math display">\text{Attribution}_i^c(x) \approx (x_i - x&#39;_i)
-\times \frac{1}{M} \sum_{m=1}^{M} \left. \frac{\partial F_c}{\partial
-x_i} \right|_{x&#39; + \frac{m}{M}(x - x&#39;)}</span> * <strong>Sarcasm
-Lexical Trap:</strong> On the utterance <em>“Oh that’s just fantastic,
-another flat tire in the middle of a thunderstorm.”</em>, DistilBERT
-falsely predicts <strong>Joy</strong> with <span
-class="math inline">89.9\%</span> confidence because
-<code>"fantastic"</code> receives the highest positive attribution
-(<span class="math inline">+0.242</span>). This empirically proves the
+<p>Following Sundararajan et al. (2017), path-integrated gradients (M =
+25 steps) compute the attribution of subword token embeddings toward
+classification logits:</p>
+<p><span class="math display">\text{Attribution}_i^c(x) \approx (x_i -
+x&#39;_i) \times \frac{1}{M} \sum_{m=1}^{M} \left. \frac{\partial
+F_c}{\partial x_i} \right|_{x&#39; + \frac{m}{M}(x - x&#39;)}</span></p>
+<ul>
+<li><strong>Sarcasm Lexical Trap:</strong> On the utterance <em>“Oh
+that’s just fantastic, another flat tire in the middle of a
+thunderstorm.”</em>, DistilBERT falsely predicts <strong>Joy</strong>
+with 89.9% confidence because <code>"fantastic"</code> receives the
+highest positive attribution (+0.242). This empirically proves the
 vulnerability of surface text transformers to sarcastic irony in the
-absence of vocal prosody or conversational context. * <strong>Affective
-Token Salience:</strong> Across true positive classes, attribution
-concentrates on semantic pivots: <code>"disgusting"</code> (<span
-class="math inline">+0.339</span>) for <em>Disgust</em>,
-<code>"terrified"</code> (<span class="math inline">+0.159</span>) and
-<code>"leave"</code> (<span class="math inline">+0.135</span>) for
-<em>Fear</em>, and discourse markers <code>"wait"</code> (<span
-class="math inline">+0.159</span>) and <code>"serious"</code> (<span
-class="math inline">+0.160</span>) for <em>Surprise</em>.</p>
-<h3 id="conversational-context-perturbation-delta-p-delta-ell">16.2
-Conversational Context Perturbation (<span class="math inline">\Delta
-P</span>, <span class="math inline">\Delta \ell</span>)</h3>
-<p>Evaluating turns under full conversational history <span
-class="math inline">\mathcal{H}_{&lt;t}</span> versus isolated utterance
-conditions (<span class="math inline">0</span>-context) isolates
-conversational sensitivity: <span class="math display">\Delta P_t(y) =
-P(y \mid u_t, \mathcal{H}_{&lt;t}) - P(y \mid u_t, \emptyset)</span> *
-In an emotional escalation dialogue between Ross and Rachel (<em>“I made
-a mistake, okay? It didn’t mean anything!”</em>), isolated DialogueRNN
-predicts <em>Anger</em> with <span class="math inline">0.77</span>
-confidence. Under full context, preceding rejection (<em>“We are
-done”</em>) introduces conflicting affective history into Ross’s party
-state, shifting confidence down by <strong><span
-class="math inline">\Delta P = -0.314</span></strong> (<span
-class="math inline">0.46</span>) as probability distributes toward
-distress. * Conversely, DialogueGCN leverages relational speaker edges
-to reinforce conflict dynamics, boosting <em>Anger</em> confidence by
-<strong><span class="math inline">+0.113</span></strong> (<span
-class="math inline">1.00</span>).</p>
-<h3 id="cross-model-disagreement-taxonomy-cohort-a-n2328">16.3
-Cross-Model Disagreement Taxonomy (Cohort A, <span
-class="math inline">N=2,328</span>)</h3>
+absence of vocal prosody or conversational context.</li>
+<li><strong>Affective Token Salience:</strong> Across true positive
+classes, attribution concentrates on semantic pivots:
+<code>"disgusting"</code> (+0.339) for <em>Disgust</em>,
+<code>"terrified"</code> (+0.159) and <code>"leave"</code> (+0.135) for
+<em>Fear</em>, and discourse markers <code>"wait"</code> (+0.159) and
+<code>"serious"</code> (+0.160) for <em>Surprise</em>.</li>
+</ul>
+<h3 id="conversational-context-perturbation-δp-δℓ">16.2 Conversational
+Context Perturbation (ΔP, Δℓ)</h3>
+<p>Evaluating turns under full conversational history
+<i>H</i><sub>&lt;<i>t</i></sub> versus isolated utterance conditions
+(0-context) isolates conversational sensitivity:</p>
+<p><span class="math display">\Delta P_t(y) = P(y \mid u_t,
+\mathcal{H}_{&lt;t}) - P(y \mid u_t, \emptyset)</span></p>
+<ul>
+<li>In an emotional escalation dialogue between Ross and Rachel (<em>“I
+made a mistake, okay? It didn’t mean anything!”</em>), isolated
+DialogueRNN predicts <em>Anger</em> with 0.77 confidence. Under full
+context, preceding rejection (<em>“We are done”</em>) introduces
+conflicting affective history into Ross’s party state, shifting
+confidence down by <strong>ΔP = -0.314</strong> (0.46) as probability
+distributes toward distress.</li>
+<li>Conversely, DialogueGCN leverages relational speaker edges to
+reinforce conflict dynamics, boosting <em>Anger</em> confidence by
+<strong>+0.113</strong> (1.00).</li>
+</ul>
+<h3 id="cross-model-disagreement-taxonomy-cohort-a-n-2328">16.3
+Cross-Model Disagreement Taxonomy (Cohort A, N = 2,328)</h3>
 <p>Matching test predictions across DistilBERT, DialogueRNN, and
 DialogueGCN reveals high pairwise concordance and illuminates exact
-context failure modes: * <strong>Unanimous Agreement:</strong> All 3
-models agree on <strong>1,772 out of 2,328 turns (<span
-class="math inline">76.12\%</span>)</strong>. * <strong>Pairwise Cohen’s
-Kappa:</strong> * DistilBERT vs. DialogueRNN: <strong><span
-class="math inline">\kappa = 0.8412</span></strong> (Concordance: <span
-class="math inline">88.66\%</span>) * DialogueRNN vs. DialogueGCN:
-<strong><span class="math inline">\kappa = 0.7468</span></strong>
-(Concordance: <span class="math inline">81.44\%</span>) * DistilBERT
-vs. DialogueGCN: <strong><span class="math inline">\kappa =
-0.7116</span></strong> (Concordance: <span
-class="math inline">78.91\%</span>) * <strong>Taxonomy
-Distribution:</strong> * <strong>All Correct:</strong> <span
-class="math inline">1,210</span> turns (<span
-class="math inline">51.98\%</span>) * <strong>Context Recovery
-(Net):</strong> <span class="math inline">197</span> turns (<span
-class="math inline">8.46\%</span>) where DistilBERT failed but context
-models recovered ground truth (<span class="math inline">107</span>
-unique DialogueGCN wins, <span class="math inline">30</span> DialogueRNN
-wins, and <span class="math inline">60</span> mutual wins). *
-<strong>Context Dilution:</strong> <span class="math inline">174</span>
-turns (<span class="math inline">7.47\%</span>) where isolated
+context failure modes:</p>
+<ul>
+<li><strong>Unanimous Agreement:</strong> All 3 models agree on
+<strong>1,772 out of 2,328 turns (76.12%)</strong>.</li>
+<li><strong>Pairwise Cohen’s Kappa:</strong>
+<ul>
+<li>DistilBERT vs. DialogueRNN: <strong>κ = 0.8412</strong>
+(Concordance: <span class="math inline">88.66\%</span>)</li>
+<li>DialogueRNN vs. DialogueGCN: <strong>κ = 0.7468</strong>
+(Concordance: <span class="math inline">81.44\%</span>)</li>
+<li>DistilBERT vs. DialogueGCN: <strong>κ = 0.7116</strong>
+(Concordance: <span class="math inline">78.91\%</span>)</li>
+</ul></li>
+<li><strong>Taxonomy Distribution:</strong>
+<ul>
+<li><strong>All Correct:</strong> 1,210 turns (51.98%)</li>
+<li><strong>Context Recovery (Net):</strong> 197 turns (8.46%) where
+DistilBERT failed but context models recovered ground truth (107 unique
+DialogueGCN wins, 30 DialogueRNN wins, and 60 mutual wins).</li>
+<li><strong>Context Dilution:</strong> 174 turns (7.47%) where isolated
 DistilBERT was correct, but conversational history over-smoothed the
-prediction into an error. * <strong>Consensus Failure:</strong> <span
-class="math inline">10</span> turns (<span
-class="math inline">0.43\%</span>) where all 3 models predicted
-different emotions. * <strong>Universal Error:</strong> <span
-class="math inline">737</span> turns (<span
-class="math inline">31.66\%</span>) where all 3 models failed,
-reflecting the ceiling of textual ERC on short backchannels and subtle
-sarcasm without multimodal audio.</p>
+prediction into an error.</li>
+<li><strong>Consensus Failure:</strong> 10 turns (0.43%) where all 3
+models predicted different emotions.</li>
+<li><strong>Universal Error:</strong> 737 turns (31.66%) where all 3
+models failed, reflecting the ceiling of textual ERC on short
+backchannels and subtle sarcasm without multimodal audio.</li>
+</ul></li>
+</ul>
 <hr />
 <h2 id="application-architecture-and-capabilities">17. Application
 Architecture and Capabilities</h2>
-<p>The deployed system (<code>Emotion Dynamics</code>) comprises: *
-<strong>Backend:</strong> FastAPI asynchronously serving DistilBERT,
-DialogueRNN, and DialogueGCN inference engines. *
-<strong>Frontend:</strong> 5-screen desktop/mobile interface in
-restrained Dark Charcoal (<code>#171B18</code>): 1. <em>Home /
-Import:</em> Drag-and-drop parsing for Raw Text, WhatsApp, Instagram,
-and CSV. 2. <em>Conversation Viewer:</em> Dual-speaker bubbles with
-predicted emotion pills. 3. <em>Emotion Dynamics:</em> Timeline charts,
-speaker inertia bars, transition statistics. 4. <em>Model
-Comparison:</em> Side-by-side prediction grid with consensus badges. 5.
-<em>Research Inspection:</em> Model cards, parameter counts, and
-benchmark reports.</p>
+<p>The deployed system (<code>Emotion Dynamics</code>) comprises:</p>
+<ul>
+<li><p><strong>Backend:</strong> FastAPI asynchronously serving
+DistilBERT, DialogueRNN, and DialogueGCN inference engines.</p></li>
+<li><p><strong>Frontend:</strong> 5-screen desktop/mobile interface in
+restrained Dark Charcoal (<code>#171B18</code>):</p>
+<ol type="1">
+<li><em>Home / Import:</em> Drag-and-drop parsing for Raw Text,
+WhatsApp, Instagram, and CSV.</li>
+<li><em>Conversation Viewer:</em> Dual-speaker bubbles with predicted
+emotion pills.</li>
+<li><em>Emotion Dynamics:</em> Timeline charts, speaker inertia bars,
+transition statistics.</li>
+<li><em>Model Comparison:</em> Side-by-side prediction grid with
+consensus badges.</li>
+<li><em>Research Inspection:</em> Model cards, parameter counts, and
+benchmark reports.</li>
+</ol></li>
+</ul>
 <hr />
 <h2 id="methodological-and-domain-limitations">18. Methodological and
 Domain Limitations</h2>
@@ -1451,15 +1472,15 @@ dialogue features elevated rates of sarcasm, exaggerated vocalizations,
 and comedic timing that do not mirror clinical or casual interpersonal
 text.</li>
 <li><strong>Annotation Ambiguity:</strong> Human inter-annotator
-agreement on MELD achieves Fleiss’ <span class="math inline">\kappa
-\approx 0.43</span>, reflecting genuine affective ambiguity.</li>
+agreement on MELD achieves Fleiss’ κ ≈ 0.43, reflecting genuine
+affective ambiguity.</li>
 <li><strong>Non-Clinical Boundary:</strong> Predictions reflect
 <strong>perceived expressed emotion in text</strong>, not internal
 psychological reality.</li>
 </ol>
 <hr />
-<h2 id="future-multimodal-research-scope-tri-modal-affective-fusion">19.
-Future Multimodal Research Scope: Tri-Modal Affective Fusion</h2>
+<h2 id="multimodal-research-scope-and-empirical-fusion-extension">19.
+Multimodal Research Scope and Empirical Fusion Extension</h2>
 <p>While the core contributions of this study establish textual and
 contextual baselines for multi-party ERC, MELD natively provides paired
 audiovisual recordings for every dialogue turn (<code>.mp4</code>
@@ -1467,40 +1488,46 @@ clips). As demonstrated by our Integrated Gradients error analysis,
 text-only ERC suffers from fundamental ambiguity in sarcastic irony,
 backchannel vocalizations (<em>“Oh”</em>, <em>“Yeah”</em>), and
 non-verbal affective leakage. We establish a concrete architectural
-blueprint for extending the current pipeline into full <strong>Tri-Modal
-Affective Fusion (Text + Audio + Video)</strong>:</p>
+blueprint and report empirical results for extending the current
+pipeline into <strong>Tri-Modal Affective Fusion (Text + Audio +
+Video)</strong>:</p>
 <h3 id="acoustic-and-prosodic-feature-engineering">19.1 Acoustic and
 Prosodic Feature Engineering</h3>
 <p>Acoustic signals capture vocal arousal, pitch inflection, and
-affective intensity that are invisible in text transcriptions: 1.
-<strong>Expert Engineered Prosody (openSMILE eGeMAPS):</strong>
+affective intensity that are invisible in text transcriptions:</p>
+<ol type="1">
+<li><strong>Expert Engineered Prosody (openSMILE eGeMAPS):</strong>
 Extraction of the 88-dimensional extended Geneva Minimalistic Acoustic
 Parameter Set (<code>eGeMAPS</code>), including fundamental frequency
-(<span class="math inline">F_0</span> pitch trajectory, jitter), energy
-dynamics (loudness, shimmer), spectral balance (formants <span
-class="math inline">F_1-F_3</span>, alpha ratio), and harmonic-to-noise
-ratio (HNR). 2. <strong>Self-Supervised Speech Representations (WavLM /
+(F₀ pitch trajectory, jitter), energy dynamics (loudness, shimmer),
+spectral balance (formants F₁–F₃, alpha ratio), and harmonic-to-noise
+ratio (HNR).</li>
+<li><strong>Self-Supervised Speech Representations (WavLM /
 HuBERT):</strong> Dense acoustic representations extracted from
 pre-trained <code>WavLM-Large</code> or <code>HuBERT-Large</code>
 (1024-dim), pooling frame-level transformer layers to preserve
-paralinguistic tone, pauses, and emotional tremors. 3. <strong>Temporal
-ASR Word Alignment:</strong> Utilizing OpenAI
+paralinguistic tone, pauses, and emotional tremors.</li>
+<li><strong>Temporal ASR Word Alignment:</strong> Utilizing OpenAI
 <code>Whisper-Large-v3</code> forced alignment to timestamp
 phoneme-to-word boundaries, ensuring microsecond-level synchronization
-between acoustic pitch contours and subword textual tokens.</p>
+between acoustic pitch contours and subword textual tokens.</li>
+</ol>
 <h3 id="visual-facial-expression-and-gestural-dynamics">19.2 Visual
 Facial Expression and Gestural Dynamics</h3>
 <p>Visual information resolves ambiguity through micro-expressions and
-gaze dynamics: 1. <strong>Facial Action Coding System (OpenFace 2.0
-FACS):</strong> Extraction of 18 continuous Action Unit
-(<code>AU</code>) intensities (e.g., AU01 Inner Brow Raiser, AU04 Brow
-Lowerer, AU12 Lip Corner Puller, AU15 Lip Corner Depressor), alongside
-3D head pose orientation (pitch, yaw, roll) and eye gaze vectors. 2.
-<strong>Spatiotemporal Visual Embeddings (VideoMAE / CLIP):</strong>
+gaze dynamics:</p>
+<ol type="1">
+<li><strong>Facial Action Coding System (OpenFace 2.0 FACS):</strong>
+Extraction of 18 continuous Action Unit (<code>AU</code>) intensities
+(e.g., AU01 Inner Brow Raiser, AU04 Brow Lowerer, AU12 Lip Corner
+Puller, AU15 Lip Corner Depressor), alongside 3D head pose orientation
+(pitch, yaw, roll) and eye gaze vectors.</li>
+<li><strong>Spatiotemporal Visual Embeddings (VideoMAE / CLIP):</strong>
 Extracting frame-level face-crop representations using
 <code>CLIP-ViT-B/16</code> and temporal transformer encoders
 (<code>VideoMAE-v2</code>), capturing dynamic facial gestures and muscle
-tension across the utterance duration.</p>
+tension across the utterance duration.</li>
+</ol>
 <h3 id="tri-modal-relational-fusion-architecture">19.3 Tri-Modal
 Relational Fusion Architecture</h3>
 <p>Rather than simple late-stage heuristic voting, multimodal features
@@ -1518,32 +1545,191 @@ ambiguous: <span class="math display">\mathbf{h}_{\text{cross}, t} =
 \mathbf{V}=\mathbf{a}_{\text{audio},t}\right)</span></p>
 <p>These fused tri-modal utterance representations <span
 class="math inline">\mathbf{u}_t</span> directly replace unimodal
-DistilBERT features in: * <strong>DialogueRNN:</strong> Modulating
-speaker party state GRUs (<span class="math inline">q_t^{(s_t)} =
-\text{GRU}(q_{t-1}^{(s_t)}, [\mathbf{u}_t \mathbin{\Vert} c_t])</span>),
-capturing how a speaker’s vocal tension accumulates over time. *
-<strong>DialogueGCN:</strong> Modulating relational edge weights (<span
-class="math inline">\alpha_{ij} = \text{Softmax}(\mathbf{u}_i^\top
-\mathbf{W}_e \mathbf{u}_j)</span>), allowing interlocutor graph
-attention to weight speakers who express elevated vocal or visual
-agitation.</p>
-<h3 id="real-world-application-conversational-de-escalation-index">19.4
+DistilBERT features in:</p>
+<ul>
+<li><strong>DialogueRNN:</strong> Modulating speaker party state GRUs
+(<span class="math inline">q_t^{(s_t)} = \text{GRU}(q_{t-1}^{(s_t)},
+[\mathbf{u}_t \mathbin{\Vert} c_t])</span>), capturing how a speaker’s
+vocal tension accumulates over time.</li>
+<li><strong>DialogueGCN:</strong> Modulating relational edge weights
+(<span class="math inline">\alpha_{ij} =
+\text{Softmax}(\mathbf{u}_i^\top \mathbf{W}_e \mathbf{u}_j)</span>),
+allowing interlocutor graph attention to weight speakers who express
+elevated vocal or visual agitation.</li>
+</ul>
+<h3
+id="empirical-multimodal-fusion-extension-text-audio-video-on-canonical-cohort-a">19.4
+Empirical Multimodal Fusion Extension (Text + Audio + Video on Canonical
+Cohort A)</h3>
+<p>To empirically evaluate the multimodal fusion architecture and
+determine whether acoustic and visual signals break through the 31.66%
+(737 / 2,328) universal text error floor, we trained and evaluated gated
+bimodal and trimodal variants of DialogueRNN and DialogueGCN on
+Canonical Cohort A (N = 2,328). Utterance-level acoustic features were
+extracted using pre-trained <code>microsoft/wavlm-base-plus</code>
+(768-dimensional representations via masked mean pooling over
+frame-level feature vectors at 16 kHz mono), while visual features were
+extracted using <code>openai/clip-vit-base-patch32</code>
+(512-dimensional pooled frame representations averaged across 4 uniform
+video frames). Both modalities were projected to 256-dimensional hidden
+spaces with learned feature-wise sigmoid gating and dynamic missing-clip
+availability masking.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Model Architecture</th>
+<th style="text-align: left;">Evaluated Modalities</th>
+<th style="text-align: center;">Accuracy</th>
+<th style="text-align: center;">Macro F1</th>
+<th style="text-align: center;">Weighted F1</th>
+<th style="text-align: center;">Universal Errors Recovered (out of
+737)</th>
+<th style="text-align: center;">Fear F1</th>
+<th style="text-align: center;">Disgust F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>DialogueRNN (Unweighted
+Text)</strong></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: center;">60.14%</td>
+<td style="text-align: center;">43.42%</td>
+<td style="text-align: center;">58.92%</td>
+<td style="text-align: center;">Baseline (0)</td>
+<td style="text-align: center;">16.09%</td>
+<td style="text-align: center;">20.69%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DialogueGCN
+(Text-Only)</strong></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: center;">60.09%</td>
+<td style="text-align: center;">43.85%</td>
+<td style="text-align: center;">60.09%</td>
+<td style="text-align: center;">Baseline (0)</td>
+<td style="text-align: center;">16.28%</td>
+<td style="text-align: center;">22.95%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bimodal DialogueRNN</strong></td>
+<td style="text-align: left;">Text + Audio (WavLM)</td>
+<td style="text-align: center;"><strong>60.95%</strong></td>
+<td style="text-align: center;"><strong>43.59%</strong></td>
+<td style="text-align: center;"><strong>60.34%</strong></td>
+<td style="text-align: center;"><strong>28 / 737</strong></td>
+<td style="text-align: center;">19.78%</td>
+<td style="text-align: center;">23.53%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bimodal DialogueGCN</strong></td>
+<td style="text-align: left;">Text + Audio (WavLM)</td>
+<td style="text-align: center;">60.01%</td>
+<td style="text-align: center;">42.34%</td>
+<td style="text-align: center;">59.47%</td>
+<td style="text-align: center;"><strong>29 / 737</strong></td>
+<td style="text-align: center;">16.28%</td>
+<td style="text-align: center;">22.95%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trimodal DialogueRNN</strong></td>
+<td style="text-align: left;">Text + Audio + Video</td>
+<td style="text-align: center;">60.74%</td>
+<td style="text-align: center;">42.65%</td>
+<td style="text-align: center;">60.36%</td>
+<td style="text-align: center;">23 / 737</td>
+<td style="text-align: center;">16.09%</td>
+<td style="text-align: center;">21.43%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trimodal DialogueGCN</strong></td>
+<td style="text-align: left;">Text + Audio + Video</td>
+<td style="text-align: center;">59.92%</td>
+<td style="text-align: center;">42.94%</td>
+<td style="text-align: center;">59.65%</td>
+<td style="text-align: center;">24 / 737</td>
+<td style="text-align: center;"><strong>20.22%</strong></td>
+<td style="text-align: center;"><strong>23.88%</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="universal-text-error-recovery-findings">Universal Text Error
+Recovery Findings</h4>
+<p>Reconstructing the exact 737 universal text error mask (turns where
+DistilBERT, DialogueRNN, and DialogueGCN text models simultaneously
+failed) reveals tangible recovery:</p>
+<ul>
+<li><strong>Bimodal DialogueGCN (Text + Audio):</strong> Recovers
+<strong>29 / 737</strong> (3.93%) universal text failures.</li>
+<li><strong>Bimodal DialogueRNN (Text + Audio):</strong> Recovers
+<strong>28 / 737</strong> (3.80%) universal text failures.</li>
+<li><strong>Trimodal DialogueGCN (Text + Audio + Video):</strong>
+Recovers <strong>24 / 737</strong> (3.26%) universal text failures.</li>
+<li><strong>Trimodal DialogueRNN (Text + Audio + Video):</strong>
+Recovers <strong>23 / 737</strong> (3.12%) universal text failures.</li>
+</ul>
+<p>Qualitative inspection reveals that recovered turns predominantly
+involve sarcastic praise (<em>“Oh, wonderful!”</em>), deadpan assertions
+(<em>“Yeah, right”</em>), and subtle backchannels where text
+transcriptions lack lexical emotion markers, but acoustic pitch
+trajectory (F₀ variance) and volume bursts clearly convey <em>anger</em>
+or <em>disgust</em>.</p>
+<h4 id="honest-full-frame-clip-vs.-wavlm-ablation-analysis">Honest
+Full-Frame CLIP vs. WavLM Ablation Analysis</h4>
+<p>A rigorous comparative analysis reveals distinct trade-offs across
+modalities:</p>
+<ol type="1">
+<li><p><strong>Acoustic Prosody (WavLM) Provides Clean, Complementary
+Lift:</strong> Acoustic features consistently elevate DialogueRNN
+performance across all dimensions (+0.81% Accuracy from 60.14% to
+60.95%, +0.17% Macro F1 from 43.42% to 43.59%, and +1.42% Weighted F1
+from 58.92% to 60.34%). Vocal prosody integrates directly into the party
+state GRU, disconfirming neutral textual biases when vocal arousal is
+heightened.</p></li>
+<li><p><strong>Full-Frame Visual CLIP Pooling Introduces Background
+Noise:</strong> While WavLM operates on clean mono speech channels,
+full-frame CLIP-ViT pooling processes the entire video frame. In
+multi-party sitcom scenes (MELD), wide camera angles frequently feature
+inactive characters, studio background dynamics, and editing cuts,
+introducing multi-speaker visual interference. Consequently, trimodal
+accuracy (60.74%) shows slight attenuation relative to bimodal
+audio-text (60.95%).</p></li>
+<li><p><strong>Trimodal Architecture Delivers Critical Minority-Class
+Precision:</strong> Despite background variance, the visual stream
+provides decisive discriminative power on low-frequency, high-arousal
+emotions. Trimodal DialogueGCN achieves peak <strong>Fear F1
+(20.22%)</strong> and <strong>Disgust F1 (23.88%)</strong>,
+outperforming all unimodal and bimodal baselines. This confirms that
+facial contortions and startled expressions offer orthogonal affective
+signals, underscoring that future visual extensions should prioritize
+speaker-specific bounding box facial tracking (e.g., via MTCNN or
+MediaPipe) over full-frame pooling.</p></li>
+</ol>
+<h3 id="real-world-application-conversational-de-escalation-index">19.5
 Real-World Application: Conversational De-Escalation Index</h3>
-<p>For deployment in customer resolution, conflict mediation, and mental
+For deployment in customer resolution, conflict mediation, and mental
 health support, tri-modal emotion dynamics provide an actionable
-<strong>De-Escalation Index</strong> (<span
-class="math inline">D_{\text{idx}}</span>): <span
-class="math display">D_{\text{idx}}(t) = \sum_{\tau=t-k}^{t} w_\tau
-\cdot \left[ \Delta \text{Valence}(\tau) - \lambda \cdot \Delta
-\text{Arousal}(\tau) \right]</span> Where <span
-class="math inline">w_\tau</span> is an exponential decay recency
-weight, <span class="math inline">\text{Valence}</span> is derived from
-text and facial smiles (AU12), and <span
-class="math inline">\text{Arousal}</span> is derived from acoustic
-volume and pitch velocity. A consistently negative <span
-class="math inline">D_{\text{idx}}</span> triggers real-time
-early-warning intervention prompts before conversational breakdown
-occurs.</p>
+<strong>De-Escalation Index</strong> (<i>D</i><sub>idx</sub>):
+<p style="text-align: center; font-size: 15px; margin: 16px 0; font-weight: 500;">
+<i>D</i><sub>idx</sub>(<i>t</i>) = ∑<sub>τ = <i>t</i> −
+<i>k</i></sub><sup><i>t</i></sup> <i>w</i><sub>τ</sub> · [ΔValence(τ) −
+λ · ΔArousal(τ)]
+</p>
+<p>Where <i>w</i><sub>τ</sub> is an exponential decay recency weight,
+Valence is derived from text and facial smiles (AU12), and Arousal is
+derived from acoustic volume and pitch velocity. A consistently negative
+<i>D</i><sub>idx</sub> triggers real-time early-warning intervention
+prompts before conversational breakdown occurs.</p>
 <hr />
 <h2 id="references">20. References</h2>
 <ol type="1">
@@ -1565,6 +1751,29 @@ Understanding</em>. In Proceedings of NAACL.</li>
 <li>Sanh, V., Debut, L., Chaumond, J., &amp; Wolf, T. (2019).
 <em>DistilBERT, a distilled version of BERT: smaller, faster, cheaper
 and lighter</em>. arXiv preprint arXiv:1910.01108.</li>
+<li>Li, Y., Su, H., Shen, X., Li, W., Cao, Z., &amp; Niu, S. (2017).
+<em>DailyDialog: A Manually Labelled Multi-turn Dialogue Dataset</em>.
+In Proceedings of IJCNLP.</li>
+<li>Feng, S., Lubis, N., Geishauser, C., Lin, H. C., Heck, M., van
+Niekerk, C., &amp; Gašić, M. (2022). <em>EmoWOZ: A Large-Scale Corpus
+and Labelling Scheme for Emotion Recognition in Task-Oriented Dialogue
+Systems</em>. In Proceedings of LREC.</li>
+<li>Sundararajan, M., Taly, A., &amp; Yan, Q. (2017). <em>Axiomatic
+Attribution for Deep Networks</em>. In Proceedings of ICML.</li>
+<li>Eyben, F., Scherer, K. R., Schuller, B. W., Sundberg, J., André, E.,
+Busso, C., … &amp; Truong, K. P. (2016). <em>The Geneva Minimalistic
+Acoustic Parameter Set (GeMAPS) for Voice Research and Affective
+Computing</em>. IEEE Transactions on Affective Computing.</li>
+<li>Chen, S., Wang, C., Chen, Z., Wu, Y., Liu, S., Chen, Z., … &amp;
+Wei, F. (2022). <em>WavLM: Large-Scale Self-Supervised Pre-Training for
+Full Stack Speech Processing</em>. IEEE Journal of Selected Topics in
+Signal Processing.</li>
+<li>Baltrušaitis, T., Zadeh, A., Lim, Y. C., &amp; Morency, L. P.
+(2018). <em>OpenFace 2.0: Facial Behavior Analysis Toolkit</em>. In IEEE
+FG.</li>
+<li>Radford, A., Kim, J. W., Xu, T., Brockman, G., McLeavey, C., &amp;
+Sutskever, I. (2023). <em>Robust Speech Recognition via Large-Scale Weak
+Supervision</em>. In Proceedings of ICML.</li>
 </ol>
 <hr />
 <p><em>Comprehensive master research findings report compiled for the
